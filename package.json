@@ -1,0 +1,30 @@
+{
+  "name": "twice-station",
+  "version": "1.0.0",
+  "description": "A Bot for the Twicepedia Discord server.",
+  "main": "bot.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "discord-utils": "github:esfox/discord-utils",
+    "discord.js": "^11.5.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "get-audio-duration": "^1.0.0",
+    "libsodium-wrappers": "^0.7.4",
+    "opusscript": "0.0.6",
+    "ytdl-core": "^0.29.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esfox/TWICE-Station.git"
+  },
+  "author": "esfox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esfox/TWICE-Station/issues"
+  },
+  "homepage": "https://github.com/esfox/TWICE-Station#readme"
+}
