@@ -1,0 +1,14 @@
+{
+  "developer": {
+    "id": "247955535620472844",
+    "channel": "533908427399757826",
+    "logs": "533908427399757826",
+    "client": "564993463888642058",
+    "mode": false
+  },
+  "prefixes": [ ";" ],
+  "embed_color": "#01E623",
+  "bot_channel": "533958900932673546",
+  "server_invite": "https://discord.gg/fC76MQG",
+  "error_message": "❌  Woops! A problem occurred."
+}
