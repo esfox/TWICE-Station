@@ -38,5 +38,9 @@ bot.on('message', message =>
   if(message.content === ping)
     message.delete();
 
+  if(message.channel.type === 'dm' && 
+    message.author.id !== context.config.developer.id)
+    return;
+
   context.from(message);
 });
