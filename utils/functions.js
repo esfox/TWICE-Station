@@ -19,3 +19,12 @@ exports.getMention = (context, asMember) =>
 
   return user;
 }
+
+const simplify = string => string
+  .toLowerCase()
+  .trim()
+  .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
+  .replace(/\s|!|\?|\\/g, '');
+
+exports.search = (items, query) => 
+  items.find(item => simplify(item).match(simplify(query)));

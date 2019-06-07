@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const functions = require('../../../utils/functions');
+const { getMention } = require('../../../utils/functions');
 
 module.exports = class extends Command
 {
@@ -16,7 +16,7 @@ module.exports = class extends Command
 function action(context)
 {
   /** @type {import('discord.js').GuildMember} */
-  const user = functions.getMention(context, true);
+  const user = getMention(context, true);
   if(!user)
     return context.send('❌  No user mentioned.');
 
