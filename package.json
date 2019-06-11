@@ -2,6 +2,8 @@
   "name": "twice-station",
   "version": "1.0.0",
   "description": "A Bot for the Twicepedia Discord server.",
+  "author": "esfox",
+  "license": "ISC",
   "main": "bot.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -10,7 +12,10 @@
     "fluent-ffmpeg": "^2.1.2",
     "get-audio-duration": "^1.0.0",
     "libsodium-wrappers": "^0.7.4",
+    "node-fetch": "^2.6.0",
     "opusscript": "0.0.6",
+    "sequelize": "^5.8.7",
+    "sqlite3": "^4.0.8",
     "ytdl-core": "^0.29.2"
   },
   "devDependencies": {},
@@ -21,8 +26,6 @@
     "type": "git",
     "url": "git+https://github.com/esfox/TWICE-Station.git"
   },
-  "author": "esfox",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/esfox/TWICE-Station/issues"
   },
