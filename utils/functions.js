@@ -24,7 +24,10 @@ const simplify = string => string
   .toLowerCase()
   .trim()
   .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
-  .replace(/\s|!|\?|\\/g, '');
+  .replace(/\s|!|\?|\\|\(|\)|\.|\-/g, '');
 
+exports.compare = (item, query) => 
+  simplify(item).match(simplify(query));
+  
 exports.search = (items, query) => 
-  items.find(item => simplify(item).match(simplify(query)));
+  items.find(item => this.compare(item, query));
