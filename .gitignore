@@ -61,10 +61,7 @@ typings/
 .next
 
 # sqlite
-userdata.sqlite
-database.sqlite
-.userdata.sqlite.swp
-pepega.sqlite
+*.sqlite
 
 # unnecessary js files
 rpg.js

@@ -6,6 +6,7 @@ const { Context } = require('discord-utils');
 const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
+const database = require('./data/database');
 const [ token ] = process.argv.slice(2);
 bot
   .login(token)
@@ -14,8 +15,10 @@ bot
 const { client, channel } = config.developer;
 let ping = '<@247955535620472844>';
 
-bot.on('ready', _ =>
+bot.on('ready', async _ =>
 {
+  await database.init();
+  console.log('Database connected.');
   console.log('Bot connected.');
 
   if(bot.user.id === client)
