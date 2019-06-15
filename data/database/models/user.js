@@ -4,11 +4,11 @@ const { Follows } = require('..');
 
 class User extends Model {}
 
-User.getByID = user =>
+User.getByID = id =>
 {
   return User.findOrCreate(
   {
-    where: { user_id: user },
+    where: { user_id: id },
     defaults: 
     {
       coins: 0,
@@ -18,10 +18,9 @@ User.getByID = user =>
 }
 
 /** @param {string[]} channels */
-User.addFollows = async (user, channels) =>
+User.addFollows = async (id, channels) =>
 {
-  [ user ] = await User.getByID(user);
-  
+  const [ user ] = await User.getByID(id);
   let follows = await user.getFollows();
   if(!follows)
   {
@@ -38,6 +37,13 @@ User.addFollows = async (user, channels) =>
   followedChannels.push(...notFollowed);
   await follows.update({ channels: JSON.stringify(followedChannels) });
   return notFollowed;
+}
+
+User.getFollows = async id =>
+{
+  const [ user ] = await User.getByID(id);
+  const follows = await user.getFollows();
+  return follows? JSON.parse(follows.channels) : undefined;
 }
 
 module.exports = sequelize =>
