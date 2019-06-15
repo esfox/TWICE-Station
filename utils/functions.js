@@ -1,23 +1,41 @@
 /** @param {import('discord-utils').Context} context*/
-exports.getMention = (context, asMember) =>
+const getMentions = context =>
 {
   const { parameters } = context;
   if(!parameters)
     return;
+  
+  return context.message.mentions;
+}
+
+/** @param {import('discord-utils').Context} context*/
+exports.getMention = (context, asMember) =>
+{
+  const mentions = getMentions(context);
+  if(!mentions)
+    return;
 
   const findByID = user => parameters.includes(user.id);
-  
-  const { message } = context;
-  const { mentions } = message;
   let user = asMember?
     mentions.members.first() :
     mentions.users.first();
+
   if(!user)
     user = asMember?
       message.guild.members.find(findByID) :
       message.client.users.find(findByID);
 
   return user;
+}
+
+/** @param {import('discord-utils').Context} context*/
+exports.getChannelMentions = context =>
+{
+  const mentions = getMentions(context);
+  if(!mentions)
+    return;
+
+  return mentions.channels.array();
 }
 
 const simplify = string => string
