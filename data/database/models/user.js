@@ -3,7 +3,23 @@ const { Model } = Sequelize;
 
 class User extends Model {}
 
-User.getByID = id =>
+exports.init = sequelize =>
+{
+  User.init(
+  {
+    user_id: Sequelize.STRING,
+    coins: Sequelize.BIGINT,
+    candybongs: Sequelize.INTEGER,
+  },
+  {
+    sequelize,
+    underscored: true,
+  });
+
+  return User;
+}
+
+exports.getByID = id =>
 {
   return User.findOrCreate(
   {
@@ -16,15 +32,15 @@ User.getByID = id =>
   });
 }
 
-User.getFollows = async id =>
+exports.getFollows = async id =>
 {
   const follows = await getFollows(id);
   return follows? JSON.parse(follows.channels) : undefined;
 }
 
-User.addFollows = async (id, channels) =>
+exports.addFollows = async (id, channels) =>
 {
-  const [ user ] = await User.getByID(id);
+  const [ user ] = await this.getByID(id);
   let follows = await user.getFollows();
   if(!follows)
   {
@@ -43,7 +59,7 @@ User.addFollows = async (id, channels) =>
   return notFollowed;
 }
 
-User.removeFollows = async (id, channels) =>
+exports.removeFollows = async (id, channels) =>
 {
   const follows = await getFollows(id);
   if(!follows)
@@ -55,24 +71,8 @@ User.removeFollows = async (id, channels) =>
   await follows.update({ channels: JSON.stringify(followedChannels) });
 }
 
-module.exports = sequelize =>
-{
-  User.init(
-  {
-    user_id: Sequelize.STRING,
-    coins: Sequelize.BIGINT,
-    candybongs: Sequelize.INTEGER,
-  },
-  {
-    sequelize,
-    underscored: true,
-  });
-
-  return User;
-}
-
 const getFollows = async id =>
 {
-  const [ user ] = await User.getByID(id);
+  const [ user ] = await this.getByID(id);
   return user.getFollows();
 }

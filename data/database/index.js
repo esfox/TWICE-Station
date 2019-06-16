@@ -7,6 +7,16 @@ const sequelize = new Sequelize
     storage: './data/database/data.sqlite'
 });
 
+/** 
+ * @typedef {typeof import('sequelize').Model} Model
+ * 
+ * @typedef {Object} Models
+ * @property {Model} User
+ * @property {Model} Items
+ * @property {Model} Follows
+ */
+
+/** @type {Models} */
 const { User, Items, Follows } = require('./models')(sequelize);
 exports.init = _ => 
 {
@@ -22,6 +32,6 @@ const associateModels = _ =>
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
 }
 
-exports.User = User;
-exports.Items = Items;
-exports.Follows = Follows;
+exports.User = require('./models/user');
+exports.Items = require('./models/items');
+exports.Follows = require('./models/follows');

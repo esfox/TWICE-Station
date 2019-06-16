@@ -4,7 +4,7 @@ module.exports = sequelize => readdirSync(__dirname)
   .reduce((models, model) =>
   {
     modelName = model[0].toUpperCase() + model.substr(1).replace('.js', '');
-    model = require(`${__dirname}/${model}`)(sequelize);
+    model = require(`${__dirname}/${model}`).init(sequelize);
     models[modelName] = model;
     return models;
   }, {})

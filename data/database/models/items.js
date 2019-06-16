@@ -3,7 +3,7 @@ const { Model } = Sequelize;
 
 class Items extends Model {}
 
-module.exports = sequelize =>
+exports.init = sequelize =>
 {
   Items.init({ items: Sequelize.TEXT },
   {

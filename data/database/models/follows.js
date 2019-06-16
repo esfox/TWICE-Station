@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 const { Model } = Sequelize;
 
-class Follows extends Model {} 
+class Follows extends Model {}
 
-module.exports = sequelize =>
+exports.init = sequelize =>
 {
   Follows.init({ channels: Sequelize.TEXT },
   {
