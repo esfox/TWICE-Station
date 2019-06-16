@@ -1,3 +1,12 @@
+const simplify = string => string
+  .toLowerCase()
+  .trim()
+  .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
+  .replace(/\s|!|\?|\\|\(|\)|\.|\-/g, '');
+
+exports.compare = (item, query) => simplify(item).match(simplify(query));
+exports.search = (items, query) => items.find(item => this.compare(item, query));
+
 /** @param {import('discord-utils').Context} context*/
 const getMentions = context =>
 {
@@ -38,14 +47,11 @@ exports.getChannelMentions = context =>
   return mentions.channels.array();
 }
 
-const simplify = string => string
-  .toLowerCase()
-  .trim()
-  .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
-  .replace(/\s|!|\?|\\|\(|\)|\.|\-/g, '');
-
-exports.compare = (item, query) => 
-  simplify(item).match(simplify(query));
-  
-exports.search = (items, query) => 
-  items.find(item => this.compare(item, query));
+/** @param {import('discord.js').TextChannel[]} channels */
+exports.channelsText = channels => channels.length === 1?
+	`#${channels.shift().name}` :
+	channels.map((channel, i) => 
+		i < channels.length - 1?
+			`#${channel.name}${i === channels.length - 2? '' : ','}` :
+			`and #${channel.name}`)
+	.join(' ');

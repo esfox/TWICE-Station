@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const { Model } = Sequelize;
-const { Follows } = require('..');
 
 class User extends Model {}
 
@@ -17,7 +16,12 @@ User.getByID = id =>
   });
 }
 
-/** @param {string[]} channels */
+User.getFollows = async id =>
+{
+  const follows = await getFollows(id);
+  return follows? JSON.parse(follows.channels) : undefined;
+}
+
 User.addFollows = async (id, channels) =>
 {
   const [ user ] = await User.getByID(id);
@@ -39,11 +43,16 @@ User.addFollows = async (id, channels) =>
   return notFollowed;
 }
 
-User.getFollows = async id =>
+User.removeFollows = async (id, channels) =>
 {
-  const [ user ] = await User.getByID(id);
-  const follows = await user.getFollows();
-  return follows? JSON.parse(follows.channels) : undefined;
+  const follows = await getFollows(id);
+  if(!follows)
+    return;
+
+  /** @type {string[]} */
+  let followedChannels = JSON.parse(follows.channels);
+  followedChannels = followedChannels.filter(id => !channels.includes(id));
+  await follows.update({ channels: JSON.stringify(followedChannels) });
 }
 
 module.exports = sequelize =>
@@ -60,4 +69,10 @@ module.exports = sequelize =>
   });
 
   return User;
+}
+
+const getFollows = async id =>
+{
+  const [ user ] = await User.getByID(id);
+  return user.getFollows();
 }

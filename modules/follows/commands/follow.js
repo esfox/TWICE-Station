@@ -1,6 +1,10 @@
 const { Command } = require('discord-utils');
-const { getChannelMentions } = require('../../../utils/functions');
 const { User } = require('../../../data/database');
+const
+{ 
+  getChannelMentions, 
+  channelsText 
+} = require('../../../utils/functions');
 
 /** @type {string[]} */
 const followables = require('../../../config/followables.json');
@@ -21,44 +25,34 @@ async function action(context)
 {
   const channels = getChannelMentions(context);
   if(!channels || channels.length === 0)
-    return context.send('❌  What channel to follow?');
+    return context.send('❌  What channel/s to follow?');
 
   const ids = channels.map(channel => channel.id);
-  if(ids.every(notFollowable))
-    return context.send(ids.length === 1?
-      '❌  That channel cannot be followed.' :
-      '❌  Those channels cannot be followed.');
+  if(ids.every(id => !followable(id)))
+		return context.send(`❌  ${ids.length === 1?
+      'That channel' : 'Those channels'} cannot be followed.`);
 
-	/** @type {string[]} */
-	const followed = await User.addFollows(context.message.author.id, ids);
+	const toFollow = ids.filter(followable);
+	const followed = await User.addFollows(context.message.author.id, toFollow);
 	if(!followed)
 		return context.send('You have already followed'
 			+ ` ${ids.length === 1? 'that channel' : 'those channels'}.`);
-
-	const follows = ids.filter(id => !notFollowable(id));
-	const unfollowables = channels.filter(channel => notFollowable(channel.id));
-  const description = followed.map(channel => `<#${channel}>`).join(' ')
+  const description = followed.map(channel =>   `<#${channel}>`).join(' ')
 		+ `\n\nMedia posted on ${followed.length === 1?
-			'this channel' : 'these channels'} will be DM'ed to you.`;
+      'this channel' : 'these channels'} will be DM'ed to you.`;
+      
   const embed = context.embed('🔔  Followed...', description);
 
+  const alreadyFollowed = channels.filter(({ id }) => !followed.includes(id));
+	if(alreadyFollowed.length > 0)
+    embed.setFooter('You have already followed' 
+      + ` ${channelsText(alreadyFollowed)}.`);
+
+    const unfollowables = channels.filter(({ id }) => !followable(id));
   if(unfollowables.length > 0)
     embed.setFooter(`${channelsText(unfollowables)} cannot be followed.`);
-
-	if(follows.length > followed.length)
-		embed.setFooter(`You have already followed ${channelsText(channels
-			.filter(channel => !followed.includes(channel.id)))}.`)
 			
   context.chat(embed);
 }
 
-const notFollowable = channel => !followables.includes(channel);
-
-/** @param {string[]} channels */
-const channelsText = channels => channels.length === 1?
-	`#${channels.shift().name}` :
-	channels.map((channel, i) => 
-		i < channels.length - 1?
-			`#${channel.name}${i === channels.length - 2? '' : ','}` :
-			`and #${channel.name}`)
-	.join(' ');
+const followable = channel => followables.includes(channel);
