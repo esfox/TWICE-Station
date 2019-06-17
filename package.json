@@ -6,7 +6,6 @@
   "license": "ISC",
   "main": "bot.js",
   "dependencies": {
-    "twice-station-context": "file:utils/twice-station-context",
     "cheerio": "^1.0.0-rc.3",
     "discord-utils": "github:esfox/discord-utils",
     "discord.js": "^11.5.1",
@@ -17,10 +16,9 @@
     "opusscript": "0.0.6",
     "sequelize": "^5.8.7",
     "sqlite3": "^4.0.8",
+    "twice-station-context": "file:utils/twice-station-context",
     "ytdl-core": "^0.29.2"
   },
-  "twice-station-context": "file:utils/twice-station-context",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

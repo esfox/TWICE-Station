@@ -1,5 +1,4 @@
 const { Command } = require('discord-utils');
-const { User } = require('../../../data/database');
 
 module.exports = class extends Command
 {
@@ -12,11 +11,11 @@ module.exports = class extends Command
   }
 }
 
-/** @param {import('discord-utils').Context} context*/
+/** @param {import('twice-station-context')} context*/
 async function action(context)
 {
   /** @type {string[]} */
-  const follows = await User.getFollows(context.message.author.id);
+  const follows = await context.data.User.getFollows(context.message.author.id);
   if(!follows)
     return context.send('You have not followed any channels yet.');
 
