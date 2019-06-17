@@ -64,8 +64,7 @@ typings/
 *.sqlite
 
 # unnecessary js files
-rpg.js
-fun.js
+test.js
 
 # unnecessary json files
 memes.json
