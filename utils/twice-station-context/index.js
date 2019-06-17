@@ -1,6 +1,6 @@
 const { Context } = require('discord-utils');
-const database = require('../data/database');
-const functions = require('./functions');
+const database = require('../../data/database');
+const functions = require('../functions');
 
 module.exports = class extends Context
 {
