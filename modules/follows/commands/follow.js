@@ -1,7 +1,9 @@
 const { Command } = require('discord-utils');
+const { getChannelMentions, channelsText } = require('utils/functions');
+const { User } = require('models');
 
 /** @type {string[]} */
-const followables = require('../../../config/followables.json');
+const followables = require('config/followables.json');
 
 module.exports = class extends Command
 {
@@ -10,16 +12,13 @@ module.exports = class extends Command
     super();
 
     this.keyword = 'follow';
-		this.action = action;
+    this.action = action;
   }
 }
 
-/** @param {import('utils/TwiceStationContext')} context*/
+/** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const { getChannelMentions, channelsText } = context.functions;
-  const { User } = context.data;
-
   const channels = getChannelMentions(context);
   if(!channels || channels.length === 0)
     return context.send('❌  What channel/s to follow?');
@@ -30,7 +29,7 @@ async function action(context)
       'That channel' : 'Those channels'} cannot be followed.`);
 
 	const toFollow = ids.filter(followable);
-	const followed = await User.addFollows(context.message.author.id, toFollow);
+  const followed = await User.addFollows(context.message.author.id, toFollow);
 	if(!followed)
 		return context.send('You have already followed'
 			+ ` ${ids.length === 1? 'that channel' : 'those channels'}.`);

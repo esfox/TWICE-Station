@@ -1,9 +1,9 @@
 const { Command } = require('discord-utils');
+const { compare } = require('utils/functions');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
-const { compare } = require('../../../utils/functions');
-const { albums } = require('../../../data/music.json');
+const { albums } = require('data/music.json');
 
 module.exports = class extends Command
 {
@@ -67,7 +67,6 @@ async function action(context)
     
   context.message.channel.stopTyping(true);
 
-  /** @type {string} */
   const text = lyrics[languages[language]];
   if(!text || text.toLowerCase() === 'n/a')
     context.send('The song does not have that language.');

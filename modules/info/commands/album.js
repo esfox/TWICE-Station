@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
-const { search } = require('../../../utils/functions');
-const { albums } = require('../../../data/music.json');
+const { albums } = require('data/music.json');
+const { search } = require('utils/functions');
 
 module.exports = class extends Command
 {

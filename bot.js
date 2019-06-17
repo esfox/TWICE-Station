@@ -2,8 +2,8 @@ const config = require('./config/config.json');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-const TwiceStationContext = require('twice-station-context');
-const context = new TwiceStationContext(bot);
+const { Context } = require('discord-utils');
+const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
 const database = require('./data/database');

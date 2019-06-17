@@ -21,10 +21,13 @@
     "link-module-alias": "^1.2.0"
   },
   "scripts": {
-    "prepare": "link-module-alias"
+    "link-modules": "link-module-alias"
   },
   "_moduleAliases": {
-    "utils": "utils"
+    "utils": "utils",
+    "data": "data",
+    "models": "data/database",
+    "config": "config"
   },
   "repository": {
     "type": "git",

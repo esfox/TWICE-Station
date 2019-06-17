@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
-const PagedEmbed = require('../../../utils/paged-embed');
-const music = require('../../../data/music.json');
+const PagedEmbed = require('utils/PagedEmbed');
+const music = require('data/music.json');
 
 module.exports = class extends Command
 {
