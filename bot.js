@@ -6,7 +6,7 @@ const { Context } = require('discord-utils');
 const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
-const database = require('./data/database');
+const database = require('models');
 const [ token ] = process.argv.slice(2);
 bot
   .login(token)
