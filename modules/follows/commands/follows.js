@@ -11,7 +11,7 @@ module.exports = class extends Command
   }
 }
 
-/** @param {import('twice-station-context')} context*/
+/** @param {import('utils/TwiceStationContext')} context*/
 async function action(context)
 {
   /** @type {string[]} */
