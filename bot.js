@@ -7,13 +7,14 @@ const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
 const database = require('models');
+const { sleep, chunk } = require('utils/functions');
 const [ token ] = process.argv.slice(2);
 bot
   .login(token)
   .catch(console.error);
-  
-const { client, channel } = config.developer;
-let ping = '<@247955535620472844>';
+
+let { client, channel, ping } = config.developer;
+const { followables, embed_media_types } = config;
 
 bot.on('ready', async _ =>
 {
@@ -45,5 +46,40 @@ bot.on('message', message =>
     message.author.id !== context.config.developer.id)
     return;
 
+  if(followables.includes(message.channel.id))
+    return sendToFollowers(message);
+
   context.from(message);
 });
+
+/** @param {import('discord.js').Message} message */
+async function sendToFollowers(message)
+{
+  await sleep(1);
+
+  const attachments = message.attachments.array()
+    .filter(attachment => attachment.width > 1 && attachment.height > 1)
+    .map(attachment => attachment.url);
+
+  const embeds = message.embeds
+    .filter(embed => 
+      embed_media_types.includes(embed.type) || embed.video || embed.image)
+    .map(embed => embed.url);
+
+  let links = [ ...attachments, ...embeds ];
+  if(links.length === 0)
+    return;
+  links = chunk(links, 5);
+  
+  let followers = await database.Follows
+    .getChannelFollowers(message.channel.id, message.author.id);
+  followers = message.guild.members.array()
+    .filter(({ id }) => followers.includes(id));
+
+  for(const follower of followers)
+  {
+    links.forEach(content => follower.send('`Message link:`' 
+      + `${message.url}\n\n${content.join('\n')}`)
+      .catch(console.error));
+  }
+}

@@ -30,6 +30,7 @@ const associateModels = _ =>
 {
   User.hasOne(Items, { as: 'Bag ', foreignKey: 'user_id' });
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
+  Follows.belongsTo(User, { foreignKey: 'user_id' });
 }
 
 exports.User = require('./models/user');

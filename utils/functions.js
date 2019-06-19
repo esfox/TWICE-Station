@@ -7,6 +7,24 @@ const simplify = string => string
 exports.compare = (item, query) => simplify(item).match(simplify(query));
 exports.search = (items, query) => items.find(item => this.compare(item, query));
 
+/** @param {number} seconds*/
+exports.sleep = async seconds => 
+  new Promise(resolve => setTimeout(_ => resolve(), seconds * 1000));
+
+/**
+ * @param {Array} array
+ * @param {number} chunks
+ * */
+exports.chunk = (array, chunkSize) => array.reduce((chunks, item, i) =>
+{
+  i = Math.floor(i / chunkSize);
+  if(!chunks[i]) 
+    chunks[i] = [];
+    
+  chunks[i].push(item);
+  return chunks;
+}, []);
+
 /** @param {import('discord-utils').Context} context*/
 const getMentions = context =>
 {

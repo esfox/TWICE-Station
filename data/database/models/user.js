@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const { Model } = Sequelize;
 
 class User extends Model {}
+exports.model = User;
 
 exports.init = sequelize =>
 {
