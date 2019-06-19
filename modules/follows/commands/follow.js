@@ -3,7 +3,7 @@ const { getChannelMentions, channelsText } = require('utils/functions');
 const { User } = require('models');
 
 /** @type {string[]} */
-const followables = require('config/followables.json');
+const { followables } = require('config/config.json');
 
 module.exports = class extends Command
 {
