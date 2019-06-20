@@ -20,28 +20,53 @@ exports.init = sequelize =>
   return User;
 }
 
-exports.getByID = id =>
-{
-  return User.findOrCreate(
+// #region User-specific
+exports.getByID = async (user_id, notCreate) => !notCreate?
+  User.findOrCreate(
   {
-    where: { user_id: id },
+    where: { user_id },
     defaults: 
     {
       coins: 0,
       candybongs: 0
     }
+  })
+  .then(([ user ]) => user) :
+  User.findOne(
+  {
+    where: { user_id }
   });
+// #endregion
+
+// #region Coins
+exports.getCoins = async user_id =>
+{
+  const user = await this.getByID(user_id, true);
+  return user? user.coins : 0;
+};
+
+exports.addCoins = async (user_id, amount) =>
+{
+  const user = await this.getByID(user_id);
+  user.coins += amount;
+  return (await user.update(user.dataValues)).coins;
 }
 
-exports.getFollows = async id =>
+exports.resetCoins = async user_id => 
+  (await User.update({ coins: 0 }, { where: { user_id } })).shift() !== 0;
+// #endregion
+
+// #region follows
+const getFollows = async user_id => (await this.getByID(user_id)).getFollows();
+exports.getFollows = async user_id =>
 {
-  const follows = await getFollows(id);
+  const follows = await getFollows(user_id);
   return follows? JSON.parse(follows.channels) : undefined;
 }
 
-exports.addFollows = async (id, channels) =>
+exports.addFollows = async (user_id, channels) =>
 {
-  const [ user ] = await this.getByID(id);
+  const user = await this.getByID(user_id);
   let follows = await user.getFollows();
   if(!follows)
   {
@@ -60,9 +85,9 @@ exports.addFollows = async (id, channels) =>
   return notFollowed;
 }
 
-exports.removeFollows = async (id, channels) =>
+exports.removeFollows = async (user_id, channels) =>
 {
-  const follows = await getFollows(id);
+  const follows = await getFollows(user_id);
   if(!follows)
     return;
 
@@ -71,9 +96,4 @@ exports.removeFollows = async (id, channels) =>
   followedChannels = followedChannels.filter(id => !channels.includes(id));
   await follows.update({ channels: JSON.stringify(followedChannels) });
 }
-
-const getFollows = async id =>
-{
-  const [ user ] = await this.getByID(id);
-  return user.getFollows();
-}
+// #endregion

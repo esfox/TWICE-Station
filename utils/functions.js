@@ -35,18 +35,22 @@ const getMentions = context =>
   return context.message.mentions;
 }
 
-/** @param {import('discord-utils').Context} context*/
+/** 
+ * @param {import('discord-utils').Context} context
+ * @param {boolean} [asMember]
+ * */
 exports.getMention = (context, asMember) =>
 {
   const mentions = getMentions(context);
   if(!mentions)
     return;
 
-  const findByID = user => parameters.includes(user.id);
+  const findByID = user => context.parameters.includes(user.id);
   let user = asMember?
     mentions.members.first() :
     mentions.users.first();
 
+  const { message } = context;
   if(!user)
     user = asMember?
       message.guild.members.find(findByID) :
