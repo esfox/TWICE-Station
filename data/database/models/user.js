@@ -39,6 +39,13 @@ exports.getByID = async (user_id, notCreate) => !notCreate?
 // #endregion
 
 // #region Coins
+exports.getAllCoins = async _ => User.findAll()
+  .then(async users => await Promise.all(users.map(user => 
+  ({
+    user_id: user.user_id,
+    coins: user.coins
+  }))));
+
 exports.getCoins = async user_id =>
 {
   const user = await this.getByID(user_id, true);
