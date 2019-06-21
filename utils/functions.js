@@ -25,6 +25,15 @@ exports.chunk = (array, chunkSize) => array.reduce((chunks, item, i) =>
   return chunks;
 }, []);
 
+/** @param {import('discord.js').TextChannel[]} channels */
+exports.channelsText = channels => channels.length === 1?
+	`#${channels.shift().name}` :
+	channels.map((channel, i) => 
+		i < channels.length - 1?
+			`#${channel.name}${i === channels.length - 2? '' : ','}` :
+			`and #${channel.name}`)
+  .join(' ');
+
 /** @param {import('discord-utils').Context} context*/
 const getMentions = context =>
 {
@@ -68,12 +77,33 @@ exports.getChannelMentions = context =>
 
   return mentions.channels.array();
 }
+  
+/** 
+ * @typedef {object} Receiver
+ * @property {import('discord.js').GuildMember} user
+ * @property {number} amount
+ * 
+ * @param {import('discord-utils').Context} context
+ * @returns {Receiver}
+ * */
+exports.getMentionAndAmount = context =>
+{
+  let parameters = context.parameters;
+  const user = this.getMention(context, true); 
+  if(!user || !parameters)
+    return context.send('Give coins to who?');
 
-/** @param {import('discord.js').TextChannel[]} channels */
-exports.channelsText = channels => channels.length === 1?
-	`#${channels.shift().name}` :
-	channels.map((channel, i) => 
-		i < channels.length - 1?
-			`#${channel.name}${i === channels.length - 2? '' : ','}` :
-			`and #${channel.name}`)
-	.join(' ');
+  if(user.bot)
+    return context.send("You can't add coins to bots.");
+
+  if(parameters.length === 1)
+    return context.send('How many coins to add?');
+  parameters.splice(parameters.findIndex(word => word.includes(user.id)), 1);
+
+  let amount = parameters.shift();
+  if(isNaN(amount))
+    return context.send("That's not a valid amount of coins.");
+  amount = parseInt(amount);
+  return { user, amount };
+}
+  
