@@ -80,7 +80,7 @@ exports.getChannelMentions = context =>
   
 /** 
  * @typedef {object} Receiver
- * @property {import('discord.js').GuildMember} user
+ * @property {import('discord.js').GuildMember} member
  * @property {number} amount
  * 
  * @param {import('discord-utils').Context} context
@@ -89,21 +89,21 @@ exports.getChannelMentions = context =>
 exports.getMentionAndAmount = context =>
 {
   let parameters = context.parameters;
-  const user = this.getMention(context, true); 
-  if(!user || !parameters)
+  const member = this.getMention(context, true); 
+  if(!member || !parameters)
     return context.send('Give coins to who?');
 
-  if(user.bot)
+  if(member.bot)
     return context.send("You can't add coins to bots.");
 
   if(parameters.length === 1)
     return context.send('How many coins to add?');
-  parameters.splice(parameters.findIndex(word => word.includes(user.id)), 1);
+  parameters.splice(parameters.findIndex(word => word.includes(member.id)), 1);
 
   let amount = parameters.shift();
   if(isNaN(amount))
     return context.send("That's not a valid amount of coins.");
   amount = parseInt(amount);
-  return { user, amount };
+  return { user: member, amount };
 }
   

@@ -16,7 +16,7 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const { user, amount } = getMentionAndAmount(context);
-  await User.addCoins(user.id, amount);
-  context.send(`💵  ${user.displayName} has received ${amount} TWICECOINS.`);
+  const { member, amount } = getMentionAndAmount(context);
+  await User.addCoins(member.id, amount);
+  context.send(`💵  ${member.displayName} has received ${amount} TWICECOINS.`);
 }
