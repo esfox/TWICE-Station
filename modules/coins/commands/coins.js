@@ -19,8 +19,8 @@ module.exports = class extends Command
 async function action(context)
 {
   const author = context.message.author;
-  const user = getMention(context, true) || author;
-  const userID = user.id;
+  const member = getMention(context, true) || author;
+  const userID = member.id;
   const noMention = userID === author.id;  
   const coins = await User.getCoins(userID);
   if(coins === 0)
@@ -28,10 +28,11 @@ async function action(context)
       "You don't have coins yet." :
       "That user doesn't have coins yet.");
 
-  const embed = context.embed()
-    .setAuthor(noMention?
-      `Current TWICECOINS: ${coins.toLocaleString()}` : user.displayName,
-      noMention? coin_image : user.displayAvatarURL)
+  const coinsText = `Current TWICECOINS: ${coins.toLocaleString()}`;
+  const embed = context.embed(noMention?
+      undefined : `💰  ${coinsText}`)
+    .setAuthor(noMention? coinsText : member.displayName,
+      noMention? coin_image : member.user.displayAvatarURL)
     .setFooter('With these coins you can buy roles for yourself!');
   context.chat(embed, true);
 }
