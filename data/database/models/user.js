@@ -52,10 +52,13 @@ exports.getCoins = async user_id =>
   return user? user.coins : 0;
 };
 
-exports.addCoins = async (user_id, amount) =>
+exports.addCoins = async (user_id, amount) => updateCoins(user_id, amount, true);
+exports.setCoins = async (user_id, amount) => updateCoins(user_id, amount);
+
+const updateCoins = async (user_id, amount, toAdd) =>
 {
   const user = await this.getByID(user_id);
-  user.coins += amount;
+  user.coins = toAdd? user.coins + amount : amount;
   return (await user.update(user.dataValues)).coins;
 }
 

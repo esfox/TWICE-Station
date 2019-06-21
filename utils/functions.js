@@ -104,6 +104,6 @@ exports.getMentionAndAmount = context =>
   if(isNaN(amount))
     return context.send("That's not a valid amount of coins.");
   amount = parseInt(amount);
-  return { user: member, amount };
+  return { member, amount };
 }
   
