@@ -17,13 +17,16 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
+  let { member: receiver, amount } = getMentionAndAmount(context);
+  if(!receiver || !amount)
+    return;
+
   const giver = context.message.member;
   const giverID = giver.id;
   let giverCoins = await User.getCoins(giverID);
   if(giverCoins <= 0)
     return context.send("❌ You don't have enough coins.");
-
-  let { member: receiver, amount } = getMentionAndAmount(context);
+    
   const receiverID = receiver.id;
   amount = Math.abs(amount);
 

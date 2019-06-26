@@ -93,8 +93,8 @@ exports.getMentionAndAmount = context =>
   if(!member || !parameters)
     return context.send('Give coins to who?');
 
-  if(member.bot)
-    return context.send("You can't add coins to bots.");
+  if(member.user.bot)
+    return context.send('Bots cannot have coins.');
 
   if(parameters.length === 1)
     return context.send('How many coins to add?');

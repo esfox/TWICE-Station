@@ -20,6 +20,9 @@ async function action(context)
 {
   const author = context.message.author;
   const member = getMention(context, true) || author;
+  if(member.user.bot)
+    return context.send('Bots cannot have coins.');
+
   const userID = member.id;
   const noMention = userID === author.id;  
   const coins = await User.getCoins(userID);

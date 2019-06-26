@@ -17,6 +17,9 @@ module.exports = class extends Command
 async function action(context)
 {
   const { member, amount } = getMentionAndAmount(context);
+  if(!member || !amount)
+    return;
+    
   await User.addCoins(member.id, amount);
   context.send(`💵  ${member.displayName} has received ${amount} TWICECOINS.`);
 }
