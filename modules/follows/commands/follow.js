@@ -1,9 +1,9 @@
 const { Command } = require('discord-utils');
 const { getChannelMentions, channelsText } = require('utils/functions');
-const { User } = require('models');
+const { User } = require('database');
 
 /** @type {string[]} */
-const { followables } = require('config/config.json');
+const { followables } = require('config/config');
 
 module.exports = class extends Command
 {

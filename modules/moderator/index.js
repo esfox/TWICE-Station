@@ -1,5 +1,5 @@
 const { Module } = require('discord-utils');
-const { developer } = require('config/config.json');
+const { developer } = require('config/config');
 
 module.exports = class extends Module
 {

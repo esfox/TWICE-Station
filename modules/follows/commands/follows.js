@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const { User } = require('models');
+const { User } = require('database');
 
 module.exports = class extends Command
 {

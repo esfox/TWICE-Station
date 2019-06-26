@@ -4,13 +4,19 @@ const { Model } = Sequelize;
 class User extends Model {}
 exports.model = User;
 
+const attributes = 
+{
+  coins: 'coins',
+  candybongs: 'candybongs'
+}
+
 exports.init = sequelize =>
 {
   User.init(
   {
     user_id: Sequelize.STRING,
-    coins: Sequelize.BIGINT,
-    candybongs: Sequelize.INTEGER,
+    [attributes.coins]: Sequelize.BIGINT,
+    [attributes.candybongs]: Sequelize.INTEGER,
   },
   {
     sequelize,
@@ -36,34 +42,6 @@ exports.getByID = async (user_id, notCreate) => !notCreate?
   {
     where: { user_id }
   });
-// #endregion
-
-// #region Coins
-exports.getAllCoins = async _ => User.findAll()
-  .then(async users => await Promise.all(users.map(user => 
-  ({
-    user_id: user.user_id,
-    coins: user.coins
-  }))));
-
-exports.getCoins = async user_id =>
-{
-  const user = await this.getByID(user_id, true);
-  return user? user.coins : 0;
-};
-
-exports.addCoins = async (user_id, amount) => updateCoins(user_id, amount, true);
-exports.setCoins = async (user_id, amount) => updateCoins(user_id, amount);
-
-const updateCoins = async (user_id, amount, toAdd) =>
-{
-  const user = await this.getByID(user_id);
-  user.coins = toAdd? user.coins + amount : amount;
-  return (await user.update(user.dataValues)).coins;
-}
-
-exports.resetCoins = async user_id => 
-  (await User.update({ coins: 0 }, { where: { user_id } })).shift() !== 0;
 // #endregion
 
 // #region follows
@@ -107,3 +85,54 @@ exports.removeFollows = async (user_id, channels) =>
   await follows.update({ channels: JSON.stringify(followedChannels) });
 }
 // #endregion
+
+// #region Coins
+exports.getAllCoins = async _ => User.findAll()
+  .then(async users => await Promise.all(users.map(user => 
+  ({
+    user_id: user.user_id,
+    coins: user.coins
+  }))));
+
+exports.getCoins = async user_id =>
+{
+  const user = await this.getByID(user_id, true);
+  return user? user.coins : 0;
+};
+
+exports.addCoins = async (user_id, amount) => 
+  updateCoins(user_id, amount, true);
+
+exports.setCoins = async (user_id, amount) => 
+  updateCoins(user_id, amount);
+
+const updateCoins = (user_id, amount, toAdd) =>
+  update(user_id, attributes.coins, amount, toAdd)
+
+exports.resetCoins = async user_id => 
+  (await User.update({ coins: 0 }, { where: { user_id } })).shift() !== 0;
+// #endregion
+
+// #region Candybongs
+exports.getCandybongs = async user_id =>
+{
+  const user = await this.getByID(user_id, true);
+  return user? user.candybongs : 0;
+}
+
+exports.addCandybong = async user_id => 
+  updateCandybongs(user_id, 1, true);
+  
+exports.setCandybongs = async (user_id, amount) => 
+  updateCandybongs(user_id, amount);
+
+const updateCandybongs = (user_id, amount, toAdd) =>
+  update(user_id, attributes.candybongs, amount, toAdd);
+// #endregion
+
+const update = async (user_id, attribute, amount, toAdd) =>
+{
+  const user = await this.getByID(user_id);
+  user[attribute] = toAdd? user[attribute] + amount : amount;
+  return (await user.update(user.dataValues))[attribute];
+}

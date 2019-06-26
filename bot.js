@@ -1,4 +1,4 @@
-const config = require('./config/config.json');
+const config = require('./config/config');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
@@ -6,7 +6,7 @@ const { Context } = require('discord-utils');
 const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
-const database = require('models');
+const database = require('database');
 const { sleep, chunk } = require('utils/functions');
 const [ token ] = process.argv.slice(2);
 bot

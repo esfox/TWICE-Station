@@ -1,7 +1,7 @@
 const { Command } = require('discord-utils');
 const { getMention } = require('utils/functions');
-const { coin_image } = require('config/config.json');
-const { User } = require('models');
+const { coin_image } = require('config/config');
+const { User } = require('database');
 
 module.exports = class extends Command
 {
