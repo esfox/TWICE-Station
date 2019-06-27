@@ -29,7 +29,7 @@ module.exports =
     "533551442297094155",
     "567453403991506982"
   ],
-  embed_media_types: [ "image", "gifv", "video" ],
+  followable_media: [ "image", "gifv", "video" ],
   cooldowns: 
   {
     daily: 86400000, // 24 hours

@@ -14,7 +14,7 @@ bot
   .catch(console.error);
 
 let { client, channel, ping } = config.developer;
-const { followables, embed_media_types } = config;
+const { followables, followable_media } = config;
 
 bot.on('ready', async _ =>
 {
@@ -65,7 +65,7 @@ async function sendToFollowers(message)
 
   const embeds = message.embeds
     .filter(embed => 
-      embed_media_types.includes(embed.type) || embed.video || embed.image)
+      followable_media.includes(embed.type) || embed.video || embed.image)
     .map(embed => embed.url);
 
   let links = [ ...attachments, ...embeds ];
