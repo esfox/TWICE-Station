@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
-const { albums } = require('data/music.json');
 const { search } = require('utils/functions');
+const { albums } = require('data/music.json');
 
 module.exports = class extends Command
 {
@@ -23,7 +23,6 @@ function action(context)
   
   let [ ...album ] = parameters;
   album = album.join(' ').toLowerCase();
-
   album = search(Object.keys(albums), album);
   if(!album)
     return context.send('❌  Cannot find that album.');

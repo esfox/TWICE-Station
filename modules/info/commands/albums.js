@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const PagedEmbed = require('utils/PagedEmbed');
-const music = require('data/music.json');
+const { albums: music } = require('data/music.json');
 
 module.exports = class extends Command
 {
@@ -17,7 +17,7 @@ module.exports = class extends Command
 function action(context)
 {
   /** @type {Array} */
-  const albums = Object.values(music.albums);
+  const albums = Object.values(music);
   const { korean, japanese } = albums.reduce((albums, album) => 
   {
     albums[!album.isJapanese? 'korean' : 'japanese'].push(album);

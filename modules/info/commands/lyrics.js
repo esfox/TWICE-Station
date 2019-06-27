@@ -2,7 +2,6 @@ const { Command } = require('discord-utils');
 const { compare } = require('utils/functions');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-
 const { albums } = require('data/music.json');
 
 module.exports = class extends Command
@@ -24,7 +23,7 @@ const languages =
   'eng': 2,
   'kr': 1,
   'jp': 1,
-  'jpn': 2,
+  'jpn': 1,
 };
 
 /** @type {Array]} */
