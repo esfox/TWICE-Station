@@ -18,7 +18,7 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const author = context.message.author;
+  const author = context.message.member;
   const member = getMention(context, true) || author;
   if(member.user.bot)
     return context.send('Bots cannot have coins.');
