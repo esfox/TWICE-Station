@@ -35,6 +35,8 @@ bot.on('ready', async _ =>
   if(pingChannel)
     pingChannel.send(ping)
       .catch(console.error);
+
+  bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
 
 bot.on('message', message =>

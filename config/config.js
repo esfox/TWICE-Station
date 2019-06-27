@@ -32,6 +32,6 @@ module.exports =
   embed_media_types: [ "image", "gifv", "video" ],
   cooldowns: 
   {
-    daily: 86400000,
+    daily: 86400000, // 24 hours
   }
 }
