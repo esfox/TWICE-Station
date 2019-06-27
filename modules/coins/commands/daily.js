@@ -3,7 +3,9 @@ const { getTimeLeft } = require('utils/functions');
 const { daily: duration } = require('config/config').cooldowns;
 const { User } = require('database');
 const cooldowns = require('utils/cooldown');
+
 const command = 'daily';
+cooldowns.add(command, duration, true);
 
 module.exports = class extends Command
 {
@@ -14,7 +16,6 @@ module.exports = class extends Command
     this.keyword = command;
     this.aliases.push('d');
     this.action = action;
-    cooldowns.add(command, duration, true);
   }
 }
 
