@@ -1,3 +1,6 @@
+exports.randomElement = array => 
+  array[Math.floor(Math.random() * array.length)];
+
 const simplify = string => string
   .toLowerCase()
   .trim()
@@ -24,6 +27,33 @@ exports.chunk = (array, chunkSize) => array.reduce((chunks, item, i) =>
   chunks[i].push(item);
   return chunks;
 }, []);
+
+exports.getTimeLeft = milliseconds =>
+{
+  const suffix = amount => amount !== 1 ? 's' : '';
+  if(milliseconds < 60000)
+  {
+    const seconds = milliseconds >= 1000 ?
+      Math.floor(milliseconds / 1000) : (milliseconds / 1000).toFixed(2);
+
+    return `${seconds} second${suffix(seconds)}`;
+  }
+
+  const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
+  const seconds = Math.ceil((milliseconds / 1000) % 60);
+
+  let timeLeft = `${(milliseconds / 1000).toFixed(2)}`
+    + ` second${suffix(milliseconds)}`;
+  if(seconds > 0)
+    timeLeft = `${seconds} second${suffix(seconds)}`;
+  if(minutes > 0)
+    timeLeft = `${minutes} minute${suffix(minutes)} and ` + timeLeft;
+  if(hours > 0)
+    timeLeft = `${hours} hour${suffix(hours)}, ` + timeLeft;
+
+  return timeLeft;
+}
 
 /** @param {import('discord.js').TextChannel[]} channels */
 exports.channelsText = channels => channels.length === 1 ?
@@ -107,29 +137,18 @@ exports.getMentionAndAmount = context =>
   return { member, amount };
 }
 
-exports.getTimeLeft = milliseconds =>
+const cooldowns = require('utils/cooldown');
+
+/** @param {import('discord-utils').Context} context*/
+exports.onCooldown = async (context, command) =>
 {
-  const suffix = amount => amount !== 1 ? 's' : '';
-  if(milliseconds < 60000)
-  {
-    const seconds = milliseconds >= 1000 ?
-      Math.floor(milliseconds / 1000) : (milliseconds / 1000).toFixed(2);
+  let cooldown = await cooldowns.check(command, context.message.author.id);
+  if(!cooldown)
+    return;
 
-    return `${seconds} second${suffix(seconds)}`;
-  }
-
-  const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
-  const seconds = Math.ceil((milliseconds / 1000) % 60);
-
-  let timeLeft = `${(milliseconds / 1000).toFixed(2)}`
-    + ` second${suffix(milliseconds)}`;
-  if(seconds > 0)
-    timeLeft = `${seconds} second${suffix(seconds)}`;
-  if(minutes > 0)
-    timeLeft = `${minutes} minute${suffix(minutes)} and ` + timeLeft;
-  if(hours > 0)
-    timeLeft = `${hours} hour${suffix(hours)}, ` + timeLeft;
-
-  return timeLeft;
+  cooldown = cooldown / 1000;
+  if(cooldown > 1)
+    cooldown = ~~cooldown;
+  context.reply(`❄  On cooldown, please wait ${cooldown} seconds.`);
+  return true;
 }

@@ -32,6 +32,15 @@ module.exports =
   followable_media: [ "image", "gifv", "video" ],
   cooldowns: 
   {
-    daily: 86400000, // 24 hours
+    daily: 86400, // 24 hours
+    wheel: 60,
+  },
+  rewards:
+  {
+    wheel: 350,
+  },
+  emotes:
+  {
+    wheelSpin: '<a:WheelSpin:530589274769195018>',
   }
 }

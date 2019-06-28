@@ -1,11 +1,11 @@
 const { Command } = require('discord-utils');
-const { getTimeLeft } = require('utils/functions');
-const { daily: duration } = require('config/config').cooldowns;
+const config = require('config/config');
 const { User } = require('database');
-const cooldowns = require('utils/cooldown');
 
+const { getTimeLeft } = require('utils/functions');
+const cooldowns = require('utils/cooldown');
 const command = 'daily';
-cooldowns.add(command, duration, true);
+cooldowns.add(command, config.cooldowns.daily, true);
 
 module.exports = class extends Command
 {
@@ -24,7 +24,7 @@ async function action(context)
 {
   const cooldown = await cooldowns.check(command, context.message.author.id);
   if(cooldown)
-    return context.send('⌛  You already got your daily TWICECOINS',
+    return context.reply('⌛  You already got your daily TWICECOINS',
       `Please wait **${getTimeLeft(cooldown)}**.`);
 
   const rng = Math.floor((Math.random() * 100) + 1);
@@ -34,5 +34,5 @@ async function action(context)
     
   const daily = Math.floor(Math.random() * (max - min)) + min;
   await User.addCoins(context.message.author.id, daily);
-  context.send(`💰  You received ${daily} TWICECOINS`);
+  context.reply(`💰  You received ${daily} TWICECOINS`);
 }
