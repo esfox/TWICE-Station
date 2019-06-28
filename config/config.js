@@ -33,6 +33,11 @@ module.exports =
   cooldowns: 
   {
     daily: 86400, // 24 hours
+    candybong: 
+    {
+      get: 3600,
+      give: 60
+    },
     wheel: 60,
     guess_the_lyrics: 30,
   },
