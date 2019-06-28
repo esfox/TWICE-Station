@@ -28,6 +28,22 @@ exports.chunk = (array, chunkSize) => array.reduce((chunks, item, i) =>
   return chunks;
 }, []);
 
+const cooldowns = require('utils/cooldown');
+
+/** @param {import('discord-utils').Context} context*/
+exports.onCooldown = async (context, command) =>
+{
+  let cooldown = await cooldowns.check(command, context.message.author.id);
+  if(!cooldown)
+    return;
+
+  cooldown = cooldown / 1000;
+  if(cooldown > 1)
+    cooldown = ~~cooldown;
+  context.reply(`❄  On cooldown, please wait ${cooldown} seconds.`);
+  return true;
+}
+
 exports.getTimeLeft = milliseconds =>
 {
   const suffix = amount => amount !== 1 ? 's' : '';
@@ -137,18 +153,8 @@ exports.getMentionAndAmount = context =>
   return { member, amount };
 }
 
-const cooldowns = require('utils/cooldown');
-
-/** @param {import('discord-utils').Context} context*/
-exports.onCooldown = async (context, command) =>
-{
-  let cooldown = await cooldowns.check(command, context.message.author.id);
-  if(!cooldown)
-    return;
-
-  cooldown = cooldown / 1000;
-  if(cooldown > 1)
-    cooldown = ~~cooldown;
-  context.reply(`❄  On cooldown, please wait ${cooldown} seconds.`);
-  return true;
-}
+/** @param {Array} array */
+exports.getTop10 = (array, attribute) => array
+  .sort((a, b) => b[attribute] - a[attribute])
+  .filter(item => item[attribute] !== 0)
+  .slice(0, 10);

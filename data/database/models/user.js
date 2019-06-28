@@ -87,13 +87,7 @@ exports.removeFollows = async (user_id, channels) =>
 // #endregion
 
 // #region Coins
-exports.getAllCoins = async _ => User.findAll()
-  .then(async users => await Promise.all(users.map(user => 
-  ({
-    user_id: user.user_id,
-    coins: user.coins
-  }))));
-
+exports.getAllCoins = async _ => await getAll(attributes.coins);
 exports.getCoins = async user_id =>
 {
   const user = await this.getByID(user_id, true);
@@ -114,6 +108,7 @@ exports.resetCoins = async user_id =>
 // #endregion
 
 // #region Candybongs
+exports.getAllCandybongs = async _ => await getAll(attributes.candybongs);
 exports.getCandybongs = async user_id =>
 {
   const user = await this.getByID(user_id, true);
@@ -122,6 +117,9 @@ exports.getCandybongs = async user_id =>
 
 exports.addCandybong = async user_id => 
   updateCandybongs(user_id, 1, true);
+
+exports.minusCandybong = async user_id =>
+  updateCandybongs(user_id, -1, true);
   
 exports.setCandybongs = async (user_id, amount) => 
   updateCandybongs(user_id, amount);
@@ -129,6 +127,13 @@ exports.setCandybongs = async (user_id, amount) =>
 const updateCandybongs = (user_id, amount, toAdd) =>
   update(user_id, attributes.candybongs, amount, toAdd);
 // #endregion
+
+const getAll = async (attribute) => User.findAll()
+  .then(async users => await Promise.all(users.map(user => 
+  ({
+    user_id: user.user_id,
+    [attribute]: user[attribute]
+  }))));
 
 const update = async (user_id, attribute, amount, toAdd) =>
 {
