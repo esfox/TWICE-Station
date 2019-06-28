@@ -34,6 +34,7 @@ module.exports =
   {
     daily: 86400, // 24 hours
     wheel: 60,
+    guess_the_lyrics: 30,
   },
   rewards:
   {
