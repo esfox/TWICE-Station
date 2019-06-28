@@ -63,9 +63,6 @@ typings/
 # sqlite
 *.sqlite
 
-# unnecessary js files
-test.js
-
 # unnecessary json files
 memes.json
 trivias.json
@@ -86,3 +83,6 @@ start.sh
 
 # mp3 files
 .mp3
+
+# folder for testing things
+sandbox
