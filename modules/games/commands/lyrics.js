@@ -17,10 +17,6 @@ const
   compare
 } = require('utils/functions');
 
-const cooldowns = require('utils/cooldown');
-const command = 'guessthelyrics';
-cooldowns.add(command, cooldown.lyrics_guess);
-
 const { User } = require('database');
 const { albums } = require('data/music.json');
 const songs = Object.values(albums).reduce((links, { tracks }) => 
@@ -28,6 +24,10 @@ const songs = Object.values(albums).reduce((links, { tracks }) =>
     .filter(({ title }) => !title.toLowerCase().includes('ver.'))
     .filter(({ lyrics }) => lyrics)
     .map(({ title, lyrics }) => ({ title, lyrics }))), []);
+
+const cooldowns = require('utils/cooldown');
+const command = 'guessthelyrics';
+cooldowns.add(command, cooldown.lyrics_guess);
 
 module.exports = class extends Command
 {
