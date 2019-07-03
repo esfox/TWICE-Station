@@ -80,7 +80,7 @@ async function sendToFollowers(message)
 
   for(const follower of followers)
   {
-    links.forEach(content => follower.send('`Message link:`' 
+    links.forEach(content => follower.send('`Message link:` ' 
       + `${message.url}\n\n${content.join('\n')}`)
       .catch(console.error));
   }
