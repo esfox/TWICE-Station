@@ -1,10 +1,11 @@
+const command = 'candybong';
+
 const { Command } = require('discord-utils');
 const config = require('config/config');
 const { User } = require('database');
 
 const { getMention, getTimeLeft } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
-const command = 'candybong';
 const { candybong: cooldown  } = config.cooldowns;
 const getCooldown = `${command}-get`;
 const giveCooldown = `${command}-give`;

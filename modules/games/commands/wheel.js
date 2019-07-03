@@ -1,3 +1,5 @@
+const command = 'wheel';
+
 const { Command } = require('discord-utils');
 const { emotes, rewards, cooldowns: cooldown } = require('config/config');
 
@@ -6,7 +8,6 @@ const { User } = require('database');
 
 const { sleep, randomElement, onCooldown } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
-const command = 'wheel';
 cooldowns.add(command, cooldown.wheel);
 
 module.exports = class extends Command

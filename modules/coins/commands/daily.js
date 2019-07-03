@@ -1,10 +1,11 @@
+const command = 'daily';
+
 const { Command } = require('discord-utils');
 const config = require('config/config');
 const { User } = require('database');
 
 const { getTimeLeft } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
-const command = 'daily';
 cooldowns.add(command, config.cooldowns.daily, true);
 
 module.exports = class extends Command

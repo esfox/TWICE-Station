@@ -1,3 +1,5 @@
+const command = 'guessthelyrics';
+
 const { Command } = require('discord-utils');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
@@ -26,7 +28,6 @@ const songs = Object.values(albums).reduce((links, { tracks }) =>
     .map(({ title, lyrics }) => ({ title, lyrics }))), []);
 
 const cooldowns = require('utils/cooldown');
-const command = 'guessthelyrics';
 cooldowns.add(command, cooldown.lyrics_guess);
 
 module.exports = class extends Command
