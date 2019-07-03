@@ -40,12 +40,14 @@ module.exports =
     },
     wheel: 60,
     lyrics_guess: 30,
+    trivia: 60,
   },
   games_time_limit: 30,
   rewards:
   {
     wheel: 350,
     lyrics_guess: 300,
+    trivia: 300,
   },
   emotes:
   {

@@ -3,23 +3,10 @@ const command = 'guessthelyrics';
 const { Command } = require('discord-utils');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
+const quiz = require('../quiz');
 
-const 
-{ 
-  cooldowns: cooldown, 
-  games_time_limit, 
-  rewards
-} = require('config/config');
-
-const 
-{ 
-  randomElement, 
-  onCooldown, 
-  waitReplies,
-  compare
-} = require('utils/functions');
-
-const { User } = require('database');
+const { cooldowns: cooldown, rewards } = require('config/config');
+const { randomElement, onCooldown } = require('utils/functions');
 const { albums } = require('data/music.json');
 const songs = Object.values(albums).reduce((links, { tracks }) => 
   links.concat(tracks
@@ -48,7 +35,6 @@ async function action(context)
   if(await onCooldown(context, command))
     return;
 
-  const { message } = context;
   context.message.channel.startTyping();
 
   const { title, lyrics: link } = randomElement(songs);
@@ -65,16 +51,7 @@ async function action(context)
     .filter(text => text.split('\n').length > 1);
 
   lyrics = randomElement(lyrics).split('\n').slice(0, 4).join('\n');
-  await context.send('❔ Guess the song!  🎵', lyrics);
+  const question = context.embed('❔ Guess the song!  🎵', lyrics);
 
-  const [ response ] = await waitReplies(message, games_time_limit);
-  if(!response)
-    return message.reply(context.embed("⏰  Time's up!"));
-
-  if(!compare(title, response, true))
-    return context.reply('❌  Wrong!');
-
-  const { lyrics_guess: reward } = rewards;
-  await User.addCoins(message.author.id, reward);
-  context.reply('✅  Correct!', `You win **${reward} TWICECOINS**!`);
+  quiz(context, question, title, rewards.lyrics_guess);
 }
