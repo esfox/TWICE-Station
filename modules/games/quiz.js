@@ -4,7 +4,7 @@ const { waitReplies, compare } = require('utils/functions');
 
 /**
  * @param {import('discord-utils').Context} context
- * @param {import('discord.js').RichEmbed | string} question
+ * @param {import('discord.js').RichEmbed} question
  * @param {string} correctAnswer
  * @param {number} reward
  */
