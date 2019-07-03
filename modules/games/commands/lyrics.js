@@ -19,7 +19,7 @@ const
 
 const cooldowns = require('utils/cooldown');
 const command = 'guessthelyrics';
-cooldowns.add(command, cooldown.guess_the_lyrics);
+cooldowns.add(command, cooldown.lyrics_guess);
 
 const { User } = require('database');
 const { albums } = require('data/music.json');
@@ -73,7 +73,7 @@ async function action(context)
   if(!compare(title, response, true))
     return context.reply('❌  Wrong!');
 
-  const { lyrics: reward } = rewards;
+  const { lyrics_guess: reward } = rewards;
   await User.addCoins(message.author.id, reward);
   context.reply('✅  Correct!', `You win **${reward} TWICECOINS**!`);
 }

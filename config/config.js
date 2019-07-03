@@ -39,13 +39,13 @@ module.exports =
       give: 60
     },
     wheel: 60,
-    guess_the_lyrics: 30,
+    lyrics_guess: 30,
   },
   games_time_limit: 30,
   rewards:
   {
     wheel: 350,
-    lyrics: 300,
+    lyrics_guess: 300,
   },
   emotes:
   {
