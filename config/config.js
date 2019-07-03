@@ -41,12 +41,14 @@ module.exports =
     wheel: 60,
     guess_the_lyrics: 30,
   },
+  games_time_limit: 30,
   rewards:
   {
     wheel: 350,
+    lyrics: 300,
   },
   emotes:
   {
-    wheelSpin: '<a:WheelSpin:530589274769195018>',
+    wheel_spin: '<a:WheelSpin:530589274769195018>',
   }
 }

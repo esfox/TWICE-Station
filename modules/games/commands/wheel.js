@@ -1,6 +1,5 @@
 const { Command } = require('discord-utils');
-const config = require('config/config');
-const { emotes, rewards } = config;
+const { emotes, rewards, cooldowns: cooldown } = require('config/config');
 
 const members = require('data/members');
 const { User } = require('database');
@@ -8,7 +7,7 @@ const { User } = require('database');
 const { sleep, randomElement, onCooldown } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
 const command = 'wheel';
-cooldowns.add(command, config.cooldowns.wheel);
+cooldowns.add(command, cooldown.wheel);
 
 module.exports = class extends Command
 {
@@ -41,7 +40,7 @@ async function action(context)
 
   const choseText = `You chose **${member.name}**.\n`;
   const embed = context.embed('Wheel of TWICE', 
-    `${choseText}\nSpinning... ${emotes.wheelSpin}`);
+    `${choseText}\nSpinning... ${emotes.wheel_spin}`);
   const message = await context.chat(embed, true);
   await sleep(4);
 

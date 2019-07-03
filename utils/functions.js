@@ -7,10 +7,16 @@ const simplify = string => string
   .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
   .replace(/\s|!|\?|\\|\(|\)|\.|\-/g, '');
 
-exports.compare = (item, query) => simplify(item).match(simplify(query));
-exports.search = (items, query) => items.find(item => this.compare(item, query));
+exports.compare = (text1, text2, exact) => 
+{
+  text1 = simplify(text1);
+  text2 = simplify(text2);
+  return exact? text1 === text2 : text1.match(text2);
+}
 
-/** @param {number} seconds*/
+exports.search = (items, query) => 
+  items.find(item => this.compare(item, query));
+
 exports.sleep = async seconds =>
   new Promise(resolve => setTimeout(_ => resolve(), seconds * 1000));
 
@@ -42,6 +48,26 @@ exports.onCooldown = async (context, command) =>
     cooldown = ~~cooldown;
   context.reply(`❄  On cooldown, please wait ${cooldown} seconds.`);
   return true;
+}
+
+/**
+ * @param {import('discord.js').Message} message 
+ * @param {number} seconds 
+ * @param {number} limit 
+ */
+exports.waitReplies = async (message, seconds, limit = 1) =>
+{
+	const options = { max: limit };
+	if(seconds)
+		options.time = seconds * 1000;
+
+	const responses = await message.channel.awaitMessages(msg => 
+    msg.author.id === message.author.id, options)
+    .catch(console.error);
+    
+  return responses? 
+    responses.array().map(({ content }) => content) : 
+    [ undefined ];
 }
 
 exports.getTimeLeft = milliseconds =>
