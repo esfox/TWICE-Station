@@ -35,22 +35,22 @@ const file = 'Song.mp3';
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
+  if(await onCooldown(context, command))
+    return;
+
   const { title, link } = randomElement(songs);
 
   await processAudio(context, link)
     .catch(console.error);
 
   const attachment = { files: [{ attachment: `./${file}`, name: file }]};
-  context.chat(`${context.message.author}\n`
+  context.message.channel.send(`${context.message.author}\n`
     + '❔ Guess the Song! 🎵', false, attachment)
     .then(_ => fs.unlink(file, error => 
-      {
-        if(error)
-          console.error(error);
-      }));
-
-  if(await onCooldown(context, command))
-    return;
+    {
+      if(error)
+        console.error(error);
+    }));
 
   quiz(context, undefined, title, rewards.song_guess, true);
 }
@@ -60,11 +60,11 @@ async function processAudio(context, link)
   return new Promise(async (resolve, reject) =>
   {
     let startTime = await getAudioDurationInSeconds(link)
-    .catch(error =>
-    {
-      console.error(error);
-      context.reply('❌ Whoops! An error occurred. Try again.', )
-    });
+      .catch(error =>
+      {
+        console.error(error);
+        context.reply('❌ Whoops! An error occurred. Try again.', )
+      });
 
     if(!startTime)
       return;
