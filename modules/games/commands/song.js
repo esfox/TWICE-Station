@@ -30,6 +30,8 @@ module.exports = class extends Command
   }
 }
 
+const file = 'Song.mp3';
+
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
@@ -38,10 +40,10 @@ async function action(context)
   await processAudio(context, link)
     .catch(console.error);
 
-  const attachment = { files: [{ attachment: './Song.mp3', name: 'Song.mp3' }]};
-  context.chat(`${context.message.author}\n`
+  const attachment = { files: [{ attachment: `./${file}`, name: file }]};
+  await context.chat(`${context.message.author}\n`
     + '❔ Guess the Song! 🎵', false, attachment)
-    .then(_ => fs.unlink('Song.mp3', console.error));
+    .then(_ => fs.unlink(file, console.error));
 
   if(await onCooldown(context, command))
     return;
@@ -51,7 +53,7 @@ async function action(context)
 
 async function processAudio(context, link)
 {
-  return new Promise((resolve, reject) =>
+  return new Promise(async (resolve, reject) =>
   {
     let startTime = await getAudioDurationInSeconds(link)
     .catch(error =>
