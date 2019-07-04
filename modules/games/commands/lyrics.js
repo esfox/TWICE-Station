@@ -11,8 +11,8 @@ const { randomElement, onCooldown } = require('utils/functions');
 const { albums } = require('data/music.json');
 const songs = Object.values(albums).reduce((links, { tracks }) => 
   links.concat(tracks
-    .filter(({ title }) => !title.toLowerCase().includes('ver.'))
-    .filter(({ lyrics }) => lyrics)
+    .filter(({ title, lyrics }) => 
+      !title.toLowerCase().includes('ver.') && lyrics)
     .map(({ title, lyrics }) => ({ title, lyrics }))), []);
 
 const cooldowns = require('utils/cooldown');
