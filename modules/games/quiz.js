@@ -7,23 +7,26 @@ const { waitReplies, compare } = require('utils/functions');
  * @param {import('discord.js').RichEmbed} question
  * @param {string} correctAnswer
  * @param {number} reward
+ * @param {string | true} [extraInfo]
  */
 module.exports = async (context, question, correctAnswer, reward, extraInfo) =>
 {
   const message = context.message;
   message.channel.stopTyping(true);
-  await message.reply(question);
+  if(question)
+    await message.reply(question);
 
   const [ response ] = await waitReplies(message, games_time_limit);
   if(!response)
-    return message.reply(context.embed("⏰  Time's up!"));
+    return message.reply(context.embed("⏰  Time's up!",
+      extraInfo === true? `It's **${correctAnswer}**.` : undefined));
 
   const isCorrect = compare(correctAnswer, response, true);
   const embed = isCorrect?
     context.embed('✅  Correct!', `You win **${reward} TWICECOINS**!`) :
     context.embed('❌  Wrong!');
 
-  if(extraInfo)
+  if(extraInfo && extraInfo !== true)
     embed.setFooter(extraInfo);
 
   await User.addCoins(message.author.id, reward);

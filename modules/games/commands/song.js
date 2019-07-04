@@ -4,6 +4,7 @@ const { Command } = require('discord-utils');
 const { getAudioDurationInSeconds } = require('get-audio-duration');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
+const quiz = require('../quiz');
 
 const { cooldowns: cooldown, rewards, developer } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
@@ -34,20 +35,23 @@ async function action(context)
 {
   const { title, link } = randomElement(songs);
 
-  await processAudio(context, link);
+  await processAudio(context, link)
+    .catch(console.error);
 
   const attachment = { files: [{ attachment: './Song.mp3', name: 'Song.mp3' }]};
   context.chat(`${context.message.author}\n`
     + '❔ Guess the Song! 🎵', false, attachment)
+    .then(_ => fs.unlink('Song.mp3', console.error));
 
-  // if(await onCooldown(context, command))
-  //   return;
+  if(await onCooldown(context, command))
+    return;
 
+  quiz(context, undefined, title, rewards.song_guess, true);
 }
 
-function processAudio(context, link)
+async function processAudio(context, link)
 {
-  return new Promise(async resolve =>
+  return new Promise((resolve, reject) =>
   {
     let startTime = await getAudioDurationInSeconds(link)
     .catch(error =>
@@ -72,20 +76,20 @@ function processAudio(context, link)
       {
         if(error)
           return sendError(context, error);
-        return resolve();
+        resolve();
       })
       .on('error', error =>
       {
-        sendError(context, error);
+        sendError(context, link);
+        reject(error);
       })
-      .run();
+      .run();   
   });
 }
 
 /** @param {import('discord-utils').Context} context*/
-function sendError(context, link, error)
+function sendError(context, link)
 {
-  console.error(error);
   context.guild.members.get(developer.id).send(context
     .embed(`Error occured in Guess the Song:\n${link}`))
 }
