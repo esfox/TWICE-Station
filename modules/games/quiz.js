@@ -8,7 +8,7 @@ const { waitReplies, compare } = require('utils/functions');
  * @param {string} correctAnswer
  * @param {number} reward
  */
-module.exports = async (context, question, correctAnswer, reward) =>
+module.exports = async (context, question, correctAnswer, reward, extraInfo) =>
 {
   const message = context.message;
   message.channel.stopTyping(true);
@@ -18,9 +18,14 @@ module.exports = async (context, question, correctAnswer, reward) =>
   if(!response)
     return message.reply(context.embed("⏰  Time's up!"));
 
-  if(!compare(correctAnswer, response, true))
-    return context.reply('❌  Wrong!');
+  const isCorrect = compare(correctAnswer, response, true);
+  const embed = isCorrect?
+    context.embed('✅  Correct!', `You win **${reward} TWICECOINS**!`) :
+    context.embed('❌  Wrong!');
+
+  if(extraInfo)
+    embed.setFooter(extraInfo);
 
   await User.addCoins(message.author.id, reward);
-  context.reply('✅  Correct!', `You win **${reward} TWICECOINS**!`);
+  context.chat(embed, true);
 }
