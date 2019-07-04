@@ -63,9 +63,9 @@ typings/
 # sqlite
 *.sqlite
 
-# unnecessary json files
+# unnecessary data files
 memes.json
-trivias.json
+trivias.js
 erapics.json
 pending.json
 raffle.json
