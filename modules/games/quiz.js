@@ -29,6 +29,8 @@ module.exports = async (context, question, correctAnswer, reward, extraInfo) =>
   if(extraInfo && extraInfo !== true)
     embed.setFooter(extraInfo);
 
-  await User.addCoins(message.author.id, reward);
+  if(isCorrect)
+    await User.addCoins(message.author.id, reward);
+    
   context.chat(embed, true);
 }
