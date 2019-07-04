@@ -7,6 +7,7 @@ const quiz = require('../quiz');
 
 const { cooldowns: cooldown, rewards } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
+
 const { albums } = require('data/music.json');
 const songs = Object.values(albums).reduce((links, { tracks }) => 
   links.concat(tracks
