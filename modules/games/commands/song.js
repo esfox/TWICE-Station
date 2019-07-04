@@ -45,9 +45,9 @@ async function action(context)
 
 }
 
-async function processAudio(context, link)
+function processAudio(context, link)
 {
-  return new Promise(resolve =>
+  return new Promise(async resolve =>
   {
     let startTime = await getAudioDurationInSeconds(link)
     .catch(error =>
