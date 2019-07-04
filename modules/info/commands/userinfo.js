@@ -1,5 +1,6 @@
 const { Command } = require('discord-utils');
 const { getMention } = require('../../../utils/functions');
+const { User } = require('database');
 
 module.exports = class extends Command
 {
@@ -13,12 +14,12 @@ module.exports = class extends Command
 }
 
 /** @param {import('discord-utils').Context} context*/
-function action(context)
+async function action(context)
 {
   /** @type {import('discord.js').GuildMember} */
-  const user = getMention(context, true);
+  let user = getMention(context, true);
   if(!user)
-    return context.send('❌  No user mentioned.');
+    user = context.message.member;
 
   const info = context.embed(`User info for: ${user.user.tag}`)
     .setThumbnail(user.displayAvatarURL)
@@ -34,7 +35,10 @@ function action(context)
   if(user.roles.size !== 0)
     info.addField('Roles', user.roles.map(role => role.toString()).join(' '));
 
-  // TODO: Get and show coins and candybongs
-
+  const coins = await User.getCoins(user.id);
+  const candybongs = await User.getCandybongs(user.id);
+  info.setFooter(`User has: 💰 ${coins.toLocaleString()} TWICECOINS`
+    + ` | 🍭 ${candybongs} Candy Bongs`);
+  
   context.chat(info);
 }

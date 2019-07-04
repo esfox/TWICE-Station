@@ -17,7 +17,7 @@ module.exports = class extends Command
 async function action(context)
 {
   const candybongs = await User.getCandybongs(context.message.author.id);
-  if(!candybongs || candybongs === 0)
+  if(candybongs === 0)
     return context.reply("You don't have Candy Bongs.");
   context.reply(`🍭  You have ${candybongs} ${candybongs > 1?
     'Candy Bongs' : 'Candy Bong'}.`);
