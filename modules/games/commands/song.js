@@ -41,9 +41,13 @@ async function action(context)
     .catch(console.error);
 
   const attachment = { files: [{ attachment: `./${file}`, name: file }]};
-  await context.chat(`${context.message.author}\n`
+  context.chat(`${context.message.author}\n`
     + '❔ Guess the Song! 🎵', false, attachment)
-    .then(_ => fs.unlink(file, console.error));
+    .then(_ => fs.unlink(file, error => 
+      {
+        if(error)
+          console.error(error);
+      }));
 
   if(await onCooldown(context, command))
     return;
