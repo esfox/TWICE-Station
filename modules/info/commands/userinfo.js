@@ -17,26 +17,31 @@ module.exports = class extends Command
 async function action(context)
 {
   /** @type {import('discord.js').GuildMember} */
-  let user = getMention(context, true);
-  if(!user)
-    user = context.message.member;
+  let member = getMention(context, true);
+  if(!member)
+    member = context.message.member;
 
-  const info = context.embed(`User info for: ${user.user.tag}`)
-    .setThumbnail(user.displayAvatarURL)
-    .addField('User ID', user.id);
+  const info = context.embed()
+    .setAuthor(member.user.tag, member.user.displayAvatarURL)
+    .setThumbnail(member.displayAvatarURL)
+    .addField('User ID', member.id);
 
-  if(user.nickname)
-    info.addField('Nickname', user.nickname, true);
+  if(member.nickname)
+    info.addField('Nickname', member.nickname, true);
 
   info
-    .addField('Registered on', user.user.createdAt)
-    .addField('Joined on', user.joinedAt);
+    .addField('Discord user since', member.user.createdAt)
+    .addField(`Joined ${member.guild.name} on`, member.joinedAt);
 
-  if(user.roles.size !== 0)
-    info.addField('Roles', user.roles.map(role => role.toString()).join(' '));
+  if(member.roles.size !== 0)
+  {
+    const roles = member.roles;
+    roles.delete(member.guild.id);
+    info.addField('Roles', roles.map(role => role.toString()).join(' '));
+  }
 
-  const coins = await User.getCoins(user.id);
-  const candybongs = await User.getCandybongs(user.id);
+  const coins = await User.getCoins(member.id);
+  const candybongs = await User.getCandybongs(member.id);
   info.setFooter(`User has: 💰 ${coins.toLocaleString()} TWICECOINS`
     + ` | 🍭 ${candybongs} Candy Bongs`);
   
