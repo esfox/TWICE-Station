@@ -42,41 +42,44 @@ async function action(context)
 
   // if(await onCooldown(context, command))
   //   return;
-  
+
 }
 
 async function processAudio(context, link)
 {
-  let startTime = await getAudioDurationInSeconds(link)
+  return new Promise(resolve =>
+  {
+    let startTime = await getAudioDurationInSeconds(link)
     .catch(error =>
     {
       console.error(error);
       context.reply('❌ Whoops! An error occurred. Try again.', )
     });
 
-  if(!startTime)
-    return;
+    if(!startTime)
+      return;
 
-  startTime = Math.floor(Math.random() * (~~startTime) - 5);
-  if(startTime <= 0)
-    startTime += 5;
+    startTime = Math.floor(Math.random() * (~~startTime) - 5);
+    if(startTime <= 0)
+      startTime += 5;
 
-  ffmpeg(link)
-    .setStartTime(startTime)
-    .setDuration(0.75)
-    .noVideo()
-    .output('Song.mp3')
-    .on('end', error =>
-    {
-      if(error)
-        return sendError(context, error);
-      return Promise.resolve();
-    })
-    .on('error', error =>
-    {
-      sendError(context, error);
-    })
-    .run();
+    ffmpeg(link)
+      .setStartTime(startTime)
+      .setDuration(0.75)
+      .noVideo()
+      .output('Song.mp3')
+      .on('end', error =>
+      {
+        if(error)
+          return sendError(context, error);
+        return resolve();
+      })
+      .on('error', error =>
+      {
+        sendError(context, error);
+      })
+      .run();
+  });
 }
 
 /** @param {import('discord-utils').Context} context*/
