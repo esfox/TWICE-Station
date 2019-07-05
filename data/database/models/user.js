@@ -49,7 +49,14 @@ const getFollows = async user_id => (await this.getByID(user_id)).getFollows();
 exports.getFollows = async user_id =>
 {
   const follows = await getFollows(user_id);
-  return follows? JSON.parse(follows.channels) : undefined;
+  if(!follows)
+    return;
+
+  const channels = JSON.parse(follows.channels);
+  if(channels.length === 0)
+    return;
+  
+  return channels;
 }
 
 exports.addFollows = async (user_id, channels) =>
