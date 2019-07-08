@@ -28,7 +28,7 @@ exports.init = _ =>
 
 const associateModels = _ =>
 {
-  User.hasOne(Items, { as: 'Bag ', foreignKey: 'user_id' });
+  User.hasOne(Items, { as: 'Items', foreignKey: 'user_id' });
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
   Follows.belongsTo(User, { foreignKey: 'user_id' });
 }

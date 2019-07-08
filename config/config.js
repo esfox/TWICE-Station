@@ -43,6 +43,7 @@ module.exports =
     member_guess: 60,
     song_guess: 60,
     trivia: 60,
+    search: 25
   },
   games_time_limit: 30,
   rewards:
@@ -56,5 +57,17 @@ module.exports =
   emotes:
   {
     wheel_spin: '<a:WheelSpin:530589274769195018>',
-  }
+    jeonggering: '<a:jeonggering:556303054702510080>',
+  },
+  trash_messages:
+  [
+    "🗑  You found fake merch and threw it away.",
+    "🗑  You found a candy wrapper. You threw it away.",
+    "🤢  You found Jokbal, but it already gone bad.",
+    "🤢  You found Cheesse Kimbap, but it already gone bad.",
+    "🗑  You found a faded photocard and threw it away.",
+    "🤷  You found nothing at all.",
+    "🗑  You found a broken Candy Bong. What a waste.",
+    "🗑  You found a used Twiceland ticket. You wish you had one...",
+  ]
 }
