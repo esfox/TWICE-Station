@@ -160,7 +160,7 @@ exports.getChannelMentions = context =>
  * */
 exports.getMentionAndAmount = context =>
 {
-  let parameters = context.parameters;
+  let { parameters } = context;
   const member = this.getMention(context, true);
   if(!member || !parameters)
     return context.send('Give coins to who?');

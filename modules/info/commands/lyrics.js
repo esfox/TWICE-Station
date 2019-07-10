@@ -35,7 +35,7 @@ const songs = Object.values(albums)
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const parameters = context.parameters;
+  const { parameters } = context;
   if(!parameters)
     return context.send('What song to find the lyrics of?');
 
