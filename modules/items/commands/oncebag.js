@@ -50,5 +50,5 @@ async function action(context)
     + '————————————————————————————————————————————————————\n';
   items = '🎒 **Your OnceBag**' + '```ml\n' + header + items + '\n```';
   await user.send(items);
-  context.reply('Check my private message. 👌');
+  context.reply('💬  Check my private message.');
 }
