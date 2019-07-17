@@ -22,7 +22,11 @@ async function action(context)
   if(!items)
     return context.reply('❌  Your OnceBag is empty.');
 
-  items = Object.keys(items)
+  const itemCodes = Object.keys(items);
+  const itemsPerList = 20;
+  let totalCost = 0;
+
+  const itemLists = itemCodes
     .map(code =>
     {
       let { name, value, cost } = getItemDisplayInfo(code);
@@ -32,23 +36,44 @@ async function action(context)
 
       const count = items[code];
       cost *= count;
+      totalCost += cost;
       return { name, value, count, cost };
     })
     .sort((a, b) => a.cost - b.cost)
-    .reduce((text, item) => 
+    .reduce((lists, item, i) => 
     {
-      let { name, value, count, cost } = item;
-      return text
-        + name.padEnd(30, ' ')
-        + count.toString().padEnd(5, ' ')
-        + value.padEnd(12, ' ')
-        + cost
-        + '\n';
-    }, '');
+      const listIndex = Math.floor(i / itemsPerList);
+      if(!lists[listIndex])
+        lists[listIndex] = [];
 
-  const header = '       Item                Amount  Value       Cost\n'
-    + '————————————————————————————————————————————————————\n';
-  items = '🎒 **Your OnceBag**' + '```ml\n' + header + items + '\n```';
-  await user.send(items);
+      const { name, value, count, cost } = item;
+      const text = name.padEnd(30, ' ')
+        + count.toString().padEnd(4, ' ')
+        + value.padEnd(11, ' ')
+        + cost.toString().padStart(5, ' ');
+
+      lists[listIndex].push(text);
+      return lists;
+    }, [])
+    .map((list, i, lists) => 
+    {
+      list = (i === 0? '🎒 **Your OnceBag**```ml\n'
+        + '       Item                Amount  Value     Cost\n'
+        + '——————————————————————————————————————————————————\n' :
+          '```ml\n')
+        + list.join('\n')
+        + (i === lists.length - 1? 
+          '\n——————————————————————————————————————————————————\n'
+          + '                    Total'
+          + itemCodes.length.toString().padStart(6, ' ')
+          + totalCost.toString().padStart(19, ' ') : '')
+        + '\n```';
+        
+      return list;
+    });
+
+  for(const itemList of itemLists)
+    await user.send(itemList);
+
   context.reply('💬  Check my private message.');
 }
