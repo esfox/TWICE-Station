@@ -58,7 +58,7 @@ async function action(context)
     .map((list, i, lists) => 
     {
       list = (i === 0? '🎒 **Your OnceBag**```ml\n'
-        + '       Item                Amount  Value     Cost\n'
+        + '       Item                Amount  Value      Cost\n'
         + '——————————————————————————————————————————————————\n' :
           '```ml\n')
         + list.join('\n')
