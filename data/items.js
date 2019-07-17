@@ -37,7 +37,8 @@ module.exports =
       {
         code: "p",
         name: "Plushie",
-        ofMember: true
+        ofMember: true,
+        ofAnimal: true
       }
     ]
   },

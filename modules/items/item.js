@@ -1,5 +1,6 @@
 const values = require('data/items').sort((a, b) => a.chance - b.chance);
 const members = require('data/members');
+const collections = require('data/collections');
 const { albums } = require('data/music.json');
 const { randomElement } = require('utils/functions');
 const { User } = require('models');
@@ -62,11 +63,10 @@ exports.getRandomItem = _ =>
     return;
 
   const item = { ...getBaseItem(randomElement(value.items).code) };
-  const noEmote = !item.emote;
   if(item.ofMember)
   {
     const member = randomElement(members);
-    if(noEmote)
+    if(!item.emote)
       item.emote = member.emote;
 
     const code = item.code;
@@ -80,7 +80,7 @@ exports.getRandomItem = _ =>
         undefined;
      
     item.name = member.name
-      + `${noEmote? ` ${member.animal}` : ''} ${item.name}`;
+      + `${item.ofAnimal? ` ${member.animal}` : ''} ${item.name}`;
     item.code = `${member.code}-${item.code}`;
   }
   else if(item.ofAlbum)
@@ -103,4 +103,27 @@ exports.addItemToUser = async (user_id, code) =>
 
   bag[code] = item + 1;
   return await User.setItems(user_id, bag);
+}
+
+exports.checkForCollections = async (user_id, items) =>
+{
+  items = Object.keys(items);
+
+  let newCollections = collections.filter(({ items: collectionItems }) =>
+    collectionItems.every(item => items.includes(item)));
+
+  const userCollections = await User.getCollections(user_id);
+  if(userCollections)
+    newCollections = newCollections.filter(({ code }) => 
+      !userCollections.includes(code));
+
+  if(newCollections.length > 0)
+  {
+    await User.setCollections(user_id, newCollections.map(({ code }) => code));
+
+    const bonus = newCollections.reduce((sum, { bonus }) => sum + bonus, 0);
+    await User.addCoins(user_id, bonus);
+  }
+
+  return newCollections;
 }

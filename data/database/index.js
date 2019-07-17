@@ -14,10 +14,11 @@ const sequelize = new Sequelize
  * @property {Model} User
  * @property {Model} Items
  * @property {Model} Follows
+ * @property {Model} Collections
  */
 
 /** @type {Models} */
-const { User, Items, Follows } = require('./models')(sequelize);
+const { User, Items, Follows, Collections } = require('./models')(sequelize);
 exports.init = _ => 
 {
   associateModels();
@@ -28,11 +29,13 @@ exports.init = _ =>
 
 const associateModels = _ =>
 {
-  User.hasOne(Items, { as: 'Items', foreignKey: 'user_id' });
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
+  User.hasOne(Items, { as: 'Items', foreignKey: 'user_id' });
+  User.hasOne(Collections, { as: 'Collections', foreignKey: 'user_id' });
   Follows.belongsTo(User, { foreignKey: 'user_id' });
 }
 
 exports.User = require('./models/user');
 exports.Items = require('./models/items');
 exports.Follows = require('./models/follows');
+exports.Collections = require('./models/collections');

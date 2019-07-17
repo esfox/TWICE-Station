@@ -7,7 +7,9 @@ exports.model = User;
 const attributes = 
 {
   coins: 'coins',
-  candybongs: 'candybongs'
+  candybongs: 'candybongs',
+  items: 'items',
+  collections: 'collections'
 }
 
 exports.init = sequelize =>
@@ -135,38 +137,6 @@ exports.removeFollows = async (user_id, channels) =>
 }
 // #endregion
 
-// #region Items
-const getItems = async user_id => (await this.getByID(user_id)).getItems();
-exports.getItems = async user_id =>
-{
-  let items = await getItems(user_id);
-  if(!items)
-    return;
-
-  items = JSON.parse(items.items);
-  if(Object.keys(items).length === 0)
-    return;
-
-  return items;
-}
-
-exports.setItems = async (user_id, items) =>
-{
-  const user = await this.getByID(user_id);
-  items = JSON.stringify(items);
-  let bag = await user.getItems();
-  if(!bag)
-  {
-    bag = await user.createItems({ items });
-    return JSON.parse(bag.items);
-  }
-
-  bag = await bag.update({ items })
-    .then(bag => JSON.parse(bag.items));
-  return bag;
-}
-// #endregion
-
 const getAll = async (attribute) => User.findAll()
   .then(async users => await Promise.all(users.map(user => 
   ({
@@ -180,3 +150,60 @@ const update = async (user_id, attribute, amount, toAdd) =>
   user[attribute] = toAdd? user[attribute] + amount : amount;
   return (await user.update(user.dataValues))[attribute];
 }
+
+// #region Bag Content
+const getBagContent = async (user_id, type) =>
+{
+  const user = await this.getByID(user_id);
+  return type === attributes.items?
+      user.getItems() :
+      user.getCollections();
+}
+
+exports.getBagContent = async (user_id, type) =>
+{
+  let content = await getBagContent(user_id, type);
+  if(!content)
+    return;
+
+  content = JSON.parse(content[type]);
+  if(Object.keys(content).length === 0)
+    return;
+
+  return content;
+}
+
+exports.setBagContent = async (user_id, content, type) =>
+{
+  content = JSON.stringify(content);
+  const user = await this.getByID(user_id);
+  let bagContent = await getBagContent(user_id, type);
+  if(!bagContent)
+  {
+    bagContent = type === attributes.items?
+      await user.createItems({ items: content }) : 
+      await user.createCollections({ collections: content });
+    return JSON.parse(bagContent[type]);
+  }
+
+  bagContent = await bagContent.update({ [type]: content })
+    .then(bag => JSON.parse(bag[type]));
+  return bagContent;
+}
+// #endregion
+
+// #region Items
+exports.getItems = async user_id => 
+  this.getBagContent(user_id, attributes.items);
+
+exports.setItems = async (user_id, items) =>
+  this.setBagContent(user_id, items, attributes.items);
+// #endregion
+
+// #region Collections
+exports.getCollections = async user_id =>
+  this.getBagContent(user_id, attributes.collections);
+
+exports.setCollections = async (user_id, collections) =>
+  this.setBagContent(user_id, collections, attributes.collections);
+// #endregions
