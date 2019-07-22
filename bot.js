@@ -8,13 +8,14 @@ context.setModulesPath(`${__dirname}/modules`);
 
 const database = require('database');
 const { sleep, chunk } = require('utils/functions');
+
+let { client, channel, ping } = config.developer;
+const { followables, followable_media } = config;
+
 const [ token ] = process.argv.slice(2);
 bot
   .login(token)
   .catch(console.error);
-
-let { client, channel, ping } = config.developer;
-const { followables, followable_media } = config;
 
 bot.on('ready', async _ =>
 {
