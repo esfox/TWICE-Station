@@ -1,3 +1,6 @@
+const prefix = require('config/config').prefixes.shift();
+const albumCount = Object.values(require('data/music.json').albums).length;
+
 module.exports = 
 [
   {
@@ -9,6 +12,7 @@ module.exports =
       "mn-c", "mn-j", "jy-c", "jy-j", "tz-c", "tz-j", 
       "ch-c", "ch-j", "mm-c", "mm-j", "jh-c", "jh-j"
     ],
+    description: 'All 18 candies and jellies of all members.',
     bonus: 500
   },
   {
@@ -20,7 +24,20 @@ module.exports =
       "mn-p", "jy-p", "tz-p", 
       "ch-p", "mm-p", "jh-p"
     ],
+    description: 'All 9 plushies, 1 per member.',
     bonus: 3000
+  },
+  {
+    name: "Lovelys",
+    code: "col-lvl",
+    items:
+    [
+      "ny-lv", "dh-lv", "sn-lv", 
+      "mn-lv", "jy-lv", "tz-lv", 
+      "ch-lv", "mm-lv", "jh-lv"
+    ],
+    description: 'All 9 lovelys, 1 per member.',
+    bonus: 5000
   },
   {
     name: "Album",
@@ -32,12 +49,28 @@ module.exports =
       "tyy-a", "fcy-a", "htt-a", "cdp-a", "omt-a", "wmu-a",
       "ht2-a",
     ],
+    description: `All the ${albumCount} albums and EPs.`
+      + ` (Do \`${prefix}albums\` to see all albums and EPs.)`,
     bonus: 6000
+  },
+  {
+    name: "TWICE",
+    code: "col-tw",
+    items:
+    [
+      "ny-pc", "ny-ps", "dh-pc", "dh-ps", "sn-pc", "sn-ps", 
+      "mn-pc", "mn-ps", "jy-pc", "jy-ps", "tz-pc", "tz-ps", 
+      "ch-pc", "ch-ps", "mm-pc", "mm-ps", "jh-pc", "jh-ps"
+    ],
+    description: 'All photocards and posters of each member.',
+    bonus: 9000
   },
   {
     name: "Nayeon",
     code: "col-ny",
     items: [ "ny-p", "ny-pc", "ny-ps", "mc" ],
+    description: 'The plushie, photocard, poster and rare item of a member.'
+      + ' (9 collections, 1 per member)',
     bonus: 4000
   },
   {
@@ -89,31 +122,11 @@ module.exports =
     bonus: 4000
   },
   {
-    name: "Lovelys",
-    code: "col-lvl",
-    items:
-    [
-      "ny-lv", "dh-lv", "sn-lv", 
-      "mn-lv", "jy-lv", "tz-lv", 
-      "ch-lv", "mm-lv", "jh-lv"
-    ],
-    bonus: 5000
-  },
-  {
-    name: "TWICE",
-    code: "col-tw",
-    items:
-    [
-      "ny-pc", "ny-ps", "dh-pc", "dh-ps", "sn-pc", "sn-ps", 
-      "mn-pc", "mn-ps", "jy-pc", "jy-ps", "tz-pc", "tz-ps", 
-      "ch-pc", "ch-ps", "mm-pc", "mm-ps", "jh-pc", "jh-ps"
-    ],
-    bonus: 9000
-  },
-  {
     name: "Nayeon Special",
     code: "col-nys",
     items: [ "ny-pc", "mc", "kng" ],
+    description: 'The photocard, rare item and legendary item of a member.'
+      + ' (9 collections, 1 per member)',
     bonus: 7000
   },
   {
@@ -168,24 +181,29 @@ module.exports =
     name: "Cheer Up",
     code: "col-chr",
     items: [ "pgt-a", "chj" ],
+    description: 'Page Two Album and Cheer Up Jacket.',
     bonus: 5000
   },
   {
     name: "Yes or Yes",
     code: "col-yoy",
     items: [ "yoy-a", "yoy" ],
+    description: 'Yes or Yes Album and Yes or Yes Dice.',
     bonus: 5000
   },
   {
     name: "Likey",
     code: "col-lky",
     items: [ "twt-a", "lkc" ],
+    description: 'Twicetagram Album and Likey Video Camera.',
     bonus: 5000
   },
   {
     name: "JYP",
     code: "col-jyp",
     items: [ "jkb", "ptp", "sgl-a", "wil-a" ],
+    description: 'What Is Love? Album, Signal Album,'
+      + ' JYP Plastic Pants and JYP\'s MIDI Keyboard.',
     bonus: 15000
   }
 ]
