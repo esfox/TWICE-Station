@@ -6,6 +6,34 @@ const { randomElement } = require('utils/functions');
 const { User } = require('models');
 
 const itemList = values.reduce((list, { items }) => list.concat(items), []);
+const masterList = values.reduce((list, { name: value, items, cost }) => 
+  list.concat(items.reduce((itemObjects, item) =>
+  {
+    const { code, name } = item;
+    let itemObject = { code, name, value, cost };
+
+    if(item.ofMember)
+      itemObject = members.map(member =>
+      ({
+        code: `${member.code}-${code}`,
+        name: `${member.name} ${item.ofAnimal? `${member.animal} `:''}${name}`,
+        cost,
+        value,
+      }));
+    
+    if(item.ofAlbum)
+      itemObject = Object.values(albums).map(album =>
+      ({
+        code: `${album.code}-${code}`,
+        name: `${album.title} ${name}`,
+        cost,
+        value,
+      }));
+
+    return itemObjects.concat(itemObject);
+  }, [])), []);
+
+exports.masterList = masterList;
 
 const getValue = code =>
 {

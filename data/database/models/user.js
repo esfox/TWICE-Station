@@ -155,14 +155,10 @@ const update = async (user_id, attribute, amount, toAdd) =>
 const getBagContent = async (user_id, type) =>
 {
   const user = await this.getByID(user_id);
-  return type === attributes.items?
-      user.getItems() :
-      user.getCollections();
-}
+  let content = await (type === attributes.items?
+    user.getItems() :
+    user.getCollections());
 
-exports.getBagContent = async (user_id, type) =>
-{
-  let content = await getBagContent(user_id, type);
   if(!content)
     return;
 
@@ -173,16 +169,19 @@ exports.getBagContent = async (user_id, type) =>
   return content;
 }
 
-exports.setBagContent = async (user_id, content, type) =>
+const setBagContent = async (user_id, content, type) =>
 {
   content = JSON.stringify(content);
   const user = await this.getByID(user_id);
-  let bagContent = await getBagContent(user_id, type);
+  let bagContent = await (type === attributes.items?
+    user.getItems() :
+    user.getCollections());
+
   if(!bagContent)
   {
-    bagContent = type === attributes.items?
-      await user.createItems({ items: content }) : 
-      await user.createCollections({ collections: content });
+    bagContent = await (type === attributes.items?
+      user.createItems({ items: content }) : 
+      user.createCollections({ collections: content }));
     return JSON.parse(bagContent[type]);
   }
 
@@ -194,16 +193,16 @@ exports.setBagContent = async (user_id, content, type) =>
 
 // #region Items
 exports.getItems = async user_id => 
-  this.getBagContent(user_id, attributes.items);
+  getBagContent(user_id, attributes.items);
 
 exports.setItems = async (user_id, items) =>
-  this.setBagContent(user_id, items, attributes.items);
+  setBagContent(user_id, items, attributes.items);
 // #endregion
 
 // #region Collections
 exports.getCollections = async user_id =>
-  this.getBagContent(user_id, attributes.collections);
+  getBagContent(user_id, attributes.collections);
 
 exports.setCollections = async (user_id, collections) =>
-  this.setBagContent(user_id, collections, attributes.collections);
+  setBagContent(user_id, collections, attributes.collections);
 // #endregions

@@ -5,7 +5,7 @@ const simplify = string => string
   .toLowerCase()
   .trim()
   .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
-  .replace(/\s|!|\?|\\|\(|\)|\.|\-/g, '');
+  .replace(/\s|!|\?|\\|\(|\)|\.|\-|\#|\:/g, '');
 
 exports.compare = (text1, text2, exact) => 
 {
