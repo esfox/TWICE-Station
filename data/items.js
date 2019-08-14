@@ -1,7 +1,7 @@
 module.exports =
 [
   {
-    name: "nice",
+    value: "nice",
     text: "__nice__",
     chance: 65,
     cost: 10,
@@ -22,7 +22,7 @@ module.exports =
     ]
   },
   {
-    name: "good",
+    value: "good",
     text: "**good**",
     chance: 35,
     cost: 100,
@@ -43,7 +43,7 @@ module.exports =
     ]
   },
   {
-    name: "amazing",
+    value: "amazing",
     text: "__**amazing**__",
     chance: 14,
     cost: 200,
@@ -70,7 +70,7 @@ module.exports =
     ]
   },
   {
-    name: "rare",
+    value: "rare",
     text: "**RARE**",
     chance: 5,
     cost: 750,
@@ -124,7 +124,7 @@ module.exports =
     ]
   },
   {
-    name: "legendary",
+    value: "legendary",
     text: "__**LEGENDARY**__",
     chance: 0.5,
     cost: 4000,

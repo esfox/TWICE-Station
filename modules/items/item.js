@@ -6,7 +6,7 @@ const { randomElement } = require('utils/functions');
 const { User } = require('models');
 
 const itemList = values.reduce((list, { items }) => list.concat(items), []);
-const masterList = values.reduce((list, { name: value, items, cost }) => 
+const masterList = values.reduce((list, { value, items, cost }) => 
   list.concat(items.reduce((itemObjects, item) =>
   {
     const { code, name } = item;
@@ -39,7 +39,7 @@ const getValue = code =>
 {
   const value = values
     .find(({ items }) => items.some(({ code: _code }) => _code === code));
-  const { name, text, chance, cost } = value;
+  const { value: name, text, chance, cost } = value;
   return { name, text, chance, cost };
 }
 

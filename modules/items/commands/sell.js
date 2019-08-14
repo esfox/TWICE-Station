@@ -7,7 +7,7 @@ const { albums } = require('data/music.json');
 const { masterList: items } = require('../item');
 const { User } = require('models');
 
-const values = itemList.map(({ name }) => name);
+const values = itemList.map(({ value }) => value);
 
 module.exports = class extends Command
 {
