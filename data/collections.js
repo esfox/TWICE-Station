@@ -29,9 +29,10 @@ module.exports =
     [
       "tsb-a", "pgt-a", "tc1-a", "tc2-a", "sgl-a", "twt-a", 
       "mnh-a", "wil-a", "smn-a", "bdz-a", "bdr-a", "yoy-a", 
-      "tyy-a", "htt-a", "cdp-a", "omt-a", "wmu-a", "ht2-a"
+      "tyy-a", "fcy-a", "htt-a", "cdp-a", "omt-a", "wmu-a",
+      "ht2-a",
     ],
-    bonus: 5000
+    bonus: 6000
   },
   {
     name: "Nayeon",
