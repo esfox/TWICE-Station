@@ -137,7 +137,7 @@ exports.removeFollows = async (user_id, channels) =>
 }
 // #endregion
 
-const getAll = async (attribute) => User.findAll()
+const getAll = async attribute => User.findAll()
   .then(async users => await Promise.all(users.map(user => 
   ({
     user_id: user.user_id,
