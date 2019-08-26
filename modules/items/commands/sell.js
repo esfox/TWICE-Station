@@ -179,6 +179,6 @@ class Seller
     this.earn = amount * cost;
 
     await this.save();
-    this.respond(`You sold ${item.name}`);
+    this.respond(`You sold ${amount > 1? `${amount} `: ''}${item.name}`);
   }
 }
