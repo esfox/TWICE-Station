@@ -179,8 +179,11 @@ exports.getMentionAndAmount = context =>
   return { member, amount };
 }
 
-/** @param {Array} array */
-exports.getTop10 = (array, attribute) => array
+/** 
+ * @param {Array} array
+ * @param {import('discord.js').Guild} guild
+ * */
+exports.getTop10 = (guild, array, attribute) => array
   .sort((a, b) => b[attribute] - a[attribute])
-  .filter(item => item[attribute] !== 0)
+  .filter(data => guild.member(data.user_id) && data[attribute] !== 0)
   .slice(0, 10);

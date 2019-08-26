@@ -23,7 +23,7 @@ async function action(context)
 
   const leaderboard = '💰 **TWICE**COINS Leaderboard\n'
     + '```css\n'
-    + getTop10(coins, 'coins')
+    + getTop10(context.guild, coins, 'coins')
       .map(data =>
       ({
         user: context.guild.member(data.user_id).user,
