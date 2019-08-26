@@ -27,6 +27,11 @@ exports.init = _ =>
     .catch(console.error);
 }
 
+exports.query = async query =>
+{
+  return sequelize.query(query);
+}
+
 const associateModels = _ =>
 {
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
