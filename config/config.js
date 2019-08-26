@@ -11,10 +11,26 @@ module.exports =
   },
   prefixes: [ ";" ],
   embed_color: "#01E623",
+  error_message: "❌  Woops! A problem occurred.",
+
   bot_channel: "533958900932673546",
+  moderators:
+  [
+    "558209818892959744",
+    "265628593747394560",
+    "265564739655041027",
+    "198205443045064705",
+    "563058102149054537",
+    "228129551245508608",
+    "250301876275380224",
+    "263347368504590338",
+    "492893896745943081",
+    "252251141419696128",
+    "274336998771130368",
+  ],
   server_invite: "https://discord.gg/fC76MQG",
   coin_image: "https://i.imgur.com/Sw24N6D.png",
-  error_message: "❌  Woops! A problem occurred.",
+
   followables:
   [
     "533551327419039754",
@@ -30,6 +46,7 @@ module.exports =
     "567453403991506982"
   ],
   followable_media: [ "image", "gifv", "video" ],
+
   cooldowns: 
   {
     daily: 86400, // 24 hours
@@ -54,11 +71,13 @@ module.exports =
     song_guess: 200,
     trivia: 300,
   },
+
   emotes:
   {
     wheel_spin: '<a:WheelSpin:530589274769195018>',
     jeonggering: '<a:jeonggering:556303054702510080>',
   },
+
   trash_messages:
   [
     "🗑  You found fake merch and threw it away.",
