@@ -24,15 +24,19 @@ async function action(context)
     .catch(({ message }) =>
     {
       context.send(`❌  ${message}`);
+      return false;
     });
 
-  if(!result)
+  if(result === false)
     return;
+
+  if(!result)
+    return context.send('✅  Query successful');
 
   result = JSON.stringify(result, null, 2);
   if(result.length > 2000)
   {
-    const blocks = result.match(/(.|[\r\n]){1,1950}(\n|$)/g);
+    const blocks = result.match(/(.|[\r\n]){1,1950}(\}\,|$)/g);
     for(const block of blocks)
       await context.chat('```json\n' + block + '\n```');
   }

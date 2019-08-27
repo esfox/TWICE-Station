@@ -32,6 +32,11 @@ exports.query = async query =>
   return sequelize.query(query);
 }
 
+exports.reset = async table =>
+{
+  return sequelize.query(`delete from ${table}`);
+}
+
 const associateModels = _ =>
 {
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
