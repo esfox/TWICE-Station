@@ -20,5 +20,5 @@ async function action(context)
   if(candybongs === 0)
     return context.reply("You don't have Candy Bongs.");
   context.reply(`🍭  You have ${candybongs} ${candybongs > 1?
-    'Candy Bongs' : 'Candy Bong'}.`);
+    'Candy Bongs' : 'Candy Bong'}`);
 }

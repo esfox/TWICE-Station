@@ -178,12 +178,3 @@ exports.getMentionAndAmount = context =>
   amount = parseInt(amount);
   return { member, amount };
 }
-
-/** 
- * @param {Array} array
- * @param {import('discord.js').Guild} guild
- * */
-exports.getTop10 = (guild, array, attribute) => array
-  .sort((a, b) => b[attribute] - a[attribute])
-  .filter(data => guild.member(data.user_id) && data[attribute] !== 0)
-  .slice(0, 10);

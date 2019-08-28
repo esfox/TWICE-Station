@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Model } = Sequelize;
+const { Model, Op } = Sequelize;
 
 class User extends Model {}
 exports.model = User;
@@ -48,6 +48,7 @@ exports.getByID = async (user_id, notCreate) => !notCreate?
 
 // #region Coins
 exports.getAllCoins = async _ => await getAll(attributes.coins);
+exports.getTop10Coins = async _ => await getTop10(attributes.coins);
 exports.getCoins = async user_id =>
 {
   const user = await this.getByID(user_id, true);
@@ -69,6 +70,7 @@ const updateCoins = (user_id, amount, toAdd) =>
 
 // #region Candybongs
 exports.getAllCandybongs = async _ => await getAll(attributes.candybongs);
+exports.getTop10Candybongs = async _ => await getTop10(attributes.candybongs);
 exports.getCandybongs = async user_id =>
 {
   const user = await this.getByID(user_id, true);
@@ -144,11 +146,18 @@ const getAll = async attribute => User.findAll()
     [attribute]: user[attribute]
   }))));
 
+const getTop10 = async attribute => User.findAll(
+{
+  where: { [attribute]: { [Op.not]: 0 } },
+  order: [ [ attribute, 'DESC' ] ],
+  limit: 10
+});
+
 const update = async (user_id, attribute, amount, toAdd) =>
 {
   const user = await this.getByID(user_id);
   user[attribute] = toAdd? user[attribute] + amount : amount;
-  return (await user.update(user.dataValues))[attribute];
+  return (await user.update(user.toJSON()))[attribute];
 }
 
 // #region Bag Content
