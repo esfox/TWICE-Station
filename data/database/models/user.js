@@ -139,6 +139,7 @@ exports.removeFollows = async (user_id, channels) =>
 }
 // #endregion
 
+// #region generic functions
 const getAll = async attribute => User.findAll()
   .then(async users => await Promise.all(users.map(user => 
   ({
@@ -159,6 +160,23 @@ const update = async (user_id, attribute, amount, toAdd) =>
   user[attribute] = toAdd? user[attribute] + amount : amount;
   return (await user.update(user.toJSON()))[attribute];
 }
+// #endregion
+
+// #region Items
+exports.getItems = async user_id => 
+  getBagContent(user_id, attributes.items);
+
+exports.setItems = async (user_id, items) =>
+  setBagContent(user_id, items, attributes.items);
+// #endregion
+
+// #region Collections
+exports.getCollections = async user_id =>
+  getBagContent(user_id, attributes.collections);
+
+exports.setCollections = async (user_id, collections) =>
+  setBagContent(user_id, collections, attributes.collections);
+// #endregion
 
 // #region Bag Content
 const getBagContent = async (user_id, type) =>
@@ -199,19 +217,3 @@ const setBagContent = async (user_id, content, type) =>
   return bagContent;
 }
 // #endregion
-
-// #region Items
-exports.getItems = async user_id => 
-  getBagContent(user_id, attributes.items);
-
-exports.setItems = async (user_id, items) =>
-  setBagContent(user_id, items, attributes.items);
-// #endregion
-
-// #region Collections
-exports.getCollections = async user_id =>
-  getBagContent(user_id, attributes.collections);
-
-exports.setCollections = async (user_id, collections) =>
-  setBagContent(user_id, collections, attributes.collections);
-// #endregions
