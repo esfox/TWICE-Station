@@ -24,7 +24,8 @@ async function action(context)
     return context.send("❌  There are no raffle participants yet.");
 
   const message = '📣 You were called for the **Raffle Draw**.\n\n'
-    + participants.reduce((text, participant) =>
-      text + `<@${participant}> `, '');
+    + participants
+      .filter(participant => context.guild.member(participant))
+      .reduce((text, participant) => text + `<@${participant}> `, '');
   context.chat(message);
 }
