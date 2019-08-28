@@ -13,7 +13,9 @@ module.exports =
   embed_color: "#01E623",
   error_message: "❌  Woops! A problem occurred.",
 
+  twicepedia: '533510632985853953',
   bot_channel: "533958900932673546",
+  dev_channel: "533908427399757826",
   moderators:
   [
     "558209818892959744",
@@ -70,6 +72,19 @@ module.exports =
     member_guess: 250,
     song_guess: 200,
     trivia: 300,
+    candybongtop:
+    [
+      100000,
+      75000,
+      50000,
+      26000,
+      25000,
+      24000,
+      23000,
+      22000,
+      21000,
+      20000
+    ]
   },
 
   emotes:

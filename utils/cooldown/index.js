@@ -69,3 +69,18 @@ exports.check = async (command, userID) =>
 	cooldownEnd = now + duration;
 	await saved.update(name, userID, cooldownEnd);
 }
+
+exports.reset = async command =>
+{
+	if(!command)
+		throw new Error('Add the command first.');
+
+	command = commands[command];
+	const { name, isSaved } = command;
+
+	if(!isSaved)
+		return cached[name] = {};
+
+	await saved.reset()
+		.catch(console.error);3
+}

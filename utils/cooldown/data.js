@@ -56,3 +56,5 @@ exports.update = async (command, user, end_time) =>
 		where: where(command, user)
 	}).catch(console.error);
 }
+
+exports.reset = () => sequelize.query('delete from cooldowns');

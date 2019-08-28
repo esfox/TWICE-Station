@@ -9,6 +9,8 @@ context.setModulesPath(`${__dirname}/modules`);
 const database = require('database');
 const { sleep, chunk } = require('utils/functions');
 
+const cbreset = require('./modules/candybongs/cbreset');
+
 let { client, channel, ping } = config.developer;
 const { followables, followable_media } = config;
 
@@ -22,6 +24,8 @@ bot.on('ready', async _ =>
   await database.init();
   console.log('Database connected.');
   console.log('Bot connected.');
+
+  // cbreset.automate(bot);
 
   if(bot.user.id === client)
   {
