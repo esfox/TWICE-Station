@@ -65,6 +65,7 @@ module.exports =
     search: 25
   },
   games_time_limit: 30,
+
   rewards:
   {
     wheel: 350,
@@ -86,6 +87,9 @@ module.exports =
       20000
     ]
   },
+
+  raffle_fee: 1000,
+  raffle_prize_distribution: [ 0.60, 0.30 ],
 
   emotes:
   {

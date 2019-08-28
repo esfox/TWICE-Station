@@ -7,8 +7,9 @@ const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
 const database = require('database');
-const { sleep, chunk } = require('utils/functions');
+const { loadData } = require('data/saved');
 
+const { sleep, chunk } = require('utils/functions');
 const cbreset = require('./modules/candybongs/cbreset');
 
 let { client, channel, ping } = config.developer;
@@ -44,7 +45,7 @@ bot.on('ready', async _ =>
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
 
-bot.on('message', message =>
+bot.on('message', async message =>
 {
   if(message.content === ping)
     message.delete();
@@ -55,6 +56,9 @@ bot.on('message', message =>
 
   if(followables.includes(message.channel.id))
     return sendToFollowers(message);
+
+  if((await loadData()).raffle.isDrawing)
+    return;
 
   context.from(message);
 });
