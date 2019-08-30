@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const { sleep } = require('utils/functions');
+const { sleep, randomElement } = require('utils/functions');
 const { raffle_prize_distribution } = require('config/config');
 const { loadData, save } = require('data/saved');
 const { User } = require('database');
@@ -41,7 +41,7 @@ async function action(context)
     const winner = 
     {
       place: [ '1st', '2nd', '3rd' ][i],
-      user: participants[Math.floor(Math.random() * participants.length)],
+      user: randomElement(participants),
       prize: prizes[i]
     }
 
