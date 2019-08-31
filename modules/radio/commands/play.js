@@ -1,7 +1,7 @@
 const { Command } = require('discord-utils');
 const player = require('../player');
 const queue = require('../queue');
-const { play, notJoined } = require('../functions');
+const { play, findSong, songEmbed, notJoined } = require('../functions');
 
 module.exports = class extends Command
 {
@@ -30,15 +30,19 @@ async function action(context)
   const { raw_parameters } = context;
   if(!raw_parameters)
     return context.send('What song to play?');
+    
+  const track = findSong(raw_parameters);
+  if(!track)
+    return context.send("❌  Can't find a song with that title.");
 
   if(player.isPlaying)
   {
-    queue.add(raw_parameters);
-    return context.send(`Queued ${raw_parameters}`);
+    queue.add(track);
+    return context.chat(songEmbed(context, track, '✅  Queued...'));
   }
 
   if(!player.connection)
     await player.connect();
 
-  play(context, queue.next() || raw_parameters);
+  play(context, queue.next() || track.link);
 }
