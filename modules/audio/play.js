@@ -1,6 +1,6 @@
 const player = require('./player');
-// const queue = require('./queue');
-// const { randomElement } = require('utils/functions');
+const queue = require('./queue');
+const { randomElement } = require('utils/functions');
 
 const { albums, other } = require('data/music.json');
 const tracks = Object.values(albums)
