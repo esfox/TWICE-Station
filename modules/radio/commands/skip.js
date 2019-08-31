@@ -1,7 +1,6 @@
 const { Command } = require('discord-utils');
 const player = require('../player');
-const queue = require('../queue');
-const { play, notJoined } = require('../functions');
+const { notJoined } = require('../functions');
 
 module.exports = class extends Command
 {
