@@ -20,7 +20,7 @@ async function action(context)
   if(!tracks || tracks.length === 0)
     return context.send('No songs are queued.');
 
-  tracks = tracks.slice(1).reduce((list, { title }, i) =>
+  tracks = tracks.reduce((list, { title }, i) =>
     list + `${i + 1}. ${title}\n`, '');
 
   const embed = context.embed('▶  Play Queue');
