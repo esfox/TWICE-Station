@@ -22,10 +22,5 @@ async function action(context)
     return;
 
   player.skip();
-
-  const next = queue.next();
-  if(next)
-    play(context, next);
-    
   context.send('⏭  Skipped');
 }
