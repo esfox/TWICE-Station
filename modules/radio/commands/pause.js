@@ -1,5 +1,6 @@
 const { Command } = require('discord-utils');
 const player = require('../player');
+const { notJoined } = require('../functions');
 
 module.exports = class extends Command
 {
@@ -15,6 +16,9 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
+  if(notJoined(context))
+    return;
+      
   player.pause();
   context.send('⏸  Paused');
 }

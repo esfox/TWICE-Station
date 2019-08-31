@@ -2,11 +2,13 @@ const { search } = require('utils/functions');
 
 module.exports = class
 {
+  static setNowPlaying(track)
+  {
+    this.nowPlaying = track;
+  }
+
   static get()
   {
-    if(!this.tracks)
-      return;
-
     return this.tracks;
   }
 

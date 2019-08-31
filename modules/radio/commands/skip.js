@@ -1,7 +1,7 @@
 const { Command } = require('discord-utils');
 const player = require('../player');
 const queue = require('../queue');
-const play = require('../play');
+const { play, notJoined } = require('../functions');
 
 module.exports = class extends Command
 {
@@ -18,6 +18,9 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
+  if(notJoined(context))
+    return;
+
   player.skip();
 
   const next = queue.next();

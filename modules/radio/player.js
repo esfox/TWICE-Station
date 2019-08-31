@@ -29,7 +29,7 @@ module.exports = class
 
   static disconnect()
   {
-    this.stopped = true;
+    this.isStopped = true;
     this.connection.disconnect();
     this.connection = undefined;
   }
@@ -45,19 +45,19 @@ module.exports = class
       return;
 
     this.isPlaying = true;
-    this.stopped = false;
+    this.isStopped = false;
     this.connection.playFile(audio, { bitrate: 256000 });
     this.connection.dispatcher.setVolume(0.3);
     this.connection.dispatcher.on('start', _ =>
     {
-      if(!this.stopped && onStart)
+      if(!this.isStopped && onStart)
         onStart();
     });
 
     this.connection.dispatcher.on('end', _ =>
     {
       this.isPlaying = false;
-      if(this.stopped)
+      if(this.isStopped)
         return;
         
       this.connection.player.streamingData.pausedTime = 0;

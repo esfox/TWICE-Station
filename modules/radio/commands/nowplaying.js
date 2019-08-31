@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const player = require('../player');
+const { nowPlaying } = require('../functions');
 
 module.exports = class extends Command
 {
@@ -7,8 +7,7 @@ module.exports = class extends Command
   {
     super();
 
-    this.keyword = 'disconnect';
-    this.aliases.push('stop');
+    this.keyword = 'nowplaying';
     this.action = action;
   }
 }
@@ -16,6 +15,9 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  player.disconnect();
-  context.send('⏹  Disconnected from voice channel');
+  const embed = nowPlaying(context);
+  if(!embed)
+    return context.send('Nothing is playing.');
+
+  context.chat(embed);
 }

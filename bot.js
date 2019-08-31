@@ -10,7 +10,7 @@ const database = require('database');
 const { loadData } = require('data/saved');
 
 const { sleep, chunk } = require('utils/functions');
-const musicPlayer = require('./modules/audio/player');
+const musicPlayer = require('./modules/radio/player');
 const cbreset = require('./modules/candybongs/cbreset');
 
 let { client, channel, ping } = config.developer;
