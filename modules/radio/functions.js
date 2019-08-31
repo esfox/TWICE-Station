@@ -30,7 +30,7 @@ const songEmbed = (context, track, title) =>
 
   const embed = context.embed(title || '🎶  Now Playing...')
     .addField(track.title, (track.album || track.info)
-      + `${track.lyrics? `\n\n[__See lyrics__](${track.lyrics})` : ''}`)
+      + `${track.lyrics? `\n\n[See lyrics](${track.lyrics})` : ''}`)
     .setThumbnail(track.thumbnail);
 
   if(track.color)
@@ -39,7 +39,7 @@ const songEmbed = (context, track, title) =>
   return embed;
 }
 
-module.exports.nowPlaying = songEmbed;
+module.exports.songEmbed = songEmbed;
 
 /** @param {import('discord-utils').Context} context*/
 const play = (context, track) =>
