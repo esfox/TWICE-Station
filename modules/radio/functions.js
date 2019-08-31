@@ -50,7 +50,7 @@ const nowPlaying = context =>
     .setThumbnail(track.thumbnail);
 
   if(track.color)
-    info.setColor(track.color);
+    embed.setColor(track.color);
 
   return embed;
 }
