@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Model } = Sequelize;
+const { Model, Op } = Sequelize;
 
 class User extends Model {}
 exports.model = User;
@@ -7,7 +7,9 @@ exports.model = User;
 const attributes = 
 {
   coins: 'coins',
-  candybongs: 'candybongs'
+  candybongs: 'candybongs',
+  items: 'items',
+  collections: 'collections'
 }
 
 exports.init = sequelize =>
@@ -44,12 +46,63 @@ exports.getByID = async (user_id, notCreate) => !notCreate?
   });
 // #endregion
 
+// #region Coins
+exports.getAllCoins = async _ => await getAll(attributes.coins);
+exports.getTop10Coins = async _ => await getTop10(attributes.coins);
+exports.getCoins = async user_id =>
+{
+  const user = await this.getByID(user_id, true);
+  return user? user.coins : 0;
+};
+
+exports.addCoins = async (user_id, amount) => 
+  updateCoins(user_id, amount, true);
+
+exports.setCoins = async (user_id, amount) => 
+  updateCoins(user_id, amount);
+
+exports.resetCoins = async user_id => 
+  (await User.update({ coins: 0 }, { where: { user_id } })).shift() !== 0;
+
+const updateCoins = (user_id, amount, toAdd) =>
+  update(user_id, attributes.coins, amount, toAdd)
+// #endregion
+
+// #region Candybongs
+exports.getAllCandybongs = async _ => await getAll(attributes.candybongs);
+exports.getTop10Candybongs = async _ => await getTop10(attributes.candybongs);
+exports.getCandybongs = async user_id =>
+{
+  const user = await this.getByID(user_id, true);
+  return user? user.candybongs : 0;
+}
+
+exports.addCandybong = async user_id => 
+  updateCandybongs(user_id, 1, true);
+
+exports.minusCandybong = async user_id =>
+  updateCandybongs(user_id, -1, true);
+  
+exports.setCandybongs = async (user_id, amount) => 
+  updateCandybongs(user_id, amount);
+
+const updateCandybongs = (user_id, amount, toAdd) =>
+  update(user_id, attributes.candybongs, amount, toAdd);
+// #endregion
+
 // #region follows
 const getFollows = async user_id => (await this.getByID(user_id)).getFollows();
 exports.getFollows = async user_id =>
 {
   const follows = await getFollows(user_id);
-  return follows? JSON.parse(follows.channels) : undefined;
+  if(!follows)
+    return;
+
+  const channels = JSON.parse(follows.channels);
+  if(channels.length === 0)
+    return;
+  
+  return channels;
 }
 
 exports.addFollows = async (user_id, channels) =>
@@ -86,58 +139,81 @@ exports.removeFollows = async (user_id, channels) =>
 }
 // #endregion
 
-// #region Coins
-exports.getAllCoins = async _ => await getAll(attributes.coins);
-exports.getCoins = async user_id =>
-{
-  const user = await this.getByID(user_id, true);
-  return user? user.coins : 0;
-};
-
-exports.addCoins = async (user_id, amount) => 
-  updateCoins(user_id, amount, true);
-
-exports.setCoins = async (user_id, amount) => 
-  updateCoins(user_id, amount);
-
-const updateCoins = (user_id, amount, toAdd) =>
-  update(user_id, attributes.coins, amount, toAdd)
-
-exports.resetCoins = async user_id => 
-  (await User.update({ coins: 0 }, { where: { user_id } })).shift() !== 0;
-// #endregion
-
-// #region Candybongs
-exports.getAllCandybongs = async _ => await getAll(attributes.candybongs);
-exports.getCandybongs = async user_id =>
-{
-  const user = await this.getByID(user_id, true);
-  return user? user.candybongs : 0;
-}
-
-exports.addCandybong = async user_id => 
-  updateCandybongs(user_id, 1, true);
-
-exports.minusCandybong = async user_id =>
-  updateCandybongs(user_id, -1, true);
-  
-exports.setCandybongs = async (user_id, amount) => 
-  updateCandybongs(user_id, amount);
-
-const updateCandybongs = (user_id, amount, toAdd) =>
-  update(user_id, attributes.candybongs, amount, toAdd);
-// #endregion
-
-const getAll = async (attribute) => User.findAll()
+// #region generic functions
+const getAll = async attribute => User.findAll()
   .then(async users => await Promise.all(users.map(user => 
   ({
     user_id: user.user_id,
     [attribute]: user[attribute]
   }))));
 
+const getTop10 = async attribute => User.findAll(
+{
+  where: { [attribute]: { [Op.not]: 0 } },
+  order: [ [ attribute, 'DESC' ] ],
+  limit: 10
+});
+
 const update = async (user_id, attribute, amount, toAdd) =>
 {
   const user = await this.getByID(user_id);
   user[attribute] = toAdd? user[attribute] + amount : amount;
-  return (await user.update(user.dataValues))[attribute];
+  return (await user.update(user.toJSON()))[attribute];
 }
+// #endregion
+
+// #region Items
+exports.getItems = async user_id => 
+  getBagContent(user_id, attributes.items);
+
+exports.setItems = async (user_id, items) =>
+  setBagContent(user_id, items, attributes.items);
+// #endregion
+
+// #region Collections
+exports.getCollections = async user_id =>
+  getBagContent(user_id, attributes.collections);
+
+exports.setCollections = async (user_id, collections) =>
+  setBagContent(user_id, collections, attributes.collections);
+// #endregion
+
+// #region Bag Content
+const getBagContent = async (user_id, type) =>
+{
+  const user = await this.getByID(user_id);
+  let content = await (type === attributes.items?
+    user.getItems() :
+    user.getCollections());
+
+  if(!content)
+    return;
+
+  content = JSON.parse(content[type]);
+  if(Object.keys(content).length === 0)
+    return;
+
+  return content;
+}
+
+const setBagContent = async (user_id, content, type) =>
+{
+  content = JSON.stringify(content);
+  const user = await this.getByID(user_id);
+  let bagContent = await (type === attributes.items?
+    user.getItems() :
+    user.getCollections());
+
+  if(!bagContent)
+  {
+    bagContent = await (type === attributes.items?
+      user.createItems({ items: content }) : 
+      user.createCollections({ collections: content }));
+    return JSON.parse(bagContent[type]);
+  }
+
+  bagContent = await bagContent.update({ [type]: content })
+    .then(bag => JSON.parse(bag[type]));
+  return bagContent;
+}
+// #endregion

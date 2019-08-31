@@ -40,8 +40,15 @@ async function action(context)
 
   const { title, link } = randomElement(songs);
 
-  await processAudio(context, link)
-    .catch(console.error);
+  const processed = await processAudio(context, link)
+    .catch(error =>
+    {
+      if(error)
+        console.error(error);
+      context.reply('❌ Whoops! An error occurred. Try again.');
+    });
+  if(!processed)
+    return;
 
   const attachment = { files: [{ attachment: `./${file}`, name: file }]};
   context.message.reply(`${context.message.author}\n`
@@ -59,12 +66,11 @@ async function processAudio(context, link)
 {
   return new Promise(async (resolve, reject) =>
   {
+    if(!fs.existsSync(link))
+      return reject();
+
     let startTime = await getAudioDurationInSeconds(link)
-      .catch(error =>
-      {
-        console.error(error);
-        context.reply('❌ Whoops! An error occurred. Try again.', )
-      });
+      .catch(error => reject(error));
 
     if(!startTime)
       return;
@@ -82,7 +88,7 @@ async function processAudio(context, link)
       {
         if(error)
           return sendError(context, error);
-        resolve();
+        resolve(true);
       })
       .on('error', error =>
       {

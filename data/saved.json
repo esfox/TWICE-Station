@@ -1,0 +1,9 @@
+{
+  "bank": 0,
+  "raffle": {
+    "inProgress": false,
+    "prize": 0,
+    "participants": [],
+    "isDrawing": false
+  }
+}

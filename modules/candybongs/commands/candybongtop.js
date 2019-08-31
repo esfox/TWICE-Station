@@ -1,5 +1,4 @@
 const { Command } = require('discord-utils');
-const { getTop10 } = require('utils/functions');
 const { User } = require('database');
 
 module.exports = class extends Command
@@ -17,14 +16,13 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const candybongs = await User.getAllCandybongs();
+  const candybongs = await User.getTop10Candybongs();
   if(candybongs.length === 0)
     return context.send('No one has candybongs yet.');
 
   const leaderboard = '🍭 Candy Bong Leaderboard\n'
     + '```css\n'
-    + getTop10(candybongs, 'candybongs')
-      .map(data =>
+    + candybongs.map(data =>
       ({
         user: context.guild.member(data.user_id),
         candybongs: data.candybongs

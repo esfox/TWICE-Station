@@ -18,7 +18,7 @@ async function action(context)
   /** @type {string[]} */
   const follows = await User.getFollows(context.message.author.id);
   if(!follows)
-    return context.send('You have not followed any channels yet.');
+    return context.send('You are not following any channels.');
 
   context.send('🔔  You are following...',
     follows.map(channel => `<#${channel}>`).join(' '));

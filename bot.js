@@ -7,20 +7,28 @@ const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
 const database = require('database');
+const { loadData } = require('data/saved');
+
 const { sleep, chunk } = require('utils/functions');
+const musicPlayer = require('./modules/audio/player');
+const cbreset = require('./modules/candybongs/cbreset');
+
+let { client, channel, ping } = config.developer;
+const { followables, followable_media } = config;
+
 const [ token ] = process.argv.slice(2);
 bot
   .login(token)
   .catch(console.error);
-
-let { client, channel, ping } = config.developer;
-const { followables, followable_media } = config;
 
 bot.on('ready', async _ =>
 {
   await database.init();
   console.log('Database connected.');
   console.log('Bot connected.');
+
+  musicPlayer.init(bot);
+  // cbreset.automate(bot);
 
   if(bot.user.id === client)
   {
@@ -39,7 +47,7 @@ bot.on('ready', async _ =>
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
 
-bot.on('message', message =>
+bot.on('message', async message =>
 {
   if(message.content === ping)
     message.delete();
@@ -48,8 +56,14 @@ bot.on('message', message =>
     message.author.id !== context.config.developer.id)
     return;
 
+  if(message.guild.id !== config.twicepedia)
+    return;
+
   if(followables.includes(message.channel.id))
     return sendToFollowers(message);
+
+  if((await loadData()).raffle.isDrawing)
+    return;
 
   context.from(message);
 });

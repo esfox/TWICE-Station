@@ -23,6 +23,10 @@ async function action(context)
 
   const giver = context.message.member;
   const giverID = giver.id;
+
+  if(receiver.id ===  giver.id)
+    return context.send("❌  You can't give to yourself. 🤔");
+
   let giverCoins = await User.getCoins(giverID);
   if(giverCoins <= 0)
     return context.send("❌ You don't have enough coins.");
@@ -38,5 +42,5 @@ async function action(context)
   receiverCoins = await User.setCoins(receiverID, receiverCoins);
 
   context.send(`✅  ${receiver.displayName} has received`
-    + ` ${amount} TWICECOINS.`, `from ${receiver.displayName}`);
+    + ` ${amount} TWICECOINS.`, `from ${giver.displayName}`);
 }

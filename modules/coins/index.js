@@ -6,5 +6,6 @@ module.exports = class extends Module
   {
     super();
     this.setCommandsPath(`${__dirname}/commands`);
+    this.rules.guild = true;
   }
 }

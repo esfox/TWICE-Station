@@ -5,7 +5,7 @@ const simplify = string => string
   .toLowerCase()
   .trim()
   .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
-  .replace(/\s|!|\?|\\|\(|\)|\.|\-/g, '');
+  .replace(/\s|!|\?|\\|\(|\)|\.|\-|\#|\:/g, '');
 
 exports.compare = (text1, text2, exact) => 
 {
@@ -160,7 +160,7 @@ exports.getChannelMentions = context =>
  * */
 exports.getMentionAndAmount = context =>
 {
-  let parameters = context.parameters;
+  let { parameters } = context;
   const member = this.getMention(context, true);
   if(!member || !parameters)
     return context.send('Give coins to who?');
@@ -178,9 +178,3 @@ exports.getMentionAndAmount = context =>
   amount = parseInt(amount);
   return { member, amount };
 }
-
-/** @param {Array} array */
-exports.getTop10 = (array, attribute) => array
-  .sort((a, b) => b[attribute] - a[attribute])
-  .filter(item => item[attribute] !== 0)
-  .slice(0, 10);
