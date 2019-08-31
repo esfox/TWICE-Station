@@ -13,9 +13,10 @@ module.exports =
   embed_color: "#01E623",
   error_message: "❌  Woops! A problem occurred.",
 
-  twicepedia: '533510632985853953',
-  bot_channel: "533958900932673546",
+  twicepedia: "533510632985853953",
   dev_channel: "533908427399757826",
+  radio_channel: "533552171917246465",
+  bot_channel: "533958900932673546",
   moderators:
   [
     "558209818892959744",

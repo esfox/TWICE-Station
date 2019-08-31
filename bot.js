@@ -10,6 +10,7 @@ const database = require('database');
 const { loadData } = require('data/saved');
 
 const { sleep, chunk } = require('utils/functions');
+const musicPlayer = require('./modules/audio/player');
 const cbreset = require('./modules/candybongs/cbreset');
 
 let { client, channel, ping } = config.developer;
@@ -26,6 +27,7 @@ bot.on('ready', async _ =>
   console.log('Database connected.');
   console.log('Bot connected.');
 
+  musicPlayer.init(bot);
   // cbreset.automate(bot);
 
   if(bot.user.id === client)
@@ -52,6 +54,9 @@ bot.on('message', async message =>
 
   if(message.channel.type === 'dm' && 
     message.author.id !== context.config.developer.id)
+    return;
+
+  if(message.guild.id !== config.twicepedia)
     return;
 
   if(followables.includes(message.channel.id))
