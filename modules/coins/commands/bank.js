@@ -16,5 +16,5 @@ module.exports = class extends Command
 async function action(context)
 {
   const { bank } = await loadData();
-  context.send('🏦  Community Bank', `__**${bank}**__ TWICECOINS`);
+  context.send('🏦  Community Bank', `**${bank}** TWICECOINS`);
 }
