@@ -24,6 +24,7 @@ async function action(context)
 
   const itemCodes = Object.keys(items);
   const itemsPerList = 20;
+  let total = 0;
   let totalCost = 0;
 
   const itemLists = itemCodes
@@ -36,7 +37,9 @@ async function action(context)
 
       const count = items[code];
       cost *= count;
+
       totalCost += cost;
+      total += count;
       return { name, value, count, cost };
     })
     .sort((a, b) => a.cost - b.cost)
@@ -65,7 +68,7 @@ async function action(context)
         + (i === lists.length - 1? 
           '\n——————————————————————————————————————————————————\n'
           + '                    Total'
-          + itemCodes.length.toString().padStart(6, ' ')
+          + total.toString().padStart(6, ' ')
           + totalCost.toString().padStart(19, ' ') : '')
         + '\n```';
         
