@@ -59,6 +59,8 @@ async function action(context)
   const embed = context.embed('🔡  Codes');
   codeinfo.forEach(({ title, info }) => 
     embed.addField(title, `${'```ml\n'}${info}${'\n```'}`, true));
-  embed.addField('‍', extrainfo);
+  embed
+    .addField('‍', extrainfo)
+    .setFooter(footer);
   context.chat(embed);
 }
