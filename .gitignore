@@ -66,8 +66,6 @@ typings/
 # unnecessary data files
 memes.json
 trivias.js
-erapics.json
-pending.json
 
 # other folders
 other/
