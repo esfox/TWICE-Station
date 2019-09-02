@@ -2,10 +2,8 @@ const { Command } = require('discord-utils');
 const { compare } = require('utils/functions');
 const itemList = require('data/items');
 const collections = require('data/collections');
-const members = require('data/members');
-const { albums } = require('data/music.json');
 const { masterList: items } = require('../item');
-const { User } = require('models');
+const { User } = require('database');
 
 const values = itemList.map(({ value }) => value);
 
