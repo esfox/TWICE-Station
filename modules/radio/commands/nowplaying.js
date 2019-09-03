@@ -16,7 +16,7 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const embed = songEmbed(context);
+  const embed = songEmbed();
   if(!embed)
     return context.send('Nothing is playing.');
 

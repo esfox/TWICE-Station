@@ -1,4 +1,5 @@
 const { Command } = require('discord-utils');
+const { bot_channel } = require('config/config');
 const player = require('../player');
 const queue = require('../queue');
 const { play, findSong, songEmbed, notJoined } = require('../functions');
@@ -38,11 +39,12 @@ async function action(context)
   if(player.isPlaying)
   {
     queue.add(track);
-    return context.chat(songEmbed(context, track, '✅  Queued...'));
+    return context.guild.channels.get(bot_channel)
+      .send(songEmbed(track, '✅  Queued...'));
   }
 
   if(!player.connection)
     await player.connect();
 
-  play(context, queue.next() || track.link);
+  play(context.bot, queue.next() || track.link);
 }

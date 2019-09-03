@@ -26,5 +26,5 @@ async function action(context)
     return message.send('❌  Unable to connect to voice channel.');
 
   await message.edit(context.embed('✅  Connected.'));
-  play(context);
+  play(context.bot);
 }

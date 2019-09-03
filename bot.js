@@ -11,6 +11,7 @@ const { loadData } = require('data/saved');
 
 const { sleep, chunk } = require('utils/functions');
 const musicPlayer = require('./modules/radio/player');
+const { play: startMusic } = require('./modules/radio/functions');
 const cbreset = require('./modules/candybongs/cbreset');
 
 let { client, channel, ping } = config.developer;
@@ -37,7 +38,10 @@ bot.on('ready', async _ =>
     config.embed_color = '#36393F';
   }
   else 
+  {
     config.prefixes = [ ';' ];
+    startMusic(bot);
+  }
     
   context.setConfig(config);
 

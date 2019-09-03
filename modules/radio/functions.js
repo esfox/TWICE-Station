@@ -1,6 +1,7 @@
+const { RichEmbed } = require('discord.js');
 const player = require('./player');
 const queue = require('./queue');
-const { radio_channel } = require('config/config');
+const { bot_channel, radio_channel, embed_color } = require('config/config');
 const { randomElement, compare } = require('utils/functions');
 const { albums, other } = require('data/music.json');
 
@@ -21,14 +22,15 @@ other.forEach(track => tracks.push(track));
 
 const randomTrack = () => randomElement(tracks);
 
-/** @param {import('discord-utils').Context} context*/
-const songEmbed = (context, track, title) =>
+const songEmbed = (track, title) =>
 {
   track = track || queue.nowPlaying;
   if(!track)
     return;
 
-  const embed = context.embed(title || '🎶  Now Playing...')
+  const embed = new RichEmbed()
+    .setColor(embed_color)
+    .setTitle(title || '🎶  Now Playing...')
     .addField(track.title, (track.album || track.info)
       + `${track.lyrics? `\n\n[See lyrics](${track.lyrics})` : ''}`)
     .setThumbnail(track.thumbnail);
@@ -41,8 +43,8 @@ const songEmbed = (context, track, title) =>
 
 module.exports.songEmbed = songEmbed;
 
-/** @param {import('discord-utils').Context} context*/
-const play = (context, track) =>
+/** @param {import('discord.js').Client} bot */
+const play = (bot, track) =>
 {
   if(!track)
     track = randomTrack();
@@ -51,17 +53,16 @@ const play = (context, track) =>
     () =>
     {
       queue.setNowPlaying(track);
-      context.chat(songEmbed(context));
+      bot.channels.get(bot_channel).send(songEmbed());
     },
     () =>
     {
       const next = queue.next();
       if(next)
-        return play(context, next);
-
-      play(context, randomTrack());
-    },
-    error => context.send('❌  An error occured', error.message));
+        return play(bot, next);
+      
+      play(bot);
+    }, console.error);
 }
 
 module.exports.play = play;
