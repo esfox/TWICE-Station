@@ -975,6 +975,38 @@
 			"color": "#B1A7CA",
 			"duration": "",
 			"isJapanese": true
+		},
+		"breakthrough": {
+			"code": "bth",
+			"title": "Breakthrough",
+			"tracks": [
+				{
+					"title": "Breakthrough",
+					"link": "./music/TWICE - Breakthrough/01. Breakthrough.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-breakthrough"
+				}
+			],
+			"cover": "https://i.scdn.co/image/6ecee0db960d381e8c51b1a3d1d99a8d71d154c3",
+			"color": "#1F2067",
+			"duration": "",
+			"isJapanese": true
+		},
+		"happyHappy": {
+			"code": "hph",
+			"title": "Happy Happy",
+			"tracks": [
+				{
+					"title": "Happy Happy",
+					"link": "./music/TWICE - HAPPY HAPPY/01. Happy Happy.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-happy-happy"
+				}
+			],
+			"cover": "https://i.scdn.co/image/52043f529df82e4af5f25c4a1f58fa5060bdba6a",
+			"color": "#FBD34F",
+			"duration": "",
+			"isJapanese": true
 		}
 	},
 	"other":

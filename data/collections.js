@@ -51,7 +51,7 @@ module.exports =
     ],
     description: `All the ${albumCount} albums and EPs.`
       + ` (Do \`${prefix}albums\` to see all albums and EPs.)`,
-    bonus: 6000
+    bonus: 6500
   },
   {
     name: "TWICE",
