@@ -28,7 +28,7 @@ bot.on('ready', async _ =>
   console.log('Bot connected.');
 
   musicPlayer.init(bot);
-  // cbreset.automate(bot);
+  cbreset.automate(bot);
 
   if(bot.user.id === client)
   {
