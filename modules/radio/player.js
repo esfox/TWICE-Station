@@ -8,7 +8,7 @@ module.exports = class
 {
   /** @param {import('discord.js').Client} bot */
   static init(bot)
-{
+  {
     /** @type {import('discord.js').VoiceChannel} */
     this.channel = bot.channels.get(radio_channel);
     this.connections = bot.voiceConnections;
