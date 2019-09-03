@@ -48,7 +48,7 @@ exports.getByID = async (user_id, notCreate) => !notCreate?
 
 // #region Coins
 exports.getAllCoins = async _ => await getAll(attributes.coins);
-exports.getTop10Coins = async _ => await getTop10(attributes.coins);
+exports.getTop10Coins = async mods => await getTop10(attributes.coins, mods);
 exports.getCoins = async user_id =>
 {
   const user = await this.getByID(user_id, true);
@@ -147,9 +147,13 @@ const getAll = async attribute => User.findAll()
     [attribute]: user[attribute]
   }))));
 
-const getTop10 = async attribute => User.findAll(
+const getTop10 = async (attribute, mods) => User.findAll(
 {
-  where: { [attribute]: { [Op.not]: 0 } },
+  where:
+  {
+    [attribute]: { [Op.not]: 0 },
+    user_id: { [Op.notIn]: mods }
+  },
   order: [ [ attribute, 'DESC' ] ],
   limit: 10
 });

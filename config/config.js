@@ -17,6 +17,7 @@ module.exports =
   dev_channel: "533908427399757826",
   radio_channel: "533915891654459420",
   bot_channel: "533958900932673546",
+  managers_role: "533552646347423755",
   moderators:
   [
     "247955535620472844",

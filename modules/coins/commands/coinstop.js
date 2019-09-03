@@ -1,4 +1,5 @@
 const { Command } = require('discord-utils');
+const { twicepedia, managers_role } = require('config/config');
 const { User } = require('database');
 
 module.exports = class extends Command
@@ -16,7 +17,11 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const coins = await User.getTop10Coins();
+  const managers = context.bot.guilds
+    .get(twicepedia).roles.get(managers_role).members
+    .map(({ id }) => id);
+
+  const coins = await User.getTop10Coins(managers);
   if(coins.length === 0)
     return context.send('No one has coins yet.');
 
