@@ -26,7 +26,6 @@ bot.on('ready', async _ =>
   console.log(context);
   console.log(context.modules);
   console.log(context.modules.map(({ commands }) => commands));
-  console.log(bot);
 
   await database.init();
   console.log('Database connected.');
@@ -54,6 +53,8 @@ bot.on('ready', async _ =>
 
 bot.on('message', async message =>
 {
+  console.log(message);
+
   // if(message.content === ping)
   //   message.delete();
 
