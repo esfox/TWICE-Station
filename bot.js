@@ -23,10 +23,6 @@ bot
 
 bot.on('ready', async _ =>
 {
-  console.log(context);
-  console.log(context.modules);
-  console.log(context.modules.map(({ commands }) => commands));
-
   await database.init();
   console.log('Database connected.');
   console.log('Bot connected.');
@@ -43,20 +39,18 @@ bot.on('ready', async _ =>
 
   context.setConfig(config);
 
-  // const pingChannel = bot.channels.get(channel);
-  // if(pingChannel)
-  //   pingChannel.send(ping)
-  //     .catch(console.error);
+  const pingChannel = bot.channels.get(channel);
+  if(pingChannel)
+    pingChannel.send(ping)
+      .catch(console.error);
 
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
 
 bot.on('message', async message =>
 {
-  console.log(message);
-
-  // if(message.content === ping)
-  //   message.delete();
+  if(message.content === ping)
+    message.delete();
 
   if(message.channel.type === 'dm' && 
     message.author.id !== context.config.developer.id)
@@ -68,8 +62,8 @@ bot.on('message', async message =>
   if(followables.includes(message.channel.id))
     return sendToFollowers(message);
 
-  // if((await loadData()).raffle.isDrawing)
-  //   return;
+  if((await loadData()).raffle.isDrawing)
+    return;
 
   context.from(message);
 });
