@@ -20,7 +20,7 @@ function notice(command, context)
 
   const report = context.embed(command === commands.report?
     '❕  Report Submitted' : '💡  Suggestion Submitted', raw_parameters)
-    .setFooter(`Submitted by: ${context.message.author.username}`);
+    .setFooter(`Submitted by: ${context.message.author.tag}`);
 
   context.send(`✅  ${command === commands.report?
     'Report' : 'Suggestion'} has been submitted.`);
