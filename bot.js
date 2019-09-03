@@ -68,8 +68,8 @@ bot.on('message', async message =>
   if(followables.includes(message.channel.id))
     return sendToFollowers(message);
 
-  if((await loadData()).raffle.isDrawing)
-    return;
+  // if((await loadData()).raffle.isDrawing)
+  //   return;
 
   context.from(message);
 });
