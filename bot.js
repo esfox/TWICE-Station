@@ -37,6 +37,7 @@ bot.on('ready', async _ =>
     config.embed_color = '#36393F';
   }
 
+  config.prefixes = [ ';' ];
   context.setConfig(config);
 
   const pingChannel = bot.channels.get(channel);
