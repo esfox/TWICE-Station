@@ -147,7 +147,7 @@ const getAll = async attribute => User.findAll()
     [attribute]: user[attribute]
   }))));
 
-const getTop10 = async (attribute, mods) => User.findAll(
+const getTop10 = async (attribute, mods = []) => User.findAll(
 {
   where:
   {
