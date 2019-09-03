@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize
 ({
     dialect: 'sqlite',
-    storage: './data/database/data.sqlite'
+    storage: `${__dirname}/data.sqlite`
 });
 
 /** 
@@ -42,7 +42,6 @@ const associateModels = _ =>
   User.hasOne(Follows, { as: 'Follows', foreignKey: 'user_id' });
   User.hasOne(Items, { as: 'Items', foreignKey: 'user_id' });
   User.hasOne(Collections, { as: 'Collections', foreignKey: 'user_id' });
-  Follows.belongsTo(User, { foreignKey: 'user_id' });
 }
 
 exports.User = require('./models/user');
