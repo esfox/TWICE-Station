@@ -15,7 +15,7 @@ module.exports =
 
   twicepedia: "533510632985853953",
   dev_channel: "533908427399757826",
-  radio_channel: "533552171917246465",
+  radio_channel: "533915891654459420",
   bot_channel: "533958900932673546",
   moderators:
   [
