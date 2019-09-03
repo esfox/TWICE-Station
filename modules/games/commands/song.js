@@ -51,8 +51,7 @@ async function action(context)
     return;
 
   const attachment = { files: [{ attachment: `./${file}`, name: file }]};
-  context.message.reply(`${context.message.author}\n`
-    + '❔ Guess the Song! 🎵', attachment)
+  context.message.reply('\n❔ Guess the Song! 🎵', attachment)
     .then(_ => fs.unlink(file, error => 
     {
       if(error)
