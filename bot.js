@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 
 const { Context } = require('discord-utils');
 const context = new Context(bot);
-context.setModulesPath(`${__dirname}/modules`);
+context.setModulesPath(`./modules`);
 
 const database = require('database');
 const { loadData } = require('data/saved');
@@ -56,8 +56,8 @@ bot.on('message', async message =>
     message.author.id !== context.config.developer.id)
     return;
 
-  // if(message.guild.id !== config.twicepedia)
-  //   return;
+  if(message.guild.id !== config.twicepedia)
+    return;
 
   if(followables.includes(message.channel.id))
     return sendToFollowers(message);
