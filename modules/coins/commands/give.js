@@ -28,7 +28,7 @@ async function action(context)
     return context.send("❌  You can't give to yourself. 🤔");
 
   let giverCoins = await User.getCoins(giverID);
-  if(giverCoins <= 0)
+  if(giverCoins <= 0 || giverCoins < amount)
     return context.send("❌ You don't have enough coins.");
     
   const receiverID = receiver.id;
