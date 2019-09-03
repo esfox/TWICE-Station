@@ -32,5 +32,5 @@ module.exports = async (context, question, correctAnswer, reward, extraInfo) =>
   if(isCorrect)
     await User.addCoins(message.author.id, reward);
     
-  context.chat(embed, true);
+  message.reply(embed);
 }
