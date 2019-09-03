@@ -56,8 +56,8 @@ bot.on('message', async message =>
     message.author.id !== context.config.developer.id)
     return;
 
-  if(message.guild.id !== config.twicepedia)
-    return;
+  // if(message.guild.id !== config.twicepedia)
+  //   return;
 
   if(followables.includes(message.channel.id))
     return sendToFollowers(message);
