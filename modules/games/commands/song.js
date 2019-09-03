@@ -52,7 +52,7 @@ async function action(context)
 
   const attachment = { files: [{ attachment: `./${file}`, name: file }]};
   context.chat(context.message.author
-    + '\n❔ Guess the Song! 🎵', attachment)
+    + '\n❔ Guess the Song! 🎵', false, attachment)
     .then(_ => fs.unlink(file, error => 
     {
       if(error)
