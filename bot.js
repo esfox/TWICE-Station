@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 
 const { Context } = require('discord-utils');
 const context = new Context(bot);
-context.setModulesPath(`./modules`);
+context.setModulesPath(`${__dirname}/modules`);
 
 const database = require('database');
 const { loadData } = require('data/saved');
@@ -23,6 +23,11 @@ bot
 
 bot.on('ready', async _ =>
 {
+  console.log(context);
+  console.log(context.modules);
+  console.log(context.modules.map(({ commands }) => commands));
+  console.log(bot);
+
   await database.init();
   console.log('Database connected.');
   console.log('Bot connected.');
@@ -39,18 +44,18 @@ bot.on('ready', async _ =>
 
   context.setConfig(config);
 
-  const pingChannel = bot.channels.get(channel);
-  if(pingChannel)
-    pingChannel.send(ping)
-      .catch(console.error);
+  // const pingChannel = bot.channels.get(channel);
+  // if(pingChannel)
+  //   pingChannel.send(ping)
+  //     .catch(console.error);
 
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
 
 bot.on('message', async message =>
 {
-  if(message.content === ping)
-    message.delete();
+  // if(message.content === ping)
+  //   message.delete();
 
   if(message.channel.type === 'dm' && 
     message.author.id !== context.config.developer.id)
