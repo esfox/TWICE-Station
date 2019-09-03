@@ -40,6 +40,7 @@ bot.on('ready', async _ =>
   else 
   {
     config.prefixes = [ ';' ];
+    await musicPlayer.connect();
     startMusic(bot);
   }
     
