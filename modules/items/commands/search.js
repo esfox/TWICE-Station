@@ -56,6 +56,9 @@ async function action(context)
 
   const userID = context.message.author.id;
   const items = await addItemToUser(userID, item.code);
+  if(!items)
+    return context.reply('❌  You OnceBag is full.');
+
   context.chat(embed, true);
 
   const collections = await checkForCollections(userID, items);
