@@ -90,7 +90,7 @@ async function action(context)
 
   const question = context.embed('👩  Guess the Member!', info);
   const extraInfo = 'Information from kprofiles.com';
-  quiz(context, question, member.name, rewards.member_guess, extraInfo);
+  quiz(context.message, question, member.name, rewards.member_guess, extraInfo);
 }
 
 const request = link => fetch(link)

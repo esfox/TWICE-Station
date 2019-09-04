@@ -50,26 +50,6 @@ exports.onCooldown = async (context, command) =>
   return true;
 }
 
-/**
- * @param {import('discord.js').Message} message 
- * @param {number} seconds 
- * @param {number} limit 
- */
-exports.waitReplies = async (message, seconds, limit = 1) =>
-{
-	const options = { max: limit };
-	if(seconds)
-		options.time = seconds * 1000;
-
-	const responses = await message.channel.awaitMessages(msg => 
-    msg.author.id === message.author.id, options)
-    .catch(console.error);
-    
-  return responses? 
-    responses.array().map(({ content }) => content) : 
-    [ undefined ];
-}
-
 exports.getTimeLeft = milliseconds =>
 {
   const suffix = amount => amount !== 1 ? 's' : '';

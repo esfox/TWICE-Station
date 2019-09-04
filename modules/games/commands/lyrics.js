@@ -36,7 +36,8 @@ async function action(context)
   if(await onCooldown(context, command))
     return;
 
-  context.message.channel.startTyping();
+  const { message } = context;
+  message.channel.startTyping();
 
   const { title, lyrics: link } = randomElement(songs);
   const html = await fetch(link)
@@ -54,5 +55,5 @@ async function action(context)
   lyrics = randomElement(lyrics).split('\n').slice(0, 4).join('\n');
   const question = context.embed('❔ Guess the song!  🎵', lyrics);
 
-  quiz(context, question, title, rewards.lyrics_guess);
+  quiz(message, question, title, rewards.lyrics_guess);
 }

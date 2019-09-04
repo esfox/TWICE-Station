@@ -59,7 +59,7 @@ async function action(context)
         console.error(error);
     }));
 
-  quiz(context, undefined, title, rewards.song_guess, true);
+  quiz(context.message, undefined, title, rewards.song_guess, true);
 }
 
 async function processAudio(context, link)

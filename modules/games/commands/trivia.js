@@ -37,5 +37,5 @@ async function action(context)
     .addField(question, choicesText);
   answer = (choices.indexOf(answer) + 1).toString();
 
-  quiz(context, question, answer, rewards.trivia);
+  quiz(context.message, question, answer, rewards.trivia);
 }
