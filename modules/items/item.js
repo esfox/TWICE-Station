@@ -125,7 +125,8 @@ exports.getRandomItem = _ =>
 exports.addItemToUser = async (user_id, code) =>
 {
   const bag = await User.getItems(user_id) || {};
-  if(Object.keys(bag).length > 100)
+  console.log(Object.keys(bag).reduce((total, code) => total + bag[code], 0));
+  if(Object.keys(bag).reduce((total, code) => total + bag[code], 0) > 100)
     return;
 
   let item = bag[code];
