@@ -59,6 +59,9 @@ bot.on('message', async message =>
   if(message.content === ping)
     message.delete();
 
+  if(message.author.bot)
+    return;
+
   if(message.channel.type === 'dm' && 
     message.author.id !== context.config.developer.id)
     return;
