@@ -61,22 +61,22 @@ async function action(context)
 
   context.chat(embed, true);
 
-  // const collections = await checkForCollections(userID, items);
-  // const collectionsCount = collections.length;
-  // if(collectionsCount === 0)
-  //   return;
+  const collections = await checkForCollections(userID, items);
+  const collectionsCount = collections.length;
+  if(collectionsCount === 0)
+    return;
 
-  // const bonus = collections.reduce((sum, { bonus }) => sum + bonus, 0);
-  // const description = (collectionsCount !== 1?
-  //   `${collections.reduce((text, { name }) => 
-  //     `${text}• **${name}**\n`, '')}` : '')
-  //   + `\nYou earn a bonus of **${bonus} TWICECOINS**! 💰`;
-  // title = (collectionsCount === 1?
-  //   `You have completed the ${collections.shift().name} Collection! ` :
-  //   `You have completed ${collectionsCount} collections! `)
-  //   + emotes.jeonggering;
+  const bonus = collections.reduce((sum, { bonus }) => sum + bonus, 0);
+  const description = (collectionsCount !== 1?
+    `${collections.reduce((text, { name }) => 
+      `${text}• **${name}**\n`, '')}` : '')
+    + `\nYou earn a bonus of **${bonus} TWICECOINS**! 💰`;
+  title = (collectionsCount === 1?
+    `You have completed the ${collections.shift().name} Collection! ` :
+    `You have completed ${collectionsCount} collections! `)
+    + emotes.jeonggering;
   
-  // embed = context.embed('🎊 CONGRATULATIONS! 🎊')
-  //   .addField(title, description);
-  // context.chat(embed, true);
+  embed = context.embed('🎊 CONGRATULATIONS! 🎊')
+    .addField(title, description);
+  context.chat(embed, true);
 }

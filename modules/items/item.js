@@ -85,7 +85,8 @@ exports.getItemDisplayInfo = code =>
 
 exports.getRandomItem = _ =>
 {
-  const rng = Math.random() * 100;
+  // const rng = Math.random() * 100;
+  const rng = 0.5;
   const value = values.find(({ chance }) => rng <= chance);
   if(!value)
     return;
@@ -151,7 +152,8 @@ exports.checkForCollections = async (user_id, items) =>
 
   if(newCollections.length > 0)
   {
-    await User.setCollections(user_id, newCollections.map(({ code }) => code));
+    await User.setCollections(user_id, 
+      newCollections.map(({ code }) => code).concat(userCollections));
 
     const bonus = newCollections.reduce((sum, { bonus }) => sum + bonus, 0);
     await User.addCoins(user_id, bonus);
