@@ -34,8 +34,8 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  // if(await onCooldown(context, command))
-  //   return;
+  if(await onCooldown(context, command))
+    return;
 
   const item = getRandomItem();
   if(!item)
