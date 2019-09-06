@@ -85,8 +85,7 @@ exports.getItemDisplayInfo = code =>
 
 exports.getRandomItem = _ =>
 {
-  // const rng = Math.random() * 100;
-  const rng = 0.5;
+  const rng = Math.random() * 100;
   const value = values.find(({ chance }) => rng <= chance);
   if(!value)
     return;
