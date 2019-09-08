@@ -137,7 +137,7 @@ exports.addItemToUser = async (user_id, code) =>
   return await User.setItems(user_id, bag);
 }
 
-exports.checkForCollections = async (user_id, items) =>
+exports.checkForCollections = async (user_id, items, toRemove) =>
 {
   items = Object.keys(items);
 
@@ -145,6 +145,15 @@ exports.checkForCollections = async (user_id, items) =>
     collectionItems.every(item => items.includes(item)));
 
   const userCollections = await User.getCollections(user_id);
+  if(toRemove)
+  {
+    newCollections = newCollections.length > 0? newCollections : [];
+    if(userCollections.length > 0)
+      await User.setCollections(user_id,
+        newCollections.map(({ code }) => code));
+    return;
+  }
+
   if(userCollections)
     newCollections = newCollections.filter(({ code }) => 
       !userCollections.includes(code));

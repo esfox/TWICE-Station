@@ -2,7 +2,7 @@ const { Command } = require('discord-utils');
 const { compare } = require('utils/functions');
 const itemList = require('data/items');
 const collections = require('data/collections');
-const { masterList: items } = require('../item');
+const { masterList: items, checkForCollections } = require('../item');
 const { User } = require('database');
 
 const values = itemList.map(({ value }) => value);
@@ -155,7 +155,10 @@ class Seller
       return earn;
     }, 0);
 
+    await checkForCollections(this.context.message.author.id,
+      this.userItems, true);
     await this.save();
+
     this.respond(`You sold all items from the ${collection.name} collection`);
   }
 
