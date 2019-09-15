@@ -56,7 +56,7 @@ exports.do = async bot =>
       text + `${i + 1}. ${guild.member(user)}`
         + ` = **${candybongs}**\\🍭 - __${reward}__\n`, '');
 
-  bot.channels.get(bot_channel)
-    .send('🍭  **Candybong Leaderboard Winners** 🎉\n' + winnersText)
-    .catch(console.error);
+  // bot.channels.get(bot_channel)
+  //   .send('🍭  **Candybong Leaderboard Winners** 🎉\n' + winnersText)
+  //   .catch(console.error);
 }
