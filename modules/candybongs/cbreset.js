@@ -28,7 +28,7 @@ exports.automate = bot =>
   console.log('CandyBong Reset Automation started.');
 }
 
-exports.do = bot =>
+exports.do = async bot =>
 {
   const candybongs = await User.getAllCandybongs();
   if(candybongs.length === 0 ||
