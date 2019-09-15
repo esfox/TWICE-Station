@@ -46,7 +46,7 @@ exports.do = async bot =>
     }));
 
   for(const { user, reward } of winners)
-    console.log(await User.addCoins(user, reward));
+    await User.addCoins(user, reward);
 
   await cooldowns.reset('candybong-get');
   await database.query('update users set candybongs = 0');
@@ -56,7 +56,7 @@ exports.do = async bot =>
       text + `${i + 1}. ${guild.member(user)}`
         + ` = **${candybongs}**\\🍭 - __${reward}__\n`, '');
 
-  // bot.channels.get(bot_channel)
-  //   .send('🍭  **Candybong Leaderboard Winners** 🎉\n' + winnersText)
-  //   .catch(console.error);
+  bot.channels.get(bot_channel)
+    .send('🍭  **Candybong Leaderboard Winners** 🎉\n' + winnersText)
+    .catch(console.error);
 }
