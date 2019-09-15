@@ -46,15 +46,10 @@ exports.do = async bot =>
     }));
 
   for(const { user, reward } of winners)
-  {
-    await User.addCoins(user, reward);
-    console.log(user);
-    console.log(reward);
-    console.log();
-  }
+    console.log(await User.addCoins(user, reward));
 
   await cooldowns.reset('candybong-get');
-  // await database.query('update users set candybongs = 0');
+  await database.query('update users set candybongs = 0');
 
   const winnersText = winners
     .reduce((text, { user, candybongs, reward }, i) =>
