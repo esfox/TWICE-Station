@@ -30,7 +30,7 @@ exports.automate = bot =>
 
 exports.do = async bot =>
 {
-  const candybongs = await User.getAllCandybongs();
+  const candybongs = await User.getTop10Candybongs();
   if(candybongs.length === 0 ||
     candybongs.every(({ candybongs }) => candybongs === 0))
     return bot.channels.get(dev_channel)
