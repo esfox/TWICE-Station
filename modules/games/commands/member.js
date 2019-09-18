@@ -40,6 +40,7 @@ const unnecessaryInfo =
   'show more',
   'older brother',
   'hanlim',
+  'ambidextrous',
 ];
 
 const misspelledNamesRegex = /Jungyeon|Chaeyeong|Ji-hyo/g;
