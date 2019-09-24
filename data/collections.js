@@ -47,11 +47,11 @@ module.exports =
       "tsb-a", "pgt-a", "tc1-a", "tc2-a", "sgl-a", "twt-a", 
       "mnh-a", "wil-a", "smn-a", "bdz-a", "bdr-a", "yoy-a", 
       "tyy-a", "fcy-a", "htt-a", "cdp-a", "omt-a", "wmu-a",
-      "ht2-a", "bth-a", "hph-a"
+      "ht2-a", "bth-a", "hph-a", "fsp-a"
     ],
     description: `All the ${albumCount} albums and EPs.`
       + ` (Do \`${prefix}albums\` to see all albums and EPs.)`,
-    bonus: 6500
+    bonus: 7000
   },
   {
     name: "TWICE",
