@@ -854,6 +854,57 @@
 			"color": "#FB4A9A",
 			"duration": ""
 		},
+		"feelSpecial": {
+			"code": "fsp",
+			"title": "Feel Special",
+			"tracks": [
+				{
+					"title": "Feel Special",
+					"link": "./music/TWICE - Feel Special/01. Feel Special.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-feel-special"
+				},
+				{
+					"title": "Rainbow",
+					"link": "./music/TWICE - Feel Special/02. RAINBOW.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-rainbow"
+				},
+				{
+					"title": "Get Loud",
+					"link": "./music/TWICE - Feel Special/03. GET LOUD.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-get-loud"
+				},
+				{
+					"title": "Trick It",
+					"link": "./music/TWICE - Feel Special/04. TRICK IT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-trick-it"
+				},
+				{
+					"title": "Love Foolish",
+					"link": "./music/TWICE - Feel Special/05. LOVE FOOLISH.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-love-foolish"
+				},
+				{
+					"title": "21:29",
+					"link": "./music/TWICE - Feel Special/06. 21_29.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-21-29"
+				},
+				{
+					"title": "Breakthrough (Korean Ver.)",
+					"link": "./music/TWICE - Feel Special/07. BREAKTHROUGH (Korean Ver.).mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-breakthrough-korean-ver"
+				}
+			],
+			"cover": "https://i.scdn.co/image/2672add02cdf23f490a3911b837e733a48f66971",
+			"color": "#DEC175",
+			"duration": ""
+		},
 		"candyPop": {
 			"code": "cdp",
 			"title": "Candy Pop",
