@@ -47,7 +47,13 @@ async function action(context)
   }
 
   if(!isSelf)
+  {
+    const candybongs = await User.getCandybongs(author);
+    if(!candybongs || candybongs === 0)
+      return context.send("You don't have any Candy Bongs to give.");
+    
     await User.minusCandybong(author);
+  }
 
   await User.addCandybong(isSelf? author : mention.id);
   context.reply(isSelf?
