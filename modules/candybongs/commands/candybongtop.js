@@ -27,6 +27,8 @@ async function action(context)
         user: context.guild.member(data.user_id),
         candybongs: data.candybongs
       }))
+      .filter(({ user }) => user)
+      .slice(0, 10)
       .reduce((table, { user, candybongs }, i) =>
         table + `#${i + 1}`.padEnd(5, ' ')
           + `[ ${candybongs.toString().padStart(3, ' ')} 🍭 ]  `
