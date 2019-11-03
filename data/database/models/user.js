@@ -154,8 +154,7 @@ const getTop10 = async (attribute, mods = []) => User.findAll(
     [attribute]: { [Op.not]: 0 },
     user_id: { [Op.notIn]: mods }
   },
-  order: [ [ attribute, 'DESC' ] ],
-  limit: 10
+  order: [ [ attribute, 'DESC' ] ]
 });
 
 const update = async (user_id, attribute, amount, toAdd) =>
