@@ -38,6 +38,8 @@ exports.do = async bot =>
 
   const guild = bot.guilds.get(twicepedia);
   const winners = candybongs
+    .filter(({ user_id }) => context.guild.member(user_id))
+    .slice(0, 10)
     .map(({ user_id, candybongs }, i) =>
     ({
       user: user_id,
@@ -45,8 +47,11 @@ exports.do = async bot =>
       reward: rewards.candybongtop[i]
     }));
 
-  for(const { user, reward } of winners)
+  for(let i = 0; i < 10; i++)
+  {
+    const { user, reward } = winners[0];
     await User.addCoins(user, reward);
+  }
 
   await cooldowns.reset('candybong-get');
   await database.query('update users set candybongs = 0');
