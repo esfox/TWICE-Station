@@ -26,7 +26,7 @@ async function action(context)
       .filter(({ user_id }) => context.guild.member(user_id))
       .map(data =>
       ({
-        user: context.guild.member(data.user_id).user,
+        user: context.guild.member(data.user_id),
         candybongs: data.candybongs
       }))
       .slice(0, 10)
