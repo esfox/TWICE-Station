@@ -22,12 +22,13 @@ async function action(context)
 
   const leaderboard = '🍭 Candy Bong Leaderboard\n'
     + '```css\n'
-    + candybongs.map(data =>
+    + candybongs
+      .filter(({ user_id }) => context.guild.member(user_id).user)
+      .map(data =>
       ({
         user: context.guild.member(data.user_id).user,
         candybongs: data.candybongs
       }))
-      .filter(({ user }) => user)
       .slice(0, 10)
       .reduce((table, { user, candybongs }, i) =>
         table + `#${i + 1}`.padEnd(5, ' ')
