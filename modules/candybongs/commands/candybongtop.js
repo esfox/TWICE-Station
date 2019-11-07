@@ -24,7 +24,7 @@ async function action(context)
     + '```css\n'
     + candybongs.map(data =>
       ({
-        user: context.guild.member(data.user_id),
+        user: context.guild.member(data.user_id).user,
         candybongs: data.candybongs
       }))
       .filter(({ user }) => user)
