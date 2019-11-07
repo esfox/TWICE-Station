@@ -23,7 +23,7 @@ async function action(context)
   const leaderboard = '🍭 Candy Bong Leaderboard\n'
     + '```css\n'
     + candybongs
-      .filter(({ user_id }) => context.guild.member(user_id).user)
+      .filter(({ user_id }) => context.guild.member(user_id))
       .map(data =>
       ({
         user: context.guild.member(data.user_id).user,

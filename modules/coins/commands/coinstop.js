@@ -28,7 +28,7 @@ async function action(context)
   const leaderboard = '💰 **TWICE**COINS Leaderboard\n'
     + '```css\n'
     + coins
-      .filter(({ user_id }) => context.guild.member(user_id).user)
+      .filter(({ user_id }) => context.guild.member(user_id))
       .map(data =>
       ({
         user: context.guild.member(data.user_id).user,
