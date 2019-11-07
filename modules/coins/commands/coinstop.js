@@ -32,6 +32,8 @@ async function action(context)
         user: context.guild.member(data.user_id).user,
         coins: data.coins
       }))
+      .filter(({ user }) => user)
+      .slice(0, 10)
       .reduce((table, { user, coins }, i) =>
         table + `#${i + 1}`.padEnd(5, ' ')
           + `${user.tag.padEnd(17, ' ')} `
