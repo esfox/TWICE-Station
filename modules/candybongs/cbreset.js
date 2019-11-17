@@ -48,8 +48,11 @@ exports.do = async bot =>
       reward: rewards.candybongtop[i]
     }));
 
-  for(const { user, reward } of winners)
+  for(let i = 0; i < 10; i++)
+  {
+    const { user, reward } = winners[0];
     await User.addCoins(user, reward);
+  }
 
   await cooldowns.reset('candybong-get');
   await database.query('update users set candybongs = 0');

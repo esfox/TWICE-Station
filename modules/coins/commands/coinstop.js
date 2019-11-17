@@ -27,11 +27,14 @@ async function action(context)
 
   const leaderboard = '💰 **TWICE**COINS Leaderboard\n'
     + '```css\n'
-    + coins.map(data =>
+    + coins
+      .filter(({ user_id }) => context.guild.member(user_id))
+      .map(data =>
       ({
         user: context.guild.member(data.user_id).user,
         coins: data.coins
       }))
+      .slice(0, 10)
       .reduce((table, { user, coins }, i) =>
         table + `#${i + 1}`.padEnd(5, ' ')
           + `${user.tag.padEnd(17, ' ')} `
