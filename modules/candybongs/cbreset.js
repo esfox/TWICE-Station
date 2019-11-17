@@ -28,6 +28,7 @@ exports.automate = bot =>
   console.log('CandyBong Reset Automation started.');
 }
 
+/** @param {import('discord.js').Client} bot */
 exports.do = async bot =>
 {
   const candybongs = await User.getTop10Candybongs();
@@ -38,7 +39,7 @@ exports.do = async bot =>
 
   const guild = bot.guilds.get(twicepedia);
   const winners = candybongs
-    .filter(({ user_id }) => context.guild.member(user_id))
+    .filter(({ user_id }) => guild.member(user_id))
     .slice(0, 10)
     .map(({ user_id, candybongs }, i) =>
     ({
