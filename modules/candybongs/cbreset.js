@@ -50,7 +50,7 @@ exports.do = async bot =>
 
   for(let i = 0; i < 10; i++)
   {
-    const { user, reward } = winners[0];
+    const { user, reward } = winners[i];
     await User.addCoins(user, reward);
   }
 
