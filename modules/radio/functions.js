@@ -68,7 +68,7 @@ const play = (bot, track) =>
 module.exports.play = play;
 
 module.exports.findSong = query => 
-  tracks.find(({ title }) => compare(title, query));
+  tracks.find(({ title }) => compare(title, query, true));
 
 /** @param {import('discord-utils').Context} context*/
 module.exports.notJoined = context =>
