@@ -87,8 +87,8 @@
 				},
 				{
 					"title": "I'm Gonna Be a Star",
-					"link": "",
-					"duration": "./music/igbas.mp3",
+					"link": "./music/igbas.mp3",
+					"duration": "",
 					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-im-gonna-star"
 				}
 			],
