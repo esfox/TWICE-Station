@@ -15,8 +15,7 @@ module.exports = class extends Command
   }
 }
 
-// Temporary winner count
-const winnerCount = 25;
+const winnerCount = 3;
 
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
@@ -33,15 +32,13 @@ async function action(context)
   if(participants.length <= winnerCount)
     return context.send("❌  There are too few particiants.");
 
-  // TODO: Remove temporary Christmas raffle
-
-  // const prizes = raffle_prize_distribution.map(percentage =>
-  //   Math.round(prize * percentage));
-  // prizes.push(prizes.reduce((sum, p) => sum - p, prize));
+  const prizes = raffle_prize_distribution.map(percentage =>
+    Math.round(prize * percentage));
+  prizes.push(prizes.reduce((sum, p) => sum - p, prize));
 
   prize = prize / winnerCount;
 
-  const winners = new Array(winnerCount /* 3 */).fill(0).reduce((winners, _, i) =>
+  const winners = new Array(winnerCount).fill(0).reduce((winners, _, i) =>
   {
     participants = participants
       .map(participant => context.guild.member(participant))
@@ -50,10 +47,9 @@ async function action(context)
 
     const winner = 
     {
-      // place: [ '1st', '2nd', '3rd', '4th', '5th' ][i],
-      place: i + 1,
+      place: [ '1st', '2nd', '3rd' ][i],
       user: randomElement(participants),
-      prize/* : prizes[i] */
+      prize: prizes[i]
     }
 
     return winners.concat(winner);
@@ -64,12 +60,10 @@ async function action(context)
 
   for(const { place, user, prize } of winners)
   {
-    // context.send(`📥  Drawing ${place} winner...`);
-    context.send(`📥  Drawing winner #${place}...`);
+    context.send(`📥  Drawing ${place} winner...`);
     await sleep(5);
         
-    // context.send(`And the ${place} winner is...`);
-    context.send(`And winner #${place} is...`);
+    context.send(`And the ${place} winner is...`);
     await sleep(3);
 
     context.chat(`<@${user.id}>! You win __**${prize}**__ TWICECOINS! 🎉`);
@@ -77,8 +71,7 @@ async function action(context)
     await sleep(2);
   }
 
-  // await context.send('🎉 Congratulations to all the winners! 🎉');
-  await context.send('🎄 Merry Christmas and congratulations to all the winners! 🎄');
+  await context.send('🎉 Congratulations to all the winners! 🎉');
 
   data.raffle.isDrawing = false;
   data.raffle.inProgress = false;
