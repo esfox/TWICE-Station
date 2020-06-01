@@ -32,6 +32,7 @@ module.exports =
     "492893896745943081",
     "252251141419696128",
     "274336998771130368",
+    "182584303161442304",
   ],
   server_invite: "https://discord.gg/fC76MQG",
   coin_image: "https://i.imgur.com/Sw24N6D.png",
