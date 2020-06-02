@@ -14,7 +14,7 @@ const musicPlayer = require('./modules/radio/player');
 const { play: startMusic } = require('./modules/radio/functions');
 const cbreset = require('./modules/candybongs/cbreset');
 
-let { client, channel, ping } = config.developer;
+let { client, ping, /* channel */ } = config.developer;
 const { followables, followable_media } = config;
 
 const [ token ] = process.argv.slice(2);
@@ -35,7 +35,7 @@ bot.on('ready', async _ =>
   {
     ping += '‍';
     config.prefixes = [ '`' ];
-    config.embed_color = '#36393F';
+    // config.embed_color = '#36393F';
   }
   else 
   {
@@ -46,10 +46,10 @@ bot.on('ready', async _ =>
     
   context.setConfig(config);
 
-  const pingChannel = bot.channels.get(channel);
-  if(pingChannel)
-    pingChannel.send(ping)
-      .catch(console.error);
+  // const pingChannel = bot.channels.get(channel);
+  // if(pingChannel)
+  //   pingChannel.send(ping)
+  //     .catch(console.error);
 
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });

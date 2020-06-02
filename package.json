@@ -16,7 +16,7 @@
     "node-schedule": "^1.3.2",
     "opusscript": "0.0.6",
     "sequelize": "^5.18.0",
-    "sqlite3": "^4.0.8"
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "link-module-alias": "^1.2.0"
@@ -25,10 +25,10 @@
     "link-modules": "link-module-alias"
   },
   "_moduleAliases": {
-    "utils": "utils",
-    "data": "data",
-    "database": "data/database",
-    "config": "config"
+    "utils": "bot/utils",
+    "data": "bot/data",
+    "database": "bot/data/database",
+    "config": "bot/config"
   },
   "repository": {
     "type": "git",
