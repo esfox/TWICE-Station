@@ -4,7 +4,7 @@ const { db } = require('..');
 const oldDB = knex(
 {
   client: 'sqlite3',
-  connection: { filename: './bot/data/database/data.sqlite' },
+  connection: { filename: './data/database/data.sqlite' },
   useNullAsDefault: true,
 });
 
