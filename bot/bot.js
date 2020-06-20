@@ -56,7 +56,7 @@ bot.on('ready', async _ =>
 
 bot.on('message', async message =>
 {
-  if(message.content === ping)
+  if(message.content === ping && message.channel.id === '533908427399757826')
     message.delete();
 
   if(message.author.bot)
