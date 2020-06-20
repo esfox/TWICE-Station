@@ -1,7 +1,7 @@
 const { Command } = require('discord-utils');
 const { getMention } = require('utils/functions');
 const { coin_image } = require('config/config');
-const { User } = require('database');
+const { Coins } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -24,12 +24,17 @@ async function action(context)
     return context.send('Bots cannot have coins.');
 
   const userID = member.id;
-  const noMention = userID === author.id;  
-  const coins = await User.getCoins(userID);
+  const noMention = userID === author.id; 
+
+  const coins = await Coins.ofUser(userID)
+  if(coins === undefined)
+    return context.error("Whoops. Can't get the coins. Please try again.");
+
   if(coins === 0)
     return context.reply(noMention? 
       "You don't have coins yet." :
-      "That user doesn't have coins yet.");
+      "That user doesn't have coins yet."
+    );
 
   const coinsText = `Current TWICECOINS: ${coins.toLocaleString()}`;
   const embed = context.embed(noMention?

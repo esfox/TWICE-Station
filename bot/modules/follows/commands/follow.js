@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const { getChannelMentions, channelsText } = require('utils/functions');
-const { User } = require('database');
+const { Follows } = require('api/models');
 
 /** @type {string[]} */
 const { followables } = require('config/config');
@@ -29,22 +29,22 @@ async function action(context)
       'That channel' : 'Those channels'} cannot be followed.`);
 
 	const toFollow = ids.filter(followable);
-  const followed = await User.addFollows(context.message.author.id, toFollow);
-	if(!followed)
-		return context.send('You have already followed'
-			+ ` ${ids.length === 1? 'that channel' : 'those channels'}.`);
-  const description = followed.map(channel =>   `<#${channel}>`).join(' ')
-		+ `\n\nMedia posted on ${followed.length === 1?
+  const followResult = await Follows.addToUser(context.message.author.id, toFollow);
+  if(followResult === undefined)
+      return context.error("Whoops. Something went wrong. Please try again.");
+
+  const description = toFollow.map(channel => `<#${channel}>`).join(' ')
+		+ `\n\nMedia posted on ${toFollow.length === 1?
       'this channel' : 'these channels'} will be DM'ed to you.`;
       
   const embed = context.embed('🔔  Followed...', description);
 
-  const alreadyFollowed = channels.filter(({ id }) => !followed.includes(id));
+  const alreadyFollowed = channels.filter(({ id }) => !toFollow.includes(id));
 	if(alreadyFollowed.length > 0)
     embed.setFooter('You have already followed' 
       + ` ${channelsText(alreadyFollowed)}.`);
 
-    const unfollowables = channels.filter(({ id }) => !followable(id));
+  const unfollowables = channels.filter(({ id }) => !followable(id));
   if(unfollowables.length > 0)
     embed.setFooter(`${channelsText(unfollowables)} cannot be followed.`);
 			

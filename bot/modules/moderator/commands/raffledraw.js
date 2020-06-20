@@ -2,7 +2,7 @@ const { Command } = require('discord-utils');
 const { sleep, randomElement } = require('utils/functions');
 const { raffle_prize_distribution } = require('config/config');
 const { loadData, save } = require('data/saved');
-const { User } = require('database');
+const { Coins } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -67,7 +67,10 @@ async function action(context)
     await sleep(3);
 
     context.chat(`<@${user.id}>! You win __**${prize}**__ TWICECOINS! 🎉`);
-    await User.addCoins(user.id, prize);
+    const rewardResult = await Coins.addToUser(user.id, prize);
+    if(rewardResult === undefined)
+      context.error(`Whoops. Something went wrong with giving coins to <@${user.id}>.`
+        + `Please ask a moderator to manually give the reward. (${prize} twicecoins)`);
     await sleep(2);
   }
 

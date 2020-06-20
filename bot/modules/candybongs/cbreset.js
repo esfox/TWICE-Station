@@ -7,9 +7,8 @@ const
 } = require('config/config');
 
 const schedule = require('node-schedule');
-const { User } = require('database');
-const database = require('database');
 const cooldowns = require('utils/cooldown');
+const { Coins, Candybongs } = require('api/models');
 
 /** @param {import('discord.js').Client} bot */
 exports.automate = bot =>
@@ -31,36 +30,41 @@ exports.automate = bot =>
 /** @param {import('discord.js').Client} bot */
 exports.do = async bot =>
 {
-  const candybongs = await User.getTop10Candybongs();
-  if(candybongs.length === 0 ||
-    candybongs.every(({ candybongs }) => candybongs === 0))
-    return bot.channels.get(dev_channel)
-      .send('Candybong reset failed. No one has Candybongs.');
+  const devChannel = bot.channels.get(dev_channel);
+    
+  const candybongs = await Candybongs.top();
+  if(candybongs === undefined)
+    return devChannel.send('Candybong reset failed. An error occurred on getting the candybongs.');
+
+  if(candybongs.length === 0 || candybongs.every(({ candybongs }) => candybongs === 0))
+    return devChannel.send('Candybong reset failed. No one has Candybongs.');
 
   const guild = bot.guilds.get(twicepedia);
   const winners = candybongs
-    .filter(({ user_id }) => guild.member(user_id))
-    .slice(0, 10)
-    .map(({ user_id, candybongs }, i) =>
+    .filter(({ discord_id }) => guild.member(discord_id))
+    .map(({ discord_id, candybongs }, i) =>
     ({
-      user: user_id,
+      user: discord_id,
       candybongs,
       reward: rewards.candybongtop[i]
     }));
 
-  for(let i = 0; i < 10; i++)
+  for(const winner of winners)
   {
-    const { user, reward } = winners[i];
-    await User.addCoins(user, reward);
+    const { user, reward } = winner;
+    const rewardResult = await Coins.addToUser(user, reward);
+    if(rewardResult === undefined)
+      return devChannel.send('Candybong reset failed. An error has occurred on adding coins.');
   }
 
   await cooldowns.reset('candybong-get');
-  await database.query('update users set candybongs = 0');
 
-  const winnersText = winners
-    .reduce((text, { user, candybongs, reward }, i) =>
-      text + `${i + 1}. ${guild.member(user)}`
-        + ` = **${candybongs}**\\🍭 - __${reward}__\n`, '');
+  const resetResult = await Candybongs.reset();
+  if(resetResult === undefined)
+    return devChannel.send('Error occurred on resetting the candybongs, but coins were awarded.');
+
+  const winnersText = winners.reduce((text, { user, candybongs, reward }, i) =>
+    text + `${i + 1}. ${guild.member(user)} = **${candybongs}**\\🍭 - __${reward}__\n`, '');
 
   bot.channels.get(bot_channel)
     .send('🍭  **Candybong Leaderboard Winners** 🎉\n' + winnersText)

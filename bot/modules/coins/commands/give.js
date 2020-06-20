@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const { getMentionAndAmount } = require('utils/functions');
-const { User } = require('database');
+const { Coins } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -23,23 +23,17 @@ async function action(context)
 
   const giver = context.message.member;
   const giverID = giver.id;
+  const receiverID = receiver.id;
 
-  if(receiver.id ===  giver.id)
+  if(receiverID === giverID)
     return context.send("❌  You can't give to yourself. 🤔");
 
-  let giverCoins = await User.getCoins(giverID);
-  if(giverCoins <= 0 || giverCoins < amount)
-    return context.send("❌ You don't have enough coins.");
+  const giveResult = await Coins.transfer(giverID, receiverID, amount);
+  if(giveResult === undefined)
+    return context.error("Whoops. Can't transfer your coins. Please try again.");
     
-  const receiverID = receiver.id;
-  amount = Math.abs(amount);
-
-  let receiverCoins = await User.getCoins(receiverID);
-  giverCoins -= amount;
-  receiverCoins += amount;
-
-  giverCoins = await User.setCoins(giverID, giverCoins);
-  receiverCoins = await User.setCoins(receiverID, receiverCoins);
+  if(giveResult === 0)
+    return context.send("❌ You don't have enough coins.");
 
   context.send(`✅  ${receiver.displayName} has received`
     + ` ${amount} TWICECOINS.`, `from ${giver.displayName}`);

@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const { User } = require('database');
+const { Follows } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -16,7 +16,10 @@ module.exports = class extends Command
 async function action(context)
 {
   /** @type {string[]} */
-  const follows = await User.getFollows(context.message.author.id);
+  const follows = await Follows.ofUser(context.message.author.id);
+  if(follows === undefined)
+    return context.error("Whoops. Can't get your followed channels. Please try again.");
+
   if(!follows)
     return context.send('You are not following any channels.');
 

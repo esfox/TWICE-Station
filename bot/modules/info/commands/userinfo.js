@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const { getMention } = require('../../../utils/functions');
-const { User } = require('database');
+const { Coins, Candybongs } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -23,7 +23,7 @@ async function action(context)
 
   const info = context.embed()
     .setAuthor(member.user.tag, member.user.displayAvatarURL)
-    .setThumbnail(member.displayAvatarURL)
+    .setThumbnail(member.user.displayAvatarURL)
     .addField('User ID', member.id);
 
   if(member.nickname)
@@ -40,8 +40,14 @@ async function action(context)
     info.addField('Roles', roles.map(role => role.toString()).join(' '));
   }
 
-  const coins = await User.getCoins(member.id);
-  const candybongs = await User.getCandybongs(member.id);
+  const coins = await Coins.ofUser(member.id);
+  if(coins === undefined)
+    return context.error("Whoops. Can't get the user's coins. Please try again.s");
+
+  const candybongs = await Candybongs.ofUser(member.id);
+  if(coins === undefined)
+    return context.error("Whoops. Can't get the user's candy bongs. Please try again.s");
+
   info.setFooter(`User has: 💰 ${coins.toLocaleString()} TWICECOINS`
     + ` | 🍭 ${candybongs} Candy Bongs`);
   

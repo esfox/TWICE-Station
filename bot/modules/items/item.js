@@ -3,7 +3,8 @@ const members = require('data/members');
 const collections = require('data/collections');
 const { albums } = require('data/music.json');
 const { randomElement } = require('utils/functions');
-const { User } = require('database');
+// const { User } = require('database');
+const { Coins, Collections } = require('api/models');
 
 const itemList = values.reduce((list, { items }) => list.concat(items), []);
 const masterList = values.reduce((list, { value, items, cost }) => 
@@ -37,8 +38,7 @@ exports.masterList = masterList;
 
 const getValue = code =>
 {
-  const value = values
-    .find(({ items }) => items.some(({ code: _code }) => _code === code));
+  const value = values.find(({ items }) => items.some(({ code: _code }) => _code === code));
   const { value: name, text, chance, cost } = value;
   return { name, text, chance, cost };
 }
@@ -90,7 +90,7 @@ exports.getRandomItem = _ =>
   if(!value)
     return;
 
-  const item = { ...getBaseItem(randomElement(value.items).code) };
+  const item = { ...getBaseItem('p'/* randomElement(value.items).code */) };
   if(item.ofMember)
   {
     const member = randomElement(members);
@@ -122,50 +122,34 @@ exports.getRandomItem = _ =>
   return item;
 }
 
-exports.addItemToUser = async (user_id, code) =>
-{
-  const bag = await User.getItems(user_id) || {};
-  console.log(Object.keys(bag).reduce((total, code) => total + bag[code], 0));
-  if(Object.keys(bag).reduce((total, code) => total + bag[code], 0) > 100)
-    return;
-
-  let item = bag[code];
-  if(!item)
-    item = 0;
-
-  bag[code] = item + 1;
-  return await User.setItems(user_id, bag);
-}
-
 exports.checkForCollections = async (user_id, items, toRemove) =>
 {
   items = Object.keys(items);
 
-  let newCollections = collections.filter(({ items: collectionItems }) =>
+  let completedCollections = collections.filter(({ items: collectionItems }) =>
     collectionItems.every(item => items.includes(item)));
 
-  const userCollections = await User.getCollections(user_id);
+  const userCollections = await Collections.ofUser(user_id);
   if(toRemove)
   {
-    newCollections = newCollections.length > 0? newCollections : [];
+    // newCollections = newCollections.length > 0? newCollections : [];
     if(userCollections.length > 0)
-      await User.setCollections(user_id,
-        newCollections.map(({ code }) => code));
+      await Collections.set(user_id, completedCollections.map(({ code }) => code));
     return;
   }
 
   if(userCollections)
-    newCollections = newCollections.filter(({ code }) => 
+    completedCollections = completedCollections.filter(({ code }) => 
       !userCollections.includes(code));
 
-  if(newCollections.length > 0)
+  if(completedCollections.length > 0)
   {
-    await User.setCollections(user_id, 
-      newCollections.map(({ code }) => code).concat(userCollections));
+    await Collections.set(user_id,
+      completedCollections.map(({ code }) => code).concat(userCollections));
 
-    const bonus = newCollections.reduce((sum, { bonus }) => sum + bonus, 0);
-    await User.addCoins(user_id, bonus);
+    const bonus = completedCollections.reduce((sum, { bonus }) => sum + bonus, 0);
+    await Coins.addToUser(user_id, bonus);
   }
 
-  return newCollections;
+  return completedCollections;
 }

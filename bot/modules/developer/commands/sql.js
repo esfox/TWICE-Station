@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const database = require('database');
+const { db } = require('api/database')
 
 module.exports = class extends Command
 {
@@ -19,8 +19,7 @@ async function action(context)
   if(!raw_parameters)
     return context.send('❌  What query?');
 
-  let result = await database.query(raw_parameters)
-    .then(([ result ]) => result)
+  let result = await db.raw(raw_parameters)
     .catch(({ message }) =>
     {
       context.send(`❌  ${message}`);
@@ -30,7 +29,7 @@ async function action(context)
   if(result === false)
     return;
 
-  if(!result)
+  if(!result || result.length === 0)
     return context.send('✅  Query successful');
 
   result = JSON.stringify(result, null, 2);
@@ -39,6 +38,8 @@ async function action(context)
     const blocks = result.match(/(.|[\r\n]){1,1950}(\}\,|$)/g);
     for(const block of blocks)
       await context.chat('```json\n' + block + '\n```');
+
+    return;
   }
 
   context.chat('```json\n' + result + '\n```');

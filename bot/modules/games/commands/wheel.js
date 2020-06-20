@@ -4,7 +4,7 @@ const { Command } = require('discord-utils');
 const { emotes, rewards, cooldowns: cooldown } = require('config/config');
 
 const members = require('data/members');
-const { User } = require('database');
+const { Coins } = require('api/models');
 
 const { sleep, randomElement, onCooldown } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
@@ -48,7 +48,11 @@ async function action(context)
   const chosenMember = randomElement(members);
   const won = member.code === chosenMember.code;
   if(won)
-    await User.addCoins(user.id, rewards.wheel)
+  {
+    const rewardResult = await Coins.addToUser(user.id, rewards.wheel);
+    if(rewardResult === undefined)
+      return context.error("Whoops. Can't add your reward.");
+  }
 
   const description = `${choseText}`
     + `The wheel stopped at **${chosenMember.name}**!\n\n`

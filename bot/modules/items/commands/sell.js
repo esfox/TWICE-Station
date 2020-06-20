@@ -3,7 +3,7 @@ const { compare } = require('utils/functions');
 const itemList = require('data/items');
 const collections = require('data/collections');
 const { masterList: items, checkForCollections } = require('../item');
-const { User } = require('database');
+const { Items, Coins } = require('api/models');
 
 const values = itemList.map(({ value }) => value);
 
@@ -49,8 +49,11 @@ class Seller
     }
 
     this.userID = context.message.author.id;
-    this.userItems = await User.getItems(this.userID);
-    if(!this.userItems)
+    this.userItems = await Items.ofUser(this.userID);
+    if(this.userItems === undefined)
+      return context.error("Whoops. Something went wrong. Please try again.");
+
+    if(Object.keys(this.userItems).length === 0)
       return context.send("❌  You don't have items.");
 
     if(args === 'all')
@@ -69,7 +72,7 @@ class Seller
       return this.sellByCollection(collection);
 
     const item = items.find(({ name, code }) =>
-      compare(args, name, true) || compare(args, code, true))
+      compare(args, name, true, true) || compare(args, code, true, true));
     if(item)
       return this.sellByItem(item, amount);
 
@@ -78,8 +81,8 @@ class Seller
 
   async save()
   {
-    await User.setItems(this.userID, this.userItems);
-    await User.addCoins(this.userID, this.earn);
+    await Items.set(this.userID, this.userItems);
+    await Coins.addToUser(this.userID, this.earn);
   }
 
   respond(response)

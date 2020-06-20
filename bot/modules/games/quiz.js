@@ -1,7 +1,8 @@
 const { RichEmbed, MessageCollector } = require('discord.js');
-const { User } = require('database');
 const { games_time_limit, embed_color } = require('config/config');
 const { compare } = require('utils/functions');
+// const { User } = require('database');
+const { Coins } = require('api/models');
 
 class Quiz
 {
@@ -52,7 +53,8 @@ class Quiz
         embed.setFooter(extraInfo);
   
       if(isCorrect)
-        await User.addCoins(message.author.id, reward);
+        await Coins.addToUser(message.author.id, reward);
+        // await User.addCoins(message.author.id, reward);
         
       message.reply(embed);
     });

@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const { User } = require('database');
+const { Candybongs } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -16,17 +16,20 @@ module.exports = class extends Command
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
-  const candybongs = await User.getTop10Candybongs();
+  const candybongs = await Candybongs.top();
+  if(candybongs === undefined)
+    return context.error("Whoops. Can't get the Candy Bong leaderboard. Please try again.");
+
   if(candybongs.length === 0)
     return context.send('No one has candybongs yet.');
 
   const leaderboard = '🍭 Candy Bong Leaderboard\n'
     + '```css\n'
     + candybongs
-      .filter(({ user_id }) => context.guild.member(user_id))
+      .filter(({ discord_id }) => context.guild.member(discord_id))
       .map(data =>
       ({
-        user: context.guild.member(data.user_id),
+        user: context.guild.member(data.discord_id),
         candybongs: data.candybongs
       }))
       .slice(0, 10)
@@ -35,5 +38,6 @@ async function action(context)
           + `[ ${candybongs.toString().padStart(3, ' ')} 🍭 ]  `
           + `${user.displayName}\n`, '')
     + '\n```';
+
   context.chat(leaderboard);
 }

@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const { getItemDisplayInfo } = require('../item');
-const { User } = require('database');
+const { Items } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -18,11 +18,14 @@ module.exports = class extends Command
 async function action(context)
 {
   const user = context.message.author;
-  let items = await User.getItems(user.id);
-  if(!items)
-    return context.reply('❌  Your OnceBag is empty.');
+  let items = await Items.ofUser(user.id);
+  if(items === undefined)
+    return context.error("Whoops. Can't get your items. Please try again.");
 
   const itemCodes = Object.keys(items);
+  if(itemCodes.length === 0)
+    return context.reply('❌  Your OnceBag is empty.');
+  
   const itemsPerList = 20;
   let total = 0;
   let totalCost = 0;

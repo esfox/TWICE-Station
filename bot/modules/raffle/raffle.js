@@ -1,6 +1,6 @@
 const { loadData, save } = require('data/saved');
 const { raffle_fee } = require('config/config');
-const { User } = require('database');
+const { Coins } = require('api/models');
 
 class Raffle
 {
@@ -17,12 +17,15 @@ class Raffle
     if(this.raffle.participants.includes(user))
       return this.context.reply('❌  You have already joined the raffle.');
 
-    const userCoins = await User.getCoins(user);
+    const userCoins = await Coins.ofUser(user);
     if(userCoins < raffle_fee)
       return this.context
         .reply("❌  You don't have enough TWICECOINS to join.");
 
-    await User.addCoins(user, -raffle_fee);
+    const feePaymentResult = await Coins.subtractFromUser(user, raffle_fee);
+    if(feePaymentResult === undefined)
+      return this.context.error("Whoops. Couldn't join the raffle. Please try again.");
+      
     this.raffle.participants.push(user);
     update(this.raffle);
 

@@ -2,10 +2,10 @@ const command = 'search';
 
 const { Command } = require('discord-utils');
 const { randomElement, onCooldown } = require('utils/functions');
+const { Items } = require('api/models');
 const
 { 
   getRandomItem, 
-  addItemToUser, 
   checkForCollections 
 } = require('../item');
 
@@ -55,12 +55,16 @@ async function action(context)
     embed.setThumbnail(item.image);
 
   const userID = context.message.author.id;
-  const items = await addItemToUser(userID, item.code);
-  if(!items)
+  const itemAddResult = await Items.addToUser(userID, item.code);
+  if(itemAddResult === undefined)
+    return context.error("Whoops. Can't save your item to your bag. Please try again.");
+
+  if(itemAddResult === false)
     return context.reply('❌  You OnceBag is full.');
 
   context.chat(embed, true);
 
+  const items = await Items.ofUser(userID);
   const collections = await checkForCollections(userID, items);
   const collectionsCount = collections.length;
   if(collectionsCount === 0)

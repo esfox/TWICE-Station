@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
-const { User } = require('database');
 const { loadData, save } = require('data/saved');
+const { Coins } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -22,11 +22,16 @@ async function action(context)
   amount = Math.abs(parseInt(amount));
 
   const user = context.message.author.id;
-  const userCoins = await User.getCoins(user);
-  if(!userCoins || userCoins < amount)
+  const userCoins = await Coins.ofUser(user)
+  if(userCoins === undefined)
+    return context.error("Whoops. Can't get your coins. Please try again.");
+
+  if(userCoins < amount)
     return context.reply("❌  You don't have enough coins.");
 
-  await User.setCoins(user, userCoins - amount);
+  const subtractResult = await Coins.subtractFromUser(user, amount);
+  if(subtractResult === undefined)
+    return context.error("Whoops. Some error happened. Please try again.");
 
   const data = await loadData();
   data.bank += amount;

@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const { getMentionAndAmount } = require('utils/functions');
-const { User } = require('database');
+const { Coins } = require('api/models');
 
 module.exports = class extends Command
 {
@@ -20,6 +20,9 @@ async function action(context)
   if(!member || !amount)
     return;
     
-  await User.addCoins(member.id, amount);
+  const addResult = await Coins.addToUser(member.id, amount);
+  if(addResult === undefined)
+    return context.error("Whoops. Can't add coins. Please try again.");
+
   context.send(`💵  ${member.displayName} has received ${amount} TWICECOINS.`);
 }

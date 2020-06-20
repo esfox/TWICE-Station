@@ -1,5 +1,5 @@
 const { Command } = require('discord-utils');
-const database = require('database');
+const { db } = require('api/database')
 
 module.exports = class extends Command
 {
@@ -19,7 +19,7 @@ async function action(context)
   if(!raw_parameters)
     return context.send('❌  Reset what?');
 
-  const result = await database.reset(raw_parameters)
+  const result = await db.raw(`delete from ${raw_parameters}`)
     .catch(({ message }) => { context.send(`❌  ${message}`); });
 
   if(!result)

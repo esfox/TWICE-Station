@@ -1,16 +1,20 @@
 exports.randomElement = array => 
   array[Math.floor(Math.random() * array.length)];
 
-const simplify = string => string
+const simplify = (string, expectDashes) => string
   .toLowerCase()
   .trim()
   .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
-  .replace(/\s|!|\?|\\|\(|\)|\.|\-|\#|\:|\'/g, '');
+  .replace(expectDashes
+    ? /\s|!|\?|\\|\(|\)|\.|\#|\:|\'/g
+    : /\s|!|\?|\\|\(|\)|\.|\-|\#|\:|\'/g,
+    ''
+  );
 
-exports.compare = (text1, text2, exact) => 
+exports.compare = (text1, text2, exact, itemsCompare) => 
 {
-  text1 = simplify(text1);
-  text2 = simplify(text2);
+  text1 = simplify(text1, itemsCompare);
+  text2 = simplify(text2, itemsCompare);
   return exact? text1 === text2 : text1.match(text2);
 }
 
