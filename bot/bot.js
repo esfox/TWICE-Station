@@ -13,6 +13,7 @@ const { sleep, chunk } = require('utils/functions');
 const musicPlayer = require('./modules/radio/player');
 const { play: startMusic } = require('./modules/radio/functions');
 const cbreset = require('./modules/candybongs/cbreset');
+const autoReminders = require('./modules/info/auto-reminders');
 
 let { client, ping, /* channel */ } = config.developer;
 const { followables, followable_media } = config;
@@ -29,7 +30,9 @@ bot.on('ready', async _ =>
   console.log('Bot connected.');
 
   musicPlayer.init(bot);
+
   cbreset.automate(bot);
+  autoReminders.startUpdateReminder(bot);
 
   if(bot.user.id === client)
   {
@@ -69,7 +72,7 @@ bot.on('message', async message =>
   if(message.guild.id !== config.twicepedia)
     return;
 
-  if(followables.includes(message.channel.id)/*  && bot.user.id !== client */)
+  if(followables.includes(message.channel.id) && bot.user.id !== client)
     return sendToFollowers(message);
 
   if((await loadData()).raffle.isDrawing)
