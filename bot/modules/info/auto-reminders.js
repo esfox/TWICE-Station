@@ -13,7 +13,7 @@ exports.startUpdateReminder = bot =>
       + " aren't correct and also if any problem occurs with the bot.\n\n"
       + "It would be nice if you could help on checking for breaks or bugs"
       + " (since the update was kind of major) so if you encounter one,"
-      + " please tell me right away.\n\nThank you!\n\n`possibly new features to come`");
+      + " please tell him right away.\n\nThank you!\n\n`possibly new features to come`");
 
   const sendReminder = () =>
   {
