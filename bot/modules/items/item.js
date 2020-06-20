@@ -90,7 +90,7 @@ exports.getRandomItem = _ =>
   if(!value)
     return;
 
-  const item = { ...getBaseItem('p'/* randomElement(value.items).code */) };
+  const item = { ...getBaseItem(randomElement(value.items).code) };
   if(item.ofMember)
   {
     const member = randomElement(members);
