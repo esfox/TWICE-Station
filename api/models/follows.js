@@ -48,6 +48,24 @@ class Follows extends Objects
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
   /**
+   * Gets the followers of a given channel.
+   * 
+   * @param {string} channel Discord ID of the channel.
+   * @param {string} sender User who sent media in the channel.
+   */
+  async ofChannel(channel, sender)
+  {
+    return this.users()
+      .select('discord_id')
+      .where(`follows`, 'like', `%${channel}%`)
+      .andWhereNot('discord_id', sender)
+      .then(result => result.map(({ discord_id }) => discord_id))
+      .catch(console.error);
+  }
+
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+  /**
    * Resets all follows to empty.
    */
   reset()

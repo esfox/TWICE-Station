@@ -6,7 +6,7 @@ const { Context } = require('discord-utils');
 const context = new Context(bot);
 context.setModulesPath(`${__dirname}/modules`);
 
-const database = require('database');
+const { Follows } = require('api/models');
 const { loadData } = require('data/saved');
 
 const { sleep, chunk } = require('utils/functions');
@@ -24,8 +24,8 @@ bot
 
 bot.on('ready', async _ =>
 {
-  await database.init();
-  console.log('Database connected.');
+  // await database.init();
+  // console.log('Database connected.');
   console.log('Bot connected.');
 
   musicPlayer.init(bot);
@@ -69,7 +69,7 @@ bot.on('message', async message =>
   if(message.guild.id !== config.twicepedia)
     return;
 
-  if(followables.includes(message.channel.id))
+  if(followables.includes(message.channel.id)/*  && bot.user.id !== client */)
     return sendToFollowers(message);
 
   if((await loadData()).raffle.isDrawing)
@@ -97,11 +97,8 @@ async function sendToFollowers(message)
     return;
   links = chunk(links, 5);
   
-  let followers = await database.Follows
-    .getChannelFollowers(message.channel.id, message.author.id);
-  followers = message.guild.members.array()
-    .filter(({ id }) => followers.includes(id));
-
+  let followers = await Follows.ofChannel(message.channel.id, message.author.id);
+  followers = message.guild.members.array().filter(({ id }) => followers.includes(id));
   for(const follower of followers)
   {
     links.forEach(content => follower.send('`Message link:` ' 
