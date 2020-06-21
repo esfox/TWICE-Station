@@ -1,0 +1,1233 @@
+{
+	"albums": {
+		"theStoryBegins": {
+			"code": "tsb",
+			"title": "The Story Begins",
+			"tracks": [
+				{
+					"title": "Like OOH-AHH",
+					"link": "./music/TWICE - THE STORY BEGINS/01. Like OOH-AHH.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2015/10/twice-like-ooh-ahh-ooh-ahhhage"
+				},
+				{
+					"title": "Do It Again",
+					"link": "./music/TWICE - THE STORY BEGINS/02. Do it again.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2015/10/twice-do-it-again-dasi-haejwo"
+				},
+				{
+					"title": "Going Crazy",
+					"link": "./music/TWICE - THE STORY BEGINS/03. Going Crazy.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2015/10/twice-i-think-i-m-crazy-michyeossnabwa"
+				},
+				{
+					"title": "Truth",
+					"link": "./music/TWICE - THE STORY BEGINS/04. Truth.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2015/10/twice-truth"
+				},
+				{
+					"title": "Candy Boy",
+					"link": "./music/TWICE - THE STORY BEGINS/05. Candy Boy.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2015/10/twice-candy-boy"
+				},
+				{
+					"title": "Like a Fool",
+					"link": "./music/TWICE - THE STORY BEGINS/06. Like a Fool.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2015/10/twice-like-a-fool"
+				}
+			],
+			"cover": "https://i.scdn.co/image/82fcd832c095f99ee8fd751f81d0a2f93208e1d4",
+			"color": "#ED0D65",
+			"duration": "20:02"
+		},
+		"pageTwo": {
+			"code": "pgt",
+			"title": "Page Two",
+			"tracks": [
+				{
+					"title": "Cheer Up",
+					"link": "./music/TWICE - PAGE TWO/01. CHEER UP.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-cheer-up"
+				},
+				{
+					"title": "Precious Love",
+					"link": "./music/TWICE - PAGE TWO/02. My Precious Love.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-precious-love-sojunghan-salang"
+				},
+				{
+					"title": "Touchdown",
+					"link": "./music/TWICE - PAGE TWO/03. Touchdown.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-touchdown"
+				},
+				{
+					"title": "Tuk Tok",
+					"link": "./music/TWICE - PAGE TWO/04. Tuk Tok.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-tukhamyeon-tok-tughamyeon-tog"
+				},
+				{
+					"title": "Woohoo",
+					"link": "./music/TWICE - PAGE TWO/05. Woohoo.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-woohoo"
+				},
+				{
+					"title": "My Headphones On",
+					"link": "./music/TWICE - PAGE TWO/06. My Headphones On.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-headphone-headphone-sseo"
+				},
+				{
+					"title": "I'm Gonna Be a Star",
+					"link": "./music/igbas.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/04/twice-im-gonna-star"
+				}
+			],
+			"cover": "https://i.scdn.co/image/9c581e4951265c3c7a768e72519be88947758755",
+			"color": "#80DADA",
+			"duration": "23:51"
+		},
+		"twicecoasterLane1": {
+			"code": "tc1",
+			"title": "TWICEcoaster: Lane 1",
+			"tracks": [
+				{
+					"title": "TT",
+					"link": "./music/TWICE - TWICEcoaster  LANE/01. TT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/10/twice-tt"
+				},
+				{
+					"title": "1 to 10",
+					"link": "./music/TWICE - TWICEcoaster  LANE/02. 1 TO 10.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/10/twice-1-10"
+				},
+				{
+					"title": "Ponytail",
+					"link": "./music/TWICE - TWICEcoaster  LANE/03. PONYTAIL.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-ponytail"
+				},
+				{
+					"title": "Jelly Jelly",
+					"link": "./music/TWICE - TWICEcoaster  LANE/04. JELLY JELLY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/10/twice-jelly-jelly"
+				},
+				{
+					"title": "Pit-a-Pat",
+					"link": "./music/TWICE - TWICEcoaster  LANE/05. PIT-A-PAT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-pit-pat"
+				},
+				{
+					"title": "Next Page",
+					"link": "./music/TWICE - TWICEcoaster  LANE/06. NEXT PAGE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-next-page"
+				},
+				{
+					"title": "One in a Million",
+					"link": "./music/TWICE - TWICEcoaster  LANE/07. ONE IN A MILLION.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-one-million"
+				}
+			],
+			"cover": "https://i.scdn.co/image/6551b45b4e5a692f61cd42357e7f9b08753430f9",
+			"color": "#F8C89A",
+			"duration": "22:48"
+		},
+		"twicecoasterLane2": {
+			"code": "tc2",
+			"title": "TWICEcoaster: Lane 2",
+			"tracks": [
+				{
+					"title": "Knock Knock",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/01. KNOCK KNOCK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/02/twice-knock-knock"
+				},
+				{
+					"title": "Melting",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/02. Ice Cream.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/02/twice-ice-cream-nogayo"
+				},
+				{
+					"title": "TT",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/03. TT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/10/twice-tt"
+				},
+				{
+					"title": "1 to 10",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/04. 1 TO 10.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/10/twice-1-10"
+				},
+				{
+					"title": "Ponytail",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/05. PONYTAIL.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-ponytail"
+				},
+				{
+					"title": "Jelly Jelly",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/06. JELLY JELLY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/10/twice-jelly-jelly"
+				},
+				{
+					"title": "Pit-a-Pat",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/07. PIT-A-PAT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-pit-pat"
+				},
+				{
+					"title": "Next Page",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/08. NEXT PAGE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-next-page"
+				},
+				{
+					"title": "One in a Million",
+					"link": "./music/TWICE - TWICEcoaster LANE 2/09. ONE IN A MILLION.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2016/11/twice-one-million"
+				}
+			],
+			"cover": "https://i.scdn.co/image/8ed6a0c95f39ded5003aac8598797563992ecb00",
+			"color": "#EB5429",
+			"duration": "29:55"
+		},
+		"signal": {
+			"code": "sgl",
+			"title": "Signal",
+			"tracks": [
+				{
+					"title": "Signal",
+					"link": "./music/TWICE - SIGNAL/01. SIGNAL.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/05/twice-signal"
+				},
+				{
+					"title": "Three Times a Day",
+					"link": "./music/TWICE - SIGNAL/02. Three Times a Day.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-three-times-day-halue-sebeon"
+				},
+				{
+					"title": "Only You",
+					"link": "./music/TWICE - SIGNAL/03. ONLY YOU.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-only-you-only-neo"
+				},
+				{
+					"title": "Hold Me Tight",
+					"link": "./music/TWICE - SIGNAL/04. HOLD ME TIGHT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-hold-tight"
+				},
+				{
+					"title": "Eye Eye Eyes",
+					"link": "./music/TWICE - SIGNAL/05. EYE EYE EYES.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/05/twice-eye-eye-eyes"
+				},
+				{
+					"title": "Someone Like Me",
+					"link": "./music/TWICE - SIGNAL/06. SOMEONE LIKE ME.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-someone-like"
+				}
+			],
+			"cover": "https://i.scdn.co/image/770c9b5ddc0a151bf255406b7285abb121dd7a30",
+			"color": "#123056",
+			"duration": "19:54"
+		},
+		"twicetagram": {
+			"code": "twt",
+			"title": "Twicetagram",
+			"tracks": [
+				{
+					"title": "Likey",
+					"link": "./music/TWICE - TWICETAGRAM/01. LIKEY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-likey"
+				},
+				{
+					"title": "Turtle",
+					"link": "./music/TWICE - TWICETAGRAM/02. Turtle.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-turtle-geobugi"
+				},
+				{
+					"title": "Missing U",
+					"link": "./music/TWICE - TWICETAGRAM/03. MISSING U.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-missing-u"
+				},
+				{
+					"title": "Wow",
+					"link": "./music/TWICE - TWICETAGRAM/04. WOW.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-wow"
+				},
+				{
+					"title": "FFW",
+					"link": "./music/TWICE - TWICETAGRAM/05. FFW.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-ffw"
+				},
+				{
+					"title": "Ding Dong",
+					"link": "./music/TWICE - TWICETAGRAM/06. DING DONG.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-ding-dong"
+				},
+				{
+					"title": "24/7",
+					"link": "./music/TWICE - TWICETAGRAM/07. 24_7.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-24-7"
+				},
+				{
+					"title": "Look at Me",
+					"link": "./music/TWICE - TWICETAGRAM/08. LOOK AT ME.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-look-nal-balabalabwa"
+				},
+				{
+					"title": "Rollin'",
+					"link": "./music/TWICE - TWICETAGRAM/09. ROLLIN`.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-rollin"
+				},
+				{
+					"title": "Love Line",
+					"link": "./music/TWICE - TWICETAGRAM/10. LOVE LINE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-love-line"
+				},
+				{
+					"title": "Don't Give Up",
+					"link": "./music/TWICE - TWICETAGRAM/11. DON`T GIVE UP.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-don-t-give-himnae"
+				},
+				{
+					"title": "You in My Heart",
+					"link": "./music/TWICE - TWICETAGRAM/12. YOU IN MY HEART.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-heart-neol-naege-dama"
+				},
+				{
+					"title": "Jaljayo Good Night",
+					"link": "./music/TWICE - TWICETAGRAM/13. JALJAYO GOOD NIGHT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-sleep-tight-good-night-jaljayo-gusnais"
+				}
+			],
+			"cover": "https://i.scdn.co/image/1c2eba4f54e9a90e797ace930676ef6cd87d1779",
+			"color": "#FAE122",
+			"duration": "44:16"
+		},
+		"merry&Happy": {
+			"code": "mnh",
+			"title": "Merry & Happy",
+			"tracks": [
+				{
+					"title": "Heart Shaker",
+					"link": "./music/TWICE - Merry & Happy/01. Heart Shaker.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/12/twice-heart-shaker"
+				},
+				{
+					"title": "Merry & Happy",
+					"link": "./music/TWICE - Merry & Happy/02. Merry & Happy.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/12/twice-merry-happy"
+				},
+				{
+					"title": "Likey",
+					"link": "./music/TWICE - Merry & Happy/03. LIKEY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-likey"
+				},
+				{
+					"title": "Turtle",
+					"link": "./music/TWICE - Merry & Happy/04. Turtle.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-turtle-geobugi"
+				},
+				{
+					"title": "Missing U",
+					"link": "./music/TWICE - Merry & Happy/05. MISSING U.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-missing-u"
+				},
+				{
+					"title": "Wow",
+					"link": "./music/TWICE - Merry & Happy/06. WOW.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-wow"
+				},
+				{
+					"title": "FFW",
+					"link": "./music/TWICE - Merry & Happy/07. FFW.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-ffw"
+				},
+				{
+					"title": "Ding Dong",
+					"link": "./music/TWICE - Merry & Happy/08. DING DONG.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-ding-dong"
+				},
+				{
+					"title": "24/7",
+					"link": "./music/TWICE - Merry & Happy/09. 24_7.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-24-7"
+				},
+				{
+					"title": "Look at Me",
+					"link": "./music/TWICE - Merry & Happy/10. LOOK AT ME.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-look-nal-balabalabwa"
+				},
+				{
+					"title": "Rollin'",
+					"link": "./music/TWICE - Merry & Happy/11. ROLLIN`.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-rollin"
+				},
+				{
+					"title": "Love Line",
+					"link": "./music/TWICE - Merry & Happy/12. LOVE LINE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-love-line"
+				},
+				{
+					"title": "Don't Give Up",
+					"link": "./music/TWICE - Merry & Happy/13. DON`T GIVE UP.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-don-t-give-himnae"
+				},
+				{
+					"title": "You in My Heart",
+					"link": "./music/TWICE - Merry & Happy/14. YOU IN MY HEART.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-heart-neol-naege-dama"
+				},
+				{
+					"title": "Jaljayo Good Night",
+					"link": "./music/TWICE - Merry & Happy/15. JALJAYO GOOD NIGHT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-sleep-tight-good-night-jaljayo-gusnais"
+				}
+			],
+			"cover": "https://i.scdn.co/image/a7fc15227ce39023c5e3d356efb29e327957cea4",
+			"color": "#027C55",
+			"duration": "50:38"
+		},
+		"whatIsLove": {
+			"code": "wil",
+			"title": "What Is Love?",
+			"tracks": [
+				{
+					"title": "What is Love?",
+					"link": "./music/TWICE - What is Love/01. What is Love.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-what-is-love"
+				},
+				{
+					"title": "Sweet Talker",
+					"link": "./music/TWICE - What is Love/02. SWEET TALKER.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-sweet-talker"
+				},
+				{
+					"title": "Ho!",
+					"link": "./music/TWICE - What is Love/03. HO!.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-ho"
+				},
+				{
+					"title": "Dejavu",
+					"link": "./music/TWICE - What is Love/04. DEJAVU.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-dejavu"
+				},
+				{
+					"title": "Say Yes",
+					"link": "./music/TWICE - What is Love/05. SAY YES.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-say-yes"
+				},
+				{
+					"title": "Stuck",
+					"link": "./music/TWICE - What is Love/06. STUCK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-stuck"
+				}
+			],
+			"cover": "https://i.scdn.co/image/14e0b19c0cfb689d914ea021a393f25d77f6eeb8",
+			"color": "#A497CD",
+			"duration": "20:06"
+		},
+		"summerNights": {
+			"code": "smn",
+			"title": "Summer Nights",
+			"tracks": [
+				{
+					"title": "Dance The Night Away",
+					"link": "./music/TWICE - Dance The Night Away/01. Dance The Night Away.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/07/twice-dance-night-away"
+				},
+				{
+					"title": "Chillax",
+					"link": "./music/TWICE - Dance The Night Away/02. CHILLAX.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/07/twice-chillax"
+				},
+				{
+					"title": "Shot Thru the Heart",
+					"link": "./music/TWICE - Dance The Night Away/03. Shot thru the heart.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/07/twice-shot-thru-heart"
+				},
+				{
+					"title": "What is Love?",
+					"link": "./music/TWICE - What is Love/01. What is Love.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-what-is-love"
+				},
+				{
+					"title": "Sweet Talker",
+					"link": "./music/TWICE - What is Love/02. SWEET TALKER.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-sweet-talker"
+				},
+				{
+					"title": "Ho!",
+					"link": "./music/TWICE - What is Love/03. HO!.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-ho"
+				},
+				{
+					"title": "Dejavu",
+					"link": "./music/TWICE - What is Love/04. DEJAVU.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-dejavu"
+				},
+				{
+					"title": "Say Yes",
+					"link": "./music/TWICE - What is Love/05. SAY YES.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-say-yes"
+				},
+				{
+					"title": "Stuck",
+					"link": "./music/TWICE - What is Love/06. STUCK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-stuck"
+				}
+			],
+			"cover": "https://i.scdn.co/image/671e629019a12e2a1f7cf7a0c86d0a44cb6a8e58",
+			"color": "#E7CF87",
+			"duration": "29:44"
+		},
+		"bdz": {
+			"code": "bdz",
+			"title": "BDZ",
+			"tracks": [
+				{
+					"title": "BDZ",
+					"link": "./music/TWICE - BDZ/01. BDZ.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/08/twice-bdz"
+				},
+				{
+					"title": "One More Time",
+					"link": "./music/TWICE - BDZ/02. One More Time.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-one-time"
+				},
+				{
+					"title": "Candy Pop",
+					"link": "./music/TWICE - BDZ/03. Candy Pop.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/01/twice-candy-pop"
+				},
+				{
+					"title": "L.O.V.E",
+					"link": "./music/TWICE - BDZ/04. L.O.V.E.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-l-o-v-e"
+				},
+				{
+					"title": "Wishing",
+					"link": "./music/TWICE - BDZ/05. Wishing.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-wishing"
+				},
+				{
+					"title": "Say It Again",
+					"link": "./music/TWICE - BDZ/06. Say it again.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-say-it-again"
+				},
+				{
+					"title": "Wake Me Up",
+					"link": "./music/TWICE - BDZ/07. Wake Me Up.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-wake-me-up"
+				},
+				{
+					"title": "Brand New Girl",
+					"link": "./music/TWICE - BDZ/08. BRAND NEW GIRL.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/02/twice-brand-new-girl"
+				},
+				{
+					"title": "Be as ONE",
+					"link": "./music/TWICE - BDZ/09. Be as ONE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-be-as-one"
+				},
+				{
+					"title": "I Want You Back",
+					"link": "./music/TWICE - BDZ/10. I WANT YOU BACK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/06/twice-want-back"
+				}
+			],
+			"cover": "https://i.scdn.co/image/699818ea7635b25d277861b9ec40602965efd1a3",
+			"color": "#7E2E8F",
+			"duration": "35:24",
+			"isJapanese": true
+		},
+		"bdzrepackage": {
+			"code": "bdr",
+			"title": "BDZ (Repackage)",
+			"tracks": [
+				{
+					"title": "Stay By My Side",
+					"link": "./music/TWICE - BDZ -Repackage/01. STAY BY MY SIDE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/10/twice-stay-side"
+				},
+				{
+					"title": "BDZ",
+					"link": "./music/TWICE - BDZ/01. BDZ.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/08/twice-bdz"
+				},
+				{
+					"title": "One More Time",
+					"link": "./music/TWICE - BDZ/02. One More Time.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-one-time"
+				},
+				{
+					"title": "Candy Pop",
+					"link": "./music/TWICE - BDZ/03. Candy Pop.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/01/twice-candy-pop"
+				},
+				{
+					"title": "L.O.V.E",
+					"link": "./music/TWICE - BDZ/04. L.O.V.E.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-l-o-v-e"
+				},
+				{
+					"title": "Wishing",
+					"link": "./music/TWICE - BDZ/05. Wishing.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-wishing"
+				},
+				{
+					"title": "Say It Again",
+					"link": "./music/TWICE - BDZ/06. Say it again.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-say-it-again"
+				},
+				{
+					"title": "Wake Me Up",
+					"link": "./music/TWICE - BDZ/07. Wake Me Up.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-wake-me-up"
+				},
+				{
+					"title": "Brand New Girl",
+					"link": "./music/TWICE - BDZ/08. BRAND NEW GIRL.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/02/twice-brand-new-girl"
+				},
+				{
+					"title": "Be as ONE",
+					"link": "./music/TWICE - BDZ/09. Be as ONE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/09/twice-be-as-one"
+				},
+				{
+					"title": "I Want You Back",
+					"link": "./music/TWICE - BDZ/10. I WANT YOU BACK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/06/twice-want-back"
+				}
+			],
+			"cover": "https://i.scdn.co/image/77eb7c17cafe5503c514c0b7e2b942f6588f4eae",
+			"color": "#DADEE1",
+			"duration": "39:15",
+			"isJapanese": true
+		},
+		"yesOrYes": {
+			"code": "yoy",
+			"title": "Yes or Yes",
+			"tracks": [
+				{
+					"title": "Yes or Yes",
+					"link": "./music/TWICE - YES or YES/01. YES or YES.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-yes-yes"
+				},
+				{
+					"title": "Say You Love Me",
+					"link": "./music/TWICE - YES or YES/02. SAY YOU LOVE ME.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-say-love"
+				},
+				{
+					"title": "Lalala",
+					"link": "./music/TWICE - YES or YES/03. LALALA.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-lalala"
+				},
+				{
+					"title": "Young & Wild",
+					"link": "./music/TWICE - YES or YES/04. YOUNG & WILD.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-young-wild"
+				},
+				{
+					"title": "Sunset",
+					"link": "./music/TWICE - YES or YES/05. SUNSET.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-sunset"
+				},
+				{
+					"title": "After Moon",
+					"link": "./music/TWICE - YES or YES/06. AFTER MOON.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-after-moon"
+				},
+				{
+					"title": "BDZ (Korean Ver.)",
+					"link": "./music/TWICE - YES or YES/07. BDZ (Korean Ver.).m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-bdz-korean-ver"
+				}
+			],
+			"cover": "https://i.scdn.co/image/67cc1debed5c16a0801d83aed07da2d01a9fa20c",
+			"color": "#E60F16",
+			"duration": "24:01"
+		},
+		"theYearOfYes": {
+			"code": "tyy",
+			"title": "The Year of \"YES\"",
+			"tracks": [
+				{
+					"title": "The Best Thing I Ever Did",
+					"link": "./music/TWICE - The year of YES/01. The Best Thing I Ever Did.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/12/twice-best-thing-ever-olhae-jeil-jalhan-il"
+				},
+				{
+					"title": "Be as ONE (Korean Ver.)",
+					"link": "./music/TWICE - The year of YES/02. Be as ONE (Korean Ver.).m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/12/twice-one-korean-ver"
+				},
+				{
+					"title": "Yes or Yes",
+					"link": "./music/TWICE - YES or YES/01. YES or YES.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-yes-yes"
+				},
+				{
+					"title": "Say You Love Me",
+					"link": "./music/TWICE - YES or YES/02. SAY YOU LOVE ME.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-say-love"
+				},
+				{
+					"title": "Lalala",
+					"link": "./music/TWICE - YES or YES/03. LALALA.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-lalala"
+				},
+				{
+					"title": "Young & Wild",
+					"link": "./music/TWICE - YES or YES/04. YOUNG & WILD.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-young-wild"
+				},
+				{
+					"title": "Sunset",
+					"link": "./music/TWICE - YES or YES/05. SUNSET.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-sunset"
+				},
+				{
+					"title": "After Moon",
+					"link": "./music/TWICE - YES or YES/06. AFTER MOON.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-after-moon"
+				},
+				{
+					"title": "BDZ (Korean Ver.)",
+					"link": "./music/TWICE - YES or YES/07. BDZ (Korean Ver.).m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/11/twice-bdz-korean-ver"
+				}
+			],
+			"cover": "https://i.scdn.co/image/a9c13fb328423c703d26b8d98a8c6987e4242404",
+			"color": "#F2DCAA",
+			"duration": "31:30"
+		},
+		"fancyYou": {
+			"code": "fcy",
+			"title": "Fancy You",
+			"tracks": [
+				{
+					"title": "Fancy",
+					"link": "./music/TWICE - FANCY YOU/01. FANCY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/04/twice-fancy"
+				},
+				{
+					"title": "Stuck In My Head",
+					"link": "./music/TWICE - FANCY YOU/02. STUCK IN MY HEAD.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/04/twice-stuck-in-my-head"
+				},
+				{
+					"title": "Girls Like Us",
+					"link": "./music/TWICE - FANCY YOU/03. GIRLS LIKE US.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/04/twice-girls-like-us"
+				},
+				{
+					"title": "Hot",
+					"link": "./music/TWICE - FANCY YOU/04. HOT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/04/twice-hot"
+				},
+				{
+					"title": "Turn It Up",
+					"link": "./music/TWICE - FANCY YOU/05. TURN IT UP.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/04/twice-turn-it-up"
+				},
+				{
+					"title": "Strawberry",
+					"link": "./music/TWICE - FANCY YOU/06. STRAWBERRY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/04/twice-strawberry"
+				}
+			],
+			"cover": "https://i.scdn.co/image/856711b1103e8c8a2042198191f96fc8e47715d5",
+			"color": "#FB4A9A",
+			"duration": ""
+		},
+		"feelSpecial": {
+			"code": "fsp",
+			"title": "Feel Special",
+			"tracks": [
+				{
+					"title": "Feel Special",
+					"link": "./music/TWICE - Feel Special/01. Feel Special.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-feel-special"
+				},
+				{
+					"title": "Rainbow",
+					"link": "./music/TWICE - Feel Special/02. RAINBOW.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-rainbow"
+				},
+				{
+					"title": "Get Loud",
+					"link": "./music/TWICE - Feel Special/03. GET LOUD.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-get-loud"
+				},
+				{
+					"title": "Trick It",
+					"link": "./music/TWICE - Feel Special/04. TRICK IT.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-trick-it"
+				},
+				{
+					"title": "Love Foolish",
+					"link": "./music/TWICE - Feel Special/05. LOVE FOOLISH.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-love-foolish"
+				},
+				{
+					"title": "21:29",
+					"link": "./music/TWICE - Feel Special/06. 21_29.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-21-29"
+				},
+				{
+					"title": "Breakthrough (Korean Ver.)",
+					"link": "./music/TWICE - Feel Special/07. BREAKTHROUGH (Korean Ver.).mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/09/twice-breakthrough-korean-ver"
+				}
+			],
+			"cover": "https://i.scdn.co/image/2672add02cdf23f490a3911b837e733a48f66971",
+			"color": "#DEC175",
+			"duration": ""
+		},
+		"moreMore": {
+			"code": "mnm",
+			"title": "More & More",
+			"tracks": [
+				{
+					"title": "MORE & MORE",
+					"link": "./music/TWICE - MORE & MORE/01. MORE & MORE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-more-amp-more"
+				},
+				{
+					"title": "Oxygen",
+					"link": "./music/TWICE - MORE & MORE/02. Oxygen.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-oxygen"
+				},
+				{
+					"title": "Firework",
+					"link": "./music/TWICE - MORE & MORE/03. Firework.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-firework"
+				},
+				{
+					"title": "Make Me Go",
+					"link": "./music/TWICE - MORE & MORE/04. Make Me Go.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-make-me-go"
+				},
+				{
+					"title": "Shadow",
+					"link": "./music/TWICE - MORE & MORE/05. Shadow.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-shadow"
+				},
+				{
+					"title": "Don't Call Me Again",
+					"link": "./music/TWICE - MORE & MORE/06. Don't Call Me Again.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-don-t-call-me-again"
+				},
+				{
+					"title": "Sweet Summer Day",
+					"link": "./music/TWICE - MORE & MORE/07. Sweet Summer Day.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-sweet-summer-day"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ab67616d0000b27328e649c0e2d1a3a98ccf8ea3",
+			"color": "#ceaa52",
+			"duration": ""
+		},
+		"candyPop": {
+			"code": "cdp",
+			"title": "Candy Pop",
+			"tracks": [
+				{
+					"title": "Candy Pop",
+					"link": "./music/TWICE - Candy Pop/01 Candy Pop.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/01/twice-candy-pop"
+				},
+				{
+					"title": "Brand New Girl",
+					"link": "./music/TWICE - Candy Pop/02 BRAND NEW GIRL.m4a",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/02/twice-brand-new-girl"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ebc421247e260e1a846bd48e05fbfbbae440f339",
+			"color": "#F29FBD",
+			"duration": "13:50",
+			"isJapanese": true
+		},
+		"oneMoreTime": {
+			"code": "omt",
+			"title": "One More Time",
+			"tracks": [
+				{
+					"title": "One More Time",
+					"link": "./music/TWICE - ONE MORE TIME/1. One More Time.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-one-time"
+				},
+				{
+					"title": "Luv Me",
+					"link": "./music/TWICE - ONE MORE TIME/2. LUV ME.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/10/twice-luv-me"
+				}
+			],
+			"cover": "https://i.scdn.co/image/3c3039d6c443b2945f39fda304bd9f81881d4c0c",
+			"color": "#C94485",
+			"duration": "",
+			"isJapanese": true
+		},
+		"wakeMeUp": {
+			"code": "wmu",
+			"title": "Wake Me Up",
+			"tracks": [
+				{
+					"title": "Wake Me Up",
+					"link": "./music/TWICE - Wake Me Up/01. Wake Me Up.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/04/twice-wake-me-up"
+				},
+				{
+					"title": "Pink Lemonade",
+					"link": "./music/TWICE - Wake Me Up/02. Pink Lemonade.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2018/05/twice-pink-lemonade"
+				}
+			],
+			"cover": "https://i.scdn.co/image/eba07320c308e7a3d0009e670aaa9c646980df67",
+			"color": "#ECCC9B",
+			"duration": "",
+			"isJapanese": true
+		},
+		"#twice": {
+			"code": "htt",
+			"title": "#TWICE",
+			"tracks": [
+				{
+					"title": "Like OOH-AHH (Japanese Ver.)",
+					"link": "",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-like-ooh-ahh-japanese-ver"
+				},
+				{
+					"title": "Cheer Up (Japanese Ver.)",
+					"link": "",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-cheer-japanese-ver"
+				},
+				{
+					"title": "TT (Japanese Ver.)",
+					"link": "",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/06/twice-tt-japanese-ver"
+				},
+				{
+					"title": "Knock Knock (Japanese Ver.)",
+					"link": "",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-knock-knock-japanese-ver"
+				},
+				{
+					"title": "Signal (Japanese Ver.)",
+					"link": "",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2017/07/twice-signal-japanese-ver"
+				}
+			],
+			"cover": "https://i.scdn.co/image/6333e7e989d68e665f512f3ca29f389dad6860ff",
+			"color": "#00A6E4",
+			"duration": "34:16",
+			"isJapanese": true
+		},
+		"#twice2": {
+			"code": "ht2",
+			"title": "#TWICE2",
+			"tracks": [
+				{
+					"title": "Likey (Japanese Ver.)",
+					"link": "",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/01/twice-likey-japanese-ver"
+				}
+			],
+			"cover": "https://i.scdn.co/image/068b02a90e73c68025ac04abb3e784ea29e53b15",
+			"color": "#B1A7CA",
+			"duration": "",
+			"isJapanese": true
+		},
+		"breakthrough": {
+			"code": "bth",
+			"title": "Breakthrough",
+			"tracks": [
+				{
+					"title": "Breakthrough",
+					"link": "./music/TWICE - Breakthrough/01. Breakthrough.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-breakthrough"
+				}
+			],
+			"cover": "https://i.scdn.co/image/6ecee0db960d381e8c51b1a3d1d99a8d71d154c3",
+			"color": "#1F2067",
+			"duration": "",
+			"isJapanese": true
+		},
+		"happyHappy": {
+			"code": "hph",
+			"title": "HAPPY HAPPY",
+			"tracks": [
+				{
+					"title": "HAPPY HAPPY",
+					"link": "./music/TWICE - HAPPY HAPPY/01. HAPPY HAPPY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-happy-happy"
+				}
+			],
+			"cover": "https://i.scdn.co/image/52043f529df82e4af5f25c4a1f58fa5060bdba6a",
+			"color": "#FBD34F",
+			"duration": "",
+			"isJapanese": true
+		},
+		"&twice": {
+			"code": "ntw",
+			"title": "&TWICE",
+			"tracks": [
+				{
+					"title": "Fake & True",
+					"link": "./music/TWICE - &TWICE/01. Fake & True.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/10/twice-fake-amp-true"
+				},
+				{
+					"title": "Stronger",
+					"link": "./music/TWICE - &TWICE/02. Stronger.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/11/twice-stronger"
+				},
+				{
+					"title": "Breakthrough",
+					"link": "./music/TWICE - &TWICE/03. Breakthrough.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-breakthrough"
+				},
+				{
+					"title": "Changing!",
+					"link": "./music/TWICE - &TWICE/04. Changing!.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/11/twice-changing"
+				},
+				{
+					"title": "HAPPY HAPPY",
+					"link": "./music/TWICE - &TWICE/05. HAPPY HAPPY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-happy-happy"
+				},
+				{
+					"title": "What You Waiting For",
+					"link": "./music/TWICE - &TWICE/06. What You Waiting For.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/11/twice-what-you-waiting-for"
+				},
+				{
+					"title": "Be OK",
+					"link": "./music/TWICE - &TWICE/07. Be OK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-be-ok"
+				},
+				{
+					"title": "Polish",
+					"link": "./music/TWICE - &TWICE/08. POLISH.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-polish"
+				},
+				{
+					"title": "How u doin'",
+					"link": "./music/TWICE - &TWICE/09. How u doin'.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-how-u-doin"
+				},
+				{
+					"title": "The Reason Why",
+					"link": "./music/TWICE - &TWICE/10. The Reason Why.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-the-reason-why"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ab67616d0000b27329e7568dbd16f270b3d96db4",
+			"color": "#f3ada1",
+			"duration": "",
+			"isJapanese": true
+		},
+		"fanfare": {
+			"code": "fnf",
+			"title": "Fanfare",
+			"tracks": [
+				{
+					"title": "Fanfare",
+					"link": "./music/TWICE - Fanfare/01_Fanfare.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-fanfare"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ab67616d0000b273dd4a6d26627cc697b3f4d8be",
+			"color": "#FFFFFF",
+			"duration": "",
+			"isJapanese": true
+		}
+	},
+	"other":
+	[
+		{
+			"title": "Only Longing Grows",
+			"info": "Cover by Nayeon",
+			"link": "./music/Other/Only Longing Grows.mp3",
+			"thumbnail": "https://i.ytimg.com/vi/K_wlWUtbyAY/mqdefault.jpg?v=58d527e4"
+		},
+		{
+			"title": "Good Person",
+			"info": "Mina Melody Project",
+			"link": "./music/Other/Good Person.mp3",
+			"thumbnail": "https://www.allkpop.com/upload/2016/09/af_org/twice_1473952050_af_org.jpg"
+		},
+		{
+			"title": "Alone",
+			"info": "Chaeyoung Melody Project",
+			"link": "./music/Other/Alone.mp3",
+			"thumbnail": "https://pbs.twimg.com/media/CywIE-RUcAAgCw-.jpg"
+		},
+		{
+			"title": "Like A Star",
+			"info": "Jeongyeon & Gong Seungyeon",
+			"link": "./music/Other/Like A Star.mp3",
+			"thumbnail": "https://0.soompi.io/wp-content/uploads/2017/06/30045950/Gong-Seung-Yeon-TWICE-Jungyeon.jpg"
+		},
+		{
+			"title": "Brave Women",
+			"info": "Cover by Jihyo, Nayeon, Tzuyu and Chaeyoung",
+			"link": "./music/Other/Brave Women.mp3",
+			"thumbnail": "https://1.bp.blogspot.com/-MQL4xx0aIK0/VyGzT9fMNjI/AAAAAAAAAUQ/aiVXmgxIamsc4ugEl_mvZ3MhLRKR7zJGACLcB/s1600/20160106102253.jpg"
+		}
+	]
+}

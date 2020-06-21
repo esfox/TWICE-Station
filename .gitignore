@@ -66,6 +66,7 @@ typings/
 # unnecessary data files
 memes.json
 trivias.js
+saved.json
 
 # other folders
 other/
