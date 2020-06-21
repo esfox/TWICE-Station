@@ -22,6 +22,5 @@ exports.startUpdateReminder = bot =>
     botChannel.send(reminder);
   };
 
-  const recurrenceRule = { minute: new schedule.Range(0, 59, 5) };
-  schedule.scheduleJob(recurrenceRule, sendReminder);
+  schedule.scheduleJob({ minute: new schedule.Range(0, 59, 10) }, sendReminder);
 };
