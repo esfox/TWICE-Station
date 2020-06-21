@@ -80,7 +80,11 @@ bot.on('message', async message =>
   if((await loadData()).raffle.isDrawing)
     return;
 
-  if(bot.user.id !== client)
+  if(
+    bot.user.id !== client
+    && message.channel.id === config.bot_channel
+    && config.prefixes.some(prefix => message.content.startsWith(prefix))
+  )
     Logger.info(`Command received: '${message.content}'`);
 
   context.from(message);
