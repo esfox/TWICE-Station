@@ -905,6 +905,57 @@
 			"color": "#DEC175",
 			"duration": ""
 		},
+		"moreMore": {
+			"code": "mnm",
+			"title": "More & More",
+			"tracks": [
+				{
+					"title": "MORE & MORE",
+					"link": "./music/TWICE - MORE & MORE/01. MORE & MORE.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-more-amp-more"
+				},
+				{
+					"title": "Oxygen",
+					"link": "./music/TWICE - MORE & MORE/02. Oxygen.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-oxygen"
+				},
+				{
+					"title": "Firework",
+					"link": "./music/TWICE - MORE & MORE/03. Firework.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-firework"
+				},
+				{
+					"title": "Make Me Go",
+					"link": "./music/TWICE - MORE & MORE/04. Make Me Go.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-make-me-go"
+				},
+				{
+					"title": "Shadow",
+					"link": "./music/TWICE - MORE & MORE/05. Shadow.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-shadow"
+				},
+				{
+					"title": "Don't Call Me Again",
+					"link": "./music/TWICE - MORE & MORE/06. Don't Call Me Again.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-don-t-call-me-again"
+				},
+				{
+					"title": "Sweet Summer Day",
+					"link": "./music/TWICE - MORE & MORE/07. Sweet Summer Day.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-sweet-summer-day"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ab67616d0000b27328e649c0e2d1a3a98ccf8ea3",
+			"color": "#ceaa52",
+			"duration": ""
+		},
 		"candyPop": {
 			"code": "cdp",
 			"title": "Candy Pop",
@@ -1045,17 +1096,103 @@
 		},
 		"happyHappy": {
 			"code": "hph",
-			"title": "Happy Happy",
+			"title": "HAPPY HAPPY",
 			"tracks": [
 				{
-					"title": "Happy Happy",
-					"link": "./music/TWICE - HAPPY HAPPY/01. Happy Happy.mp3",
+					"title": "HAPPY HAPPY",
+					"link": "./music/TWICE - HAPPY HAPPY/01. HAPPY HAPPY.mp3",
 					"duration": "",
 					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-happy-happy"
 				}
 			],
 			"cover": "https://i.scdn.co/image/52043f529df82e4af5f25c4a1f58fa5060bdba6a",
 			"color": "#FBD34F",
+			"duration": "",
+			"isJapanese": true
+		},
+		"&twice": {
+			"code": "ntw",
+			"title": "&TWICE",
+			"tracks": [
+				{
+					"title": "Fake & True",
+					"link": "./music/TWICE - &TWICE/01. Fake & True.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/10/twice-fake-amp-true"
+				},
+				{
+					"title": "Stronger",
+					"link": "./music/TWICE - &TWICE/02. Stronger.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/11/twice-stronger"
+				},
+				{
+					"title": "Breakthrough",
+					"link": "./music/TWICE - &TWICE/03. Breakthrough.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-breakthrough"
+				},
+				{
+					"title": "Changing!",
+					"link": "./music/TWICE - &TWICE/04. Changing!.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/11/twice-changing"
+				},
+				{
+					"title": "HAPPY HAPPY",
+					"link": "./music/TWICE - &TWICE/05. HAPPY HAPPY.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/06/twice-happy-happy"
+				},
+				{
+					"title": "What You Waiting For",
+					"link": "./music/TWICE - &TWICE/06. What You Waiting For.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/11/twice-what-you-waiting-for"
+				},
+				{
+					"title": "Be OK",
+					"link": "./music/TWICE - &TWICE/07. Be OK.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-be-ok"
+				},
+				{
+					"title": "Polish",
+					"link": "./music/TWICE - &TWICE/08. POLISH.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-polish"
+				},
+				{
+					"title": "How u doin'",
+					"link": "./music/TWICE - &TWICE/09. How u doin'.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-how-u-doin"
+				},
+				{
+					"title": "The Reason Why",
+					"link": "./music/TWICE - &TWICE/10. The Reason Why.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2019/12/twice-the-reason-why"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ab67616d0000b27329e7568dbd16f270b3d96db4",
+			"color": "#f3ada1",
+			"duration": "",
+			"isJapanese": true
+		},
+		"fanfare": {
+			"code": "fnf",
+			"title": "Fanfare",
+			"tracks": [
+				{
+					"title": "Fanfare",
+					"link": "./music/TWICE - Fanfare/01_Fanfare.mp3",
+					"duration": "",
+					"lyrics": "https://colorcodedlyrics.com/2020/06/twice-fanfare"
+				}
+			],
+			"cover": "https://i.scdn.co/image/ab67616d0000b273dd4a6d26627cc697b3f4d8be",
+			"color": "#FFFFFF",
 			"duration": "",
 			"isJapanese": true
 		}
