@@ -8,8 +8,9 @@ context.setModulesPath(`${__dirname}/modules`);
 
 const { Follows } = require('api/models');
 const { loadData } = require('data/saved');
-
 const { sleep, chunk } = require('utils/functions');
+const { Logger } = require('utils/logger');
+
 const musicPlayer = require('./modules/radio/player');
 const { play: startMusic } = require('./modules/radio/functions');
 const cbreset = require('./modules/candybongs/cbreset');
@@ -27,12 +28,11 @@ bot.on('ready', async _ =>
 {
   // await database.init();
   // console.log('Database connected.');
+
   console.log('Bot connected.');
 
   musicPlayer.init(bot);
-
   cbreset.automate(bot);
-  autoReminders.startUpdateReminder(bot);
 
   if(bot.user.id === client)
   {
@@ -45,6 +45,8 @@ bot.on('ready', async _ =>
     config.prefixes = [ ';' ];
     await musicPlayer.connect();
     startMusic(bot);
+    autoReminders.startUpdateReminder(bot);
+    Logger.info('Bot started.');
   }
     
   context.setConfig(config);
@@ -78,6 +80,9 @@ bot.on('message', async message =>
   if((await loadData()).raffle.isDrawing)
     return;
 
+  if(bot.user.id !== client)
+    Logger.info(`Command received: '${message.content}'`);
+
   context.from(message);
 });
 
@@ -109,3 +114,14 @@ async function sendToFollowers(message)
       .catch(console.error));
   }
 }
+
+/* Catch all errors. */
+process.on('uncaughtException', error =>
+{
+  Logger.error(error.message);
+});
+
+process.on('unhandledRejection', error =>
+{
+  Logger.error(error.stack);
+});
