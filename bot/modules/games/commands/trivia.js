@@ -1,7 +1,7 @@
 const command = 'trivia';
 
 const { Command } = require('discord-utils');
-const quiz = require('../quiz');
+const { quiz } = require('../quiz');
 
 const { cooldowns: cooldown, rewards } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
@@ -37,5 +37,5 @@ async function action(context)
     .addField(question, choicesText);
   answer = (choices.indexOf(answer) + 1).toString();
 
-  quiz(context.message, question, answer, rewards.trivia);
+  quiz(context, question, answer, rewards.trivia);
 }

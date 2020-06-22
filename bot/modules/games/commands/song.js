@@ -4,7 +4,7 @@ const { Command } = require('discord-utils');
 const { getAudioDurationInSeconds } = require('get-audio-duration');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
-const quiz = require('../quiz');
+const { quiz } = require('../quiz');
 
 const { cooldowns: cooldown, rewards, developer } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
@@ -59,7 +59,7 @@ async function action(context)
         console.error(error);
     }));
 
-  quiz(context.message, undefined, title, rewards.song_guess, true);
+  quiz(context, undefined, title, rewards.song_guess, true);
 }
 
 async function processAudio(context, link)

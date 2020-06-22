@@ -3,7 +3,7 @@ const command = 'guessthelyrics';
 const { Command } = require('discord-utils');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-const quiz = require('../quiz');
+const { quiz } = require('../quiz');
 
 const { cooldowns: cooldown, rewards } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
@@ -55,5 +55,5 @@ async function action(context)
   lyrics = randomElement(lyrics).split('\n').slice(0, 4).join('\n');
   const question = context.embed('❔ Guess the song!  🎵', lyrics);
 
-  quiz(message, question, title, rewards.lyrics_guess);
+  await quiz(context, question, title, rewards.lyrics_guess);
 }

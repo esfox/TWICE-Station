@@ -1,76 +1,61 @@
 const { RichEmbed, MessageCollector } = require('discord.js');
-const { games_time_limit, embed_color } = require('config/config');
-const { compare } = require('utils/functions');
-// const { User } = require('database');
+const { games_time_limit } = require('config/config');
 const { Coins } = require('api/models');
+const { compare } = require('utils/functions');
 
-class Quiz
+/**
+ * @param {import('discord-utils').Context} context 
+ * @param {import('discord.js').RichEmbed} question 
+ * @param {string} answer 
+ * @param {number} reward 
+ * @param {string | true} info 
+ */
+async function quiz(context, question, answer, reward, info)
 {
-  /**
-   * @param {import('discord.js').Message} message
-   * @param {import('discord.js').RichEmbed} question
-   * @param {string} correctAnswer
-   * @param {number} reward
-   * @param {string | true} [extraInfo]
-   */
-  constructor(message, question, correctAnswer, reward, extraInfo)
-  {
-    this.start(message, question, correctAnswer, reward, extraInfo);
-  }
+  const { message } = context;
+  message.channel.stopTyping(true);
+  if(question)
+    await message.reply(question);
 
-  async start(message, question, correctAnswer, reward, extraInfo)
-  {
-    message.channel.stopTyping(true);
-    if(question)
-      await message.reply(question);
-
-    const embed = new RichEmbed()
-      .setColor(embed_color);
-
-    const options =
+  const user = message.author.id;
+  const answered = await message.channel.awaitMessages(
+    message =>
     {
-      max: 1,
-      time: games_time_limit * 1000
-    };
-  
-    const collector = new MessageCollector(message.channel, 
-      msg => msg.author.id === message.author.id,
-      options)
-  
-    let answered = false;
-    collector.on('collect', async ({ content }) =>
+      console.log(user);
+      return message.author.id === user;
+    },
     {
-      answered = true;
-      const isCorrect = compare(correctAnswer, content, true);
-      embed.setTitle(isCorrect?
-        '✅  Correct!' :
-        '❌  Wrong!');
-
-      if(isCorrect)
-        embed.setDescription(`You win **${reward} TWICECOINS**!`);
-
-      if(extraInfo && extraInfo !== true)
-        embed.setFooter(extraInfo);
-  
-      if(isCorrect)
-        await Coins.addToUser(message.author.id, reward);
-        // await User.addCoins(message.author.id, reward);
-        
-      message.reply(embed);
+      maxMatches: 1,
+      time: games_time_limit * 1000,
+      errors: [ 'time' ],
+    },
+  )
+    .catch(() =>
+    {
+      context.reply(
+        "⏰  Time's up!",
+        info === true ? `It's **${answer}**.` : undefined,
+      );
     });
+  
+  if(!answered)
+    return;
 
-    collector.on('end', () =>
-    {
-      if(answered)
-        return;
+  const isCorrect = compare(answer, message.content, true);
 
-      embed.setTitle("⏰  Time's up!");
-      if(extraInfo === true)
-        embed.setDescription(`It's **${correctAnswer}**.`);
-      return message.reply(embed);
-    });
-  }
+  const title = isCorrect ? '✅  Correct!' : '❌  Wrong!';
+  const response = context.embed(title);
+
+  if(isCorrect)
+    response.setDescription(`You win **${reward} TWICECOINS**!`);
+
+  if(info && info !== true)
+    response.setFooter(info);
+
+  if(isCorrect)
+    await Coins.addToUser(message.author.id, reward);
+    
+  message.reply(response);
 }
 
-module.exports = (message, question, correctAnswer, reward, extraInfo) =>
-  new Quiz(message, question, correctAnswer, reward, extraInfo);
+exports.quiz = quiz;

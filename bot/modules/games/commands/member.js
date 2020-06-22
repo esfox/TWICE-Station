@@ -3,7 +3,7 @@ const command = 'guessthemember';
 const { Command } = require('discord-utils');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-const quiz = require('../quiz');
+const { quiz } = require('../quiz');
 
 const { cooldowns: cooldown, rewards } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
@@ -91,7 +91,7 @@ async function action(context)
 
   const question = context.embed('👩  Guess the Member!', info);
   const extraInfo = 'Information from kprofiles.com';
-  quiz(context.message, question, member.name, rewards.member_guess, extraInfo);
+  quiz(context, question, member.name, rewards.member_guess, extraInfo);
 }
 
 const request = link => fetch(link)
