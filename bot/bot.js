@@ -51,7 +51,6 @@ bot.on('ready', async _ =>
 
     /* Start automated reminder messages. */
     autoReminders.startBugReminder(bot);
-    autoReminders.startUpdateReminder(bot);
   }
     
   context.setConfig(config);
