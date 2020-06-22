@@ -50,7 +50,7 @@ bot.on('ready', async _ =>
     startMusic(bot);
 
     /* Start automated reminder messages. */
-    autoReminders.startBugReminder(bot);
+    autoReminders.startUpdateReminder(bot);
   }
     
   context.setConfig(config);

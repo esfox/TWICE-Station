@@ -5,9 +5,9 @@ const simplify = (string, expectDashes) => string
   .toLowerCase()
   .trim()
   .replace(/\sand\s|\sn\s|\s\&\s|\&/g, 'and')
-  .replace(expectDashes
+  .replace((expectDashes
     ? /\s|!|\?|\\|\(|\)|\.|\#|\:|\'/g
-    : /\s|!|\?|\\|\(|\)|\.|\-|\#|\:|\'/g,
+    : /\s|!|\?|\\|\(|\)|\.|\-|\#|\:|\'/g),
     ''
   );
 

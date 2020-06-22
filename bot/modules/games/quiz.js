@@ -18,7 +18,7 @@ async function quiz(context, question, answer, reward, info)
     await message.reply(question);
 
   const user = message.author.id;
-  const answered = await message.channel.awaitMessages(
+  const reply = await message.channel.awaitMessages(
     message => message.author.id === user,
     {
       maxMatches: 1,
@@ -33,11 +33,11 @@ async function quiz(context, question, answer, reward, info)
         info === true ? `It's **${answer}**.` : undefined,
       );
     });
-  
-  if(!answered)
+
+  if(!reply)
     return;
 
-  const isCorrect = compare(answer, message.content, true);
+  const isCorrect = compare(answer, reply.first().content, true);
 
   const title = isCorrect ? '✅  Correct!' : '❌  Wrong!';
   const response = context.embed(title);
