@@ -29,6 +29,8 @@ bot.on('ready', async _ =>
   // await database.init();
   // console.log('Database connected.');
 
+  console.log('Bot connected.');
+
   musicPlayer.init(bot);
   cbreset.automate(bot);
 

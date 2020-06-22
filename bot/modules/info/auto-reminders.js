@@ -1,4 +1,4 @@
-const { bot_channel, dev_channel, embed_color } = require('config/config');
+const { bot_channel, embed_color } = require('config/config');
 const { RichEmbed } = require('discord.js');
 const schedule = require('node-schedule');
 
@@ -40,6 +40,6 @@ exports.startBugReminder = bot =>
 
 function sendMessage(bot, message)
 {
-  const botChannel = bot.channels.get(dev_channel);
+  const botChannel = bot.channels.get(bot_channel);
   botChannel.send(message);
 }
