@@ -19,11 +19,7 @@ async function quiz(context, question, answer, reward, info)
 
   const user = message.author.id;
   const answered = await message.channel.awaitMessages(
-    message =>
-    {
-      console.log(user);
-      return message.author.id === user;
-    },
+    message => message.author.id === user,
     {
       maxMatches: 1,
       time: games_time_limit * 1000,
