@@ -29,11 +29,10 @@ bot.on('ready', async _ =>
   // await database.init();
   // console.log('Database connected.');
 
-  console.log('Bot connected.');
-
   musicPlayer.init(bot);
   cbreset.automate(bot);
 
+  /* Bot user is the beta bot. */
   if(bot.user.id === client)
   {
     ping += '‍';
@@ -42,11 +41,15 @@ bot.on('ready', async _ =>
   }
   else 
   {
+    Logger.info('Bot started.');
+
     config.prefixes = [ ';' ];
     await musicPlayer.connect();
     startMusic(bot);
+
+    /* Start automated reminder messages. */
+    autoReminders.startBugReminder(bot);
     autoReminders.startUpdateReminder(bot);
-    Logger.info('Bot started.');
   }
     
   context.setConfig(config);
@@ -123,9 +126,11 @@ async function sendToFollowers(message)
 process.on('uncaughtException', error =>
 {
   Logger.error(error.message);
+  console.error(error);
 });
 
 process.on('unhandledRejection', error =>
 {
   Logger.error(error.stack);
+  console.error(error);
 });

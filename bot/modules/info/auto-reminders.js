@@ -1,4 +1,4 @@
-const { bot_channel, embed_color } = require('config/config');
+const { bot_channel, dev_channel, embed_color } = require('config/config');
 const { RichEmbed } = require('discord.js');
 const schedule = require('node-schedule');
 
@@ -15,12 +15,31 @@ exports.startUpdateReminder = bot =>
       + " (since the update was kind of major) so if you encounter one,"
       + " please tell him right away.\n\nThank you!\n\n`possibly new features to come`");
 
-  const sendReminder = () =>
-  {
-    /** @type {import('discord.js').TextChannel} */
-    const botChannel = bot.channels.get(bot_channel);
-    botChannel.send(reminder);
-  };
-
-  schedule.scheduleJob({ minute: new schedule.Range(0, 59, 10) }, sendReminder);
+  schedule.scheduleJob(
+    { minute: new schedule.Range(0, 59, 15) },
+    () => sendMessage(bot, reminder),
+  );
 };
+
+exports.startBugReminder = bot =>
+{
+  const reminder = new RichEmbed()
+    .setColor(embed_color)
+    .setTitle('ℹ️  There is a bug in any of the "quiz" mini-game commands.')
+    .setDescription('The following commands:\n'
+      + '`;gtl`\n`;gtm`\n`;gts`\n`;t`\n'
+      + 'currently have a bug. In the meantime, please wait for <@247955535620472844>'
+      + ' to fix these. If you encounter it, for now just try doing the command again.\n\n'
+      + 'Thank you and sorry for the inconvenience.');
+
+  schedule.scheduleJob(
+    { minute: new schedule.Range(0, 59, 10) },
+    () => sendMessage(bot, reminder),
+  );
+}
+
+function sendMessage(bot, message)
+{
+  const botChannel = bot.channels.get(dev_channel);
+  botChannel.send(message);
+}
