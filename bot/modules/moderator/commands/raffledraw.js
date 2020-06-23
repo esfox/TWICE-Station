@@ -69,7 +69,7 @@ async function action(context)
     context.chat(`<@${user.id}>! You win __**${prize}**__ TWICECOINS! 🎉`);
     const rewardResult = await Coins.addToUser(user.id, prize);
     if(rewardResult === undefined)
-      context.error(`Whoops. Something went wrong with giving coins to <@${user.id}>.`
+      context.send(`Whoops. Something went wrong with giving coins to <@${user.id}>.`
         + `Please ask a moderator to manually give the reward. (${prize} twicecoins)`);
     await sleep(2);
   }

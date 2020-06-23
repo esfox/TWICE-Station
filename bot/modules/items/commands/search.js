@@ -57,7 +57,7 @@ async function action(context)
   const userID = context.message.author.id;
   const itemAddResult = await Items.addToUser(userID, item.code);
   if(itemAddResult === undefined)
-    return context.error("Whoops. Can't save your item to your bag. Please try again.");
+    return context.send("Whoops. Can't save your item to your bag. Please try again.");
 
   if(itemAddResult === false)
     return context.reply('❌  You OnceBag is full.');

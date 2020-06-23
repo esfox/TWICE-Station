@@ -24,7 +24,7 @@ class Raffle
 
     const feePaymentResult = await Coins.subtractFromUser(user, raffle_fee);
     if(feePaymentResult === undefined)
-      return this.context.error("Whoops. Couldn't join the raffle. Please try again.");
+      return this.context.send("Whoops. Couldn't join the raffle. Please try again.");
       
     this.raffle.participants.push(user);
     update(this.raffle);

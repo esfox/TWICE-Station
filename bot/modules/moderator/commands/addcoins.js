@@ -22,7 +22,7 @@ async function action(context)
     
   const addResult = await Coins.addToUser(member.id, amount);
   if(addResult === undefined)
-    return context.error("Whoops. Can't add coins. Please try again.");
+    return context.send("Whoops. Can't add coins. Please try again.");
 
   context.send(`💵  ${member.displayName} has received ${amount} TWICECOINS.`);
 }

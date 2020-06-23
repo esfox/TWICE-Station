@@ -1,4 +1,3 @@
-const { RichEmbed, MessageCollector } = require('discord.js');
 const { games_time_limit } = require('config/config');
 const { Coins } = require('api/models');
 const { compare } = require('utils/functions');

@@ -50,19 +50,19 @@ async function action(context)
   {
     const candybongs = await Candybongs.ofUser(author);
     if(candybongs === undefined)
-      return context.error("Whoops. Couldn't get give a Candy Bong. Please try again.");
+      return context.send("Whoops. Couldn't get give a Candy Bong. Please try again.");
 
     if(candybongs === 0)
       return context.send("You don't have any Candy Bongs to give.");
     
     const giveResult = await Candybongs.subtractFromUser(author);
     if(giveResult === undefined)
-      return context.error("Whoops. Couldn't get give a Candy Bong. Please try again.");
+      return context.send("Whoops. Couldn't get give a Candy Bong. Please try again.");
   }
 
   const getResult = await Candybongs.addToUser(isSelf? author : mention.id);
   if(getResult === undefined)
-    return context.error("Whoops. Couldn't get give a Candy Bong. Please try again.");
+    return context.send("Whoops. Couldn't get give a Candy Bong. Please try again.");
 
   context.reply(isSelf?
     '🍭  You unboxed your Candy Bong!' :

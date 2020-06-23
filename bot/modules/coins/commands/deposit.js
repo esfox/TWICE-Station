@@ -24,14 +24,14 @@ async function action(context)
   const user = context.message.author.id;
   const userCoins = await Coins.ofUser(user)
   if(userCoins === undefined)
-    return context.error("Whoops. Can't get your coins. Please try again.");
+    return context.send("Whoops. Can't get your coins. Please try again.");
 
   if(userCoins < amount)
     return context.reply("❌  You don't have enough coins.");
 
   const subtractResult = await Coins.subtractFromUser(user, amount);
   if(subtractResult === undefined)
-    return context.error("Whoops. Some error happened. Please try again.");
+    return context.send("Whoops. Some error happened. Please try again.");
 
   const data = await loadData();
   data.bank += amount;

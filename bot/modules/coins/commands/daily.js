@@ -39,7 +39,7 @@ async function action(context)
   const daily = Math.floor(Math.random() * (max - min)) + min;
   const addResult = await Coins.addToUser(context.message.author.id, daily);
   if(addResult === undefined)
-    return context.error("Whoops. Can't add your daily coins. Please try again.");
+    return context.send("Whoops. Can't add your daily coins. Please try again.");
 
   context.reply(`💰  You received ${daily} TWICECOINS`);
 }

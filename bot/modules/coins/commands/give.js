@@ -30,7 +30,7 @@ async function action(context)
 
   const giveResult = await Coins.transfer(giverID, receiverID, amount);
   if(giveResult === undefined)
-    return context.error("Whoops. Can't transfer your coins. Please try again.");
+    return context.send("Whoops. Can't transfer your coins. Please try again.");
     
   if(giveResult === 0)
     return context.send("❌ You don't have enough coins.");

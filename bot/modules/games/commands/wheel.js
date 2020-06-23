@@ -51,7 +51,7 @@ async function action(context)
   {
     const rewardResult = await Coins.addToUser(user.id, rewards.wheel);
     if(rewardResult === undefined)
-      return context.error("Whoops. Can't add your reward.");
+      return context.send("Whoops. Can't add your reward.");
   }
 
   const description = `${choseText}`

@@ -20,7 +20,7 @@ async function action(context)
   const user = context.message.author;
   let items = await Items.ofUser(user.id);
   if(items === undefined)
-    return context.error("Whoops. Can't get your items. Please try again.");
+    return context.send("Whoops. Can't get your items. Please try again.");
 
   const itemCodes = Object.keys(items);
   if(itemCodes.length === 0)

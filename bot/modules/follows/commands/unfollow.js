@@ -23,7 +23,7 @@ async function action(context)
   const toUnfollow = channels.map(({ id }) => id);
   const unfollowResult = await Follows.removeFromUser(context.message.author.id, toUnfollow);
   if(unfollowResult === undefined)
-    return context.error("Whoops. Something went wrong. Please try again.");
+    return context.send("Whoops. Something went wrong. Please try again.");
 
   const unfollowedChannels = toUnfollow.map(channel => `<#${channel}>`).join(' ');
   context.send('🔕  Unfollowed...', unfollowedChannels);

@@ -18,7 +18,7 @@ async function action(context)
 {
   const candybongs = await Candybongs.top();
   if(candybongs === undefined)
-    return context.error("Whoops. Can't get the Candy Bong leaderboard. Please try again.");
+    return context.send("Whoops. Can't get the Candy Bong leaderboard. Please try again.");
 
   if(candybongs.length === 0)
     return context.send('No one has candybongs yet.');

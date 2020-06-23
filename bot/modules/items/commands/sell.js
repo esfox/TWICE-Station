@@ -51,7 +51,7 @@ class Seller
     this.userID = context.message.author.id;
     this.userItems = await Items.ofUser(this.userID);
     if(this.userItems === undefined)
-      return context.error("Whoops. Something went wrong. Please try again.");
+      return context.send("Whoops. Something went wrong. Please try again.");
 
     if(Object.keys(this.userItems).length === 0)
       return context.send("❌  You don't have items.");

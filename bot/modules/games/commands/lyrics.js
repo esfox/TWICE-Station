@@ -42,7 +42,7 @@ async function action(context)
   const { title, lyrics: link } = randomElement(songs);
   const html = await fetch(link)
     .then(response => response.text())
-    .catch(error => context.error(error, context));
+    .catch(error => context.send(error, context));
   
   const $ = cheerio.load(html);
   let lyrics = $('.entry-content table[border=0] td:first-of-type > p')

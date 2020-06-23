@@ -16,7 +16,7 @@ const { play: startMusic } = require('./modules/radio/functions');
 const cbreset = require('./modules/candybongs/cbreset');
 const autoReminders = require('./modules/info/auto-reminders');
 
-let { client, ping, /* channel */ } = config.developer;
+let { client } = config.developer;
 const { followables, followable_media } = config;
 
 const [ token ] = process.argv.slice(2);
@@ -37,7 +37,6 @@ bot.on('ready', async _ =>
   /* Bot user is the beta bot. */
   if(bot.user.id === client)
   {
-    ping += '‍';
     config.prefixes = [ '`' ];
     // config.embed_color = '#36393F';
   }
@@ -54,25 +53,16 @@ bot.on('ready', async _ =>
   }
     
   context.setConfig(config);
-
-  // const pingChannel = bot.channels.get(channel);
-  // if(pingChannel)
-  //   pingChannel.send(ping)
-  //     .catch(console.error);
-
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
 
 bot.on('message', async message =>
 {
-  if(message.content === ping && message.channel.id === '533908427399757826')
-    message.delete();
-
   if(message.author.bot)
     return;
 
   if(message.channel.type === 'dm' && 
-    message.author.id !== context.config.developer.id)
+    message.author.id !== config.developer.id)
     return;
 
   if(message.guild.id !== config.twicepedia)

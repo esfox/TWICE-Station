@@ -28,7 +28,7 @@ async function action(context)
 
   const coins = await Coins.ofUser(userID)
   if(coins === undefined)
-    return context.error("Whoops. Can't get the coins. Please try again.");
+    return context.send("Whoops. Can't get the coins. Please try again.");
 
   if(coins === 0)
     return context.reply(noMention? 

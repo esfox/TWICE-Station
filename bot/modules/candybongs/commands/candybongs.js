@@ -18,7 +18,7 @@ async function action(context)
 {
   const candybongs = await Candybongs.ofUser(context.message.author.id);
   if(candybongs === undefined)
-    return context.error("Whoops. Couldn't get your Candy Bongs. Please try again.");
+    return context.send("Whoops. Couldn't get your Candy Bongs. Please try again.");
 
   if(candybongs === 0)
     return context.reply("You don't have Candy Bongs.");

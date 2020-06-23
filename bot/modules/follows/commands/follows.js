@@ -18,7 +18,7 @@ async function action(context)
   /** @type {string[]} */
   const follows = await Follows.ofUser(context.message.author.id);
   if(follows === undefined)
-    return context.error("Whoops. Can't get your followed channels. Please try again.");
+    return context.send("Whoops. Can't get your followed channels. Please try again.");
 
   if(!follows)
     return context.send('You are not following any channels.');

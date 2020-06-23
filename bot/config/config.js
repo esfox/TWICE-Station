@@ -33,6 +33,12 @@ module.exports =
     "274336998771130368",
     "182584303161442304",
   ],
+  
+  trivia_verifiers:
+  [
+    '468771423377162270',
+  ],
+  
   server_invite: "https://discord.gg/fC76MQG",
   coin_image: "https://i.imgur.com/Sw24N6D.png",
 

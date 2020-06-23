@@ -31,7 +31,7 @@ async function action(context)
 	const toFollow = ids.filter(followable);
   const followResult = await Follows.addToUser(context.message.author.id, toFollow);
   if(followResult === undefined)
-      return context.error("Whoops. Something went wrong. Please try again.");
+      return context.send("Whoops. Something went wrong. Please try again.");
 
   const description = toFollow.map(channel => `<#${channel}>`).join(' ')
 		+ `\n\nMedia posted on ${toFollow.length === 1?

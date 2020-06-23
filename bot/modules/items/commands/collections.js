@@ -19,7 +19,7 @@ async function action(context)
 {
   let userCollections = await Collections.ofUser(context.message.author.id);
   if(userCollections === undefined)
-    return context.error("Whoops. Can't get your collections. Please try again.");
+    return context.send("Whoops. Can't get your collections. Please try again.");
 
   if(userCollections.length === 0)
     return context.send('❌  You have not completed any collection yet.');

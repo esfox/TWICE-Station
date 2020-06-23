@@ -42,11 +42,11 @@ async function action(context)
 
   const coins = await Coins.ofUser(member.id);
   if(coins === undefined)
-    return context.error("Whoops. Can't get the user's coins. Please try again.s");
+    return context.send("Whoops. Can't get the user's coins. Please try again.s");
 
   const candybongs = await Candybongs.ofUser(member.id);
   if(coins === undefined)
-    return context.error("Whoops. Can't get the user's candy bongs. Please try again.s");
+    return context.send("Whoops. Can't get the user's candy bongs. Please try again.s");
 
   info.setFooter(`User has: 💰 ${coins.toLocaleString()} TWICECOINS`
     + ` | 🍭 ${candybongs} Candy Bongs`);

@@ -57,7 +57,7 @@ async function action(context)
     .then(response => response.text())
     .catch(console.error);
   if(!html)
-    return context.error('Cannot get lyrics HTML.', context);
+    return context.send('Cannot get lyrics HTML.', context);
 
   const $ = cheerio.load(html);
   lyrics = cheerio.load($('table').toArray()
