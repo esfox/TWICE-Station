@@ -1,6 +1,6 @@
 const { Command } = require('discord-utils');
 const { writeFileSync } = require('fs');
-const { trivia_verifier, prefixes } = require('config/config');
+const { trivia_approver, prefixes } = require('config/config');
 const trivias = require('data/trivias.json');
 
 module.exports = class extends Command
@@ -75,9 +75,12 @@ async function action(context)
     .addField('Choices', choices.join('\n'))
     .addField('Answer', `__**${answer}**__`);
   
-  await context.chat(submission);
+  await context.reply(
+    '📌  Your trivia has been submitted and is waiting for approval.',
+    'You will be notified when your trivias has been approved or rejected.'
+  );
 
-  const verifier = context.guild.member(trivia_verifier);
+  const verifier = context.guild.member(trivia_approver);
   submission = await verifier.send(submission);
   await submission.react('✅');
   await submission.react('❌');
@@ -111,7 +114,7 @@ async function action(context)
 
   const verificationNotif = context.embed(
     `${approved ? '✅' : '❌'}  Your trivia has been ${approved ? 'approved' : 'rejected'}.`,
-    `"${question}"` + (!approved ? `\n\nYou can ask <@${trivia_verifier}> why.` : '')
+    `"${question}"` + (!approved ? `\n\nYou can ask <@${trivia_approver}> why.` : '')
   );
   
   await submitter.send(verificationNotif);

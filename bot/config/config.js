@@ -34,7 +34,7 @@ module.exports =
     "182584303161442304",
   ],
   
-  trivia_verifier: '468771423377162270',
+  trivia_approver: '468771423377162270',
   
   server_invite: "https://discord.gg/fC76MQG",
   coin_image: "https://i.imgur.com/Sw24N6D.png",
