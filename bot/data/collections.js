@@ -1,4 +1,4 @@
-const prefix = require('config/config').prefixes.shift();
+const prefix = require('config/config').prefixes[0];
 const albumCount = Object.values(require('data/music.json').albums).length;
 
 module.exports = 
