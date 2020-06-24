@@ -1,5 +1,6 @@
 const { Command } = require('discord-utils');
 const { writeFileSync } = require('fs');
+const { Logger } = require('utils/logger');
 const { trivia_approver, prefixes } = require('config/config');
 const trivias = require('data/trivias.json');
 
@@ -74,6 +75,8 @@ async function action(context)
     .addField('Question', `**${question}**`)
     .addField('Choices', choices.join('\n'))
     .addField('Answer', `__**${answer}**__`);
+
+  Logger.info(`Trivia submitted.\nQuestion: ${question}\nChoices: ${choice}\nAnswer: ${answer}`);
   
   await context.reply(
     '📌  Your trivia has been submitted and is waiting for approval.',
