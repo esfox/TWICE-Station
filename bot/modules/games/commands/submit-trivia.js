@@ -77,7 +77,7 @@ async function action(context)
   
   await context.reply(
     '📌  Your trivia has been submitted and is waiting for approval.',
-    'You will be notified when your trivias has been approved or rejected.'
+    'You will be notified when your trivia has been approved or rejected.'
   );
 
   const verifier = context.guild.member(trivia_approver);
