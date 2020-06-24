@@ -76,7 +76,7 @@ async function action(context)
     .addField('Choices', choices.join('\n'))
     .addField('Answer', `__**${answer}**__`);
 
-  Logger.info(`Trivia submitted.\nQuestion: ${question}\nChoices: ${choice}\nAnswer: ${answer}`);
+  Logger.info(`Trivia submitted.\nQuestion: ${question}\nChoices: ${choices}\nAnswer: ${answer}`);
   
   await context.reply(
     '📌  Your trivia has been submitted and is waiting for approval.',
