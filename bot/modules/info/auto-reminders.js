@@ -21,6 +21,28 @@ exports.startUpdateReminder = bot =>
   );
 };
 
+/** @param {import('discord.js').Client} bot */
+exports.startTriviaSubmissionReminder = bot =>
+{
+  const reminder = new RichEmbed()
+    .setColor(embed_color)
+    .setTitle('ℹ️  You can now submit trivias!')
+    .setDescription('Command: `;t-submit`\n\n'
+      + `Just follow the format:\n`
+      + '`;t-submit (question) : (atleast 2 choices) = (number of answer)`\n\n'
+      + '*The choices should be comma-separated.*\n\n'
+      + '**Example**\n'
+      + '`;t-submit Who is the best member? : Sana, Nayeon, Mina, Jihyo = 2`\n\n'
+      + 'After submitting, your trivia will be waiting for approval.\n'
+      + 'Once it has been approved (or rejected), you would be notified.'
+    );
+
+  schedule.scheduleJob(
+    { minute: new schedule.Range(0, 59, 10) },
+    () => sendMessage(bot, reminder),
+  );
+};
+
 function sendMessage(bot, message)
 {
   const botChannel = bot.channels.get(bot_channel);

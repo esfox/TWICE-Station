@@ -50,6 +50,7 @@ bot.on('ready', async _ =>
 
     /* Start automated reminder messages. */
     autoReminders.startUpdateReminder(bot);
+    autoReminders.startTriviaSubmissionReminder(bot);
   }
     
   context.setConfig(config);

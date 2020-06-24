@@ -94,7 +94,7 @@ async function action(context)
 
   const reactions = await submission.awaitReactions(
     reactionFilter,
-    { max: 1 },
+    { max: 1, time: 86400000 },
   );
 
   // const reactedUser = reactions.first().users.keyArray().find(user => user !== botID);
