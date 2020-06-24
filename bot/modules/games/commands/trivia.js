@@ -5,7 +5,7 @@ const { quiz } = require('../quiz');
 
 const { cooldowns: cooldown, rewards } = require('config/config');
 const { randomElement, onCooldown } = require('utils/functions');
-const trivias = require('data/trivias');
+const trivias = require('data/trivias.json');
 
 const cooldowns = require('utils/cooldown');
 cooldowns.add(command, cooldown.lyrics_guess);
