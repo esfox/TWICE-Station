@@ -26,7 +26,7 @@ async function action(context)
   const submitter = context.message.author;
   context.message.delete();
   
-  if(!raw_parameters.includes(':') || !raw_parameters.includes('='))
+  if(!raw_parameters || !raw_parameters.includes(':') || !raw_parameters.includes('='))
   {
     const prefix = prefixes[0];
     const errorMessage = context.embed(
