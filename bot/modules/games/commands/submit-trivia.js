@@ -48,7 +48,7 @@ async function action(context)
     .split(',')
     .map(choice => cleanString(choice));
 
-  if(choices.length < 3)
+  if(choices.length < 2)
     return context.reply('❌  Not enough choices given.');
   
   let answer = parseInt(
