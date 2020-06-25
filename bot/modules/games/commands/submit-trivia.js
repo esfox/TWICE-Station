@@ -76,7 +76,8 @@ async function action(context)
   let submission = context.embed('📌  Trivia has been submitted.')
     .addField('Question', `**${question}**`)
     .addField('Choices', choices.join('\n'))
-    .addField('Answer', `__**${answer}**__`);
+    .addField('Answer', `__**${answer}**__`)
+    .setFooter(`Submitted by: ${submitter.tag}`);
 
   Logger.info(`Trivia submitted.\nQuestion: ${question}\nChoices: ${choices}\nAnswer: ${answer}`);
   
