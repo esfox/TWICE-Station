@@ -16,7 +16,7 @@ exports.startUpdateReminder = bot =>
       + " please tell him right away.\n\nThank you!\n\n`possibly new features to come`");
 
   schedule.scheduleJob(
-    { minute: new schedule.Range(0, 59, 15) },
+    { minute: new schedule.Range(0, 59, 30) },
     () => sendMessage(bot, reminder),
   );
 };
