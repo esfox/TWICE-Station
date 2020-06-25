@@ -1,8 +1,10 @@
 const { Command } = require('discord-utils');
 const { writeFileSync } = require('fs');
 const { Logger } = require('utils/logger');
-const { trivia_approver, prefixes } = require('config/config');
+const { prefixes } = require('config/config');
 const trivias = require('data/trivias.json');
+
+const triviaApprover = '468771423377162270';
 
 module.exports = class extends Command
 {
@@ -83,7 +85,7 @@ async function action(context)
     'You will be notified when your trivia has been approved or rejected.'
   );
 
-  const verifier = context.guild.member(trivia_approver);
+  const verifier = context.guild.member(triviaApprover);
   submission = await verifier.send(submission);
   await submission.react('✅');
   await submission.react('❌');
@@ -117,7 +119,7 @@ async function action(context)
 
   const verificationNotif = context.embed(
     `${approved ? '✅' : '❌'}  Your trivia has been ${approved ? 'approved' : 'rejected'}.`,
-    `"${question}"` + (!approved ? `\n\nYou can ask <@${trivia_approver}> why.` : '')
+    `"${question}"` + (!approved ? `\n\nYou can ask <@${triviaApprover}> why.` : '')
   );
   
   await submitter.send(verificationNotif);

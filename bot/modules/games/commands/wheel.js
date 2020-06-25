@@ -1,7 +1,7 @@
 const command = 'wheel';
 
 const { Command } = require('discord-utils');
-const { emotes, rewards, cooldowns: cooldown } = require('config/config');
+const { rewards, cooldowns: cooldown } = require('config/config');
 
 const members = require('data/members');
 const { Coins } = require('api/models');
@@ -41,7 +41,7 @@ async function action(context)
 
   const choseText = `You chose **${member.name}**.\n`;
   const embed = context.embed('Wheel of TWICE', 
-    `${choseText}\nSpinning... ${emotes.wheel_spin}`);
+    `${choseText}\nSpinning... <a:WheelSpin:530589274769195018>`);
   const message = await context.chat(embed, true);
   await sleep(4);
 

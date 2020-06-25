@@ -12,7 +12,6 @@ const
 const 
 { 
   trash_messages, 
-  emotes, 
   cooldowns: cooldown 
 } = require('config/config');
 
@@ -31,6 +30,8 @@ module.exports = class extends Command
   }
 }
 
+const jeonggeringEmote = '<a:jeonggering:556303054702510080>';
+
 /** @param {import('discord-utils').Context} context*/
 async function action(context)
 {
@@ -43,7 +44,7 @@ async function action(context)
 
   let title = `${item.name}! ${item.emote? item.emote : ''}`;
   if(item.value === 'legendary')
-    title = `✨ ${title}${emotes.jeonggering}`;
+    title = `✨ ${title}${jeonggeringEmote}`;
   if(item.value === 'rare')
     title = `${title}⭐`;
 
@@ -78,7 +79,7 @@ async function action(context)
   title = (collectionsCount === 1?
     `You have completed the ${collections.shift().name} Collection! ` :
     `You have completed ${collectionsCount} collections! `)
-    + emotes.jeonggering;
+    + jeonggeringEmote;
   
   embed = context.embed('🎊 CONGRATULATIONS! 🎊')
     .addField(title, description);

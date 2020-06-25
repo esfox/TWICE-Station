@@ -17,7 +17,7 @@ const cbreset = require('./modules/candybongs/cbreset');
 const autoReminders = require('./modules/info/auto-reminders');
 
 let { client } = config.developer;
-const { followables, followable_media } = config;
+const { followables } = config;
 
 const [ token ] = process.argv.slice(2);
 bot
@@ -94,9 +94,9 @@ async function sendToFollowers(message)
     .filter(attachment => attachment.width > 1 && attachment.height > 1)
     .map(attachment => attachment.url);
 
+  const followableMedia = [ "image", "gifv", "video" ];
   const embeds = message.embeds
-    .filter(embed => 
-      followable_media.includes(embed.type) || embed.video || embed.image)
+    .filter(embed => followableMedia.includes(embed.type) || embed.video || embed.image)
     .map(embed => embed.url);
 
   let links = [ ...attachments, ...embeds ];

@@ -34,11 +34,6 @@ module.exports =
     "182584303161442304",
   ],
   
-  trivia_approver: '468771423377162270',
-  
-  server_invite: "https://discord.gg/fC76MQG",
-  coin_image: "https://i.imgur.com/Sw24N6D.png",
-
   followables:
   [
     "533551327419039754",
@@ -53,7 +48,6 @@ module.exports =
     "533551442297094155",
     "567453403991506982"
   ],
-  followable_media: [ "image", "gifv", "video" ],
 
   cooldowns: 
   {
@@ -96,12 +90,6 @@ module.exports =
 
   raffle_fee: 1000,
   raffle_prize_distribution: [ 0.60, 0.30 ],
-
-  emotes:
-  {
-    wheel_spin: '<a:WheelSpin:530589274769195018>',
-    jeonggering: '<a:jeonggering:556303054702510080>',
-  },
 
   trash_messages:
   [

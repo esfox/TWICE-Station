@@ -27,7 +27,6 @@ function action(context)
 
   const info = context.embed(name)
     .setThumbnail(iconURL)
-    .addField('Invite', context.config.server_invite)
     .addField('Owner', owner.toString())
     .addField('Created on', createdAt)
     .addField('Total Members', memberCount)

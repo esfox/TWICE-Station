@@ -1,7 +1,8 @@
 const { Command } = require('discord-utils');
 const { getMention } = require('utils/functions');
-const { coin_image } = require('config/config');
 const { Coins } = require('api/models');
+
+const coinImage = 'https://i.imgur.com/Sw24N6D.png';
 
 module.exports = class extends Command
 {
@@ -40,7 +41,7 @@ async function action(context)
   const embed = context.embed(noMention?
       undefined : `💰  ${coinsText}`)
     .setAuthor(noMention? coinsText : member.displayName,
-      noMention? coin_image : member.user.displayAvatarURL)
+      noMention? coinImage : member.user.displayAvatarURL)
     .setFooter('With these coins you can buy roles for yourself!');
   context.chat(embed, true);
 }
