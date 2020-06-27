@@ -14,7 +14,7 @@ const { Logger } = require('utils/logger');
 const musicPlayer = require('./modules/radio/player');
 const { play: startMusic } = require('./modules/radio/functions');
 const cbreset = require('./modules/candybongs/cbreset');
-const autoReminders = require('./modules/info/auto-reminders');
+const reminders = require('./modules/info/reminders');
 
 let { client } = config.developer;
 const { followables } = config;
@@ -31,8 +31,14 @@ bot.on('ready', async _ =>
 
   console.log('Bot connected.');
 
+  /* Initialize the radio. */
   musicPlayer.init(bot);
+
+  /* Start the candybong reset weekly reward. */
   cbreset.automate(bot);
+
+  /* Start automated reminder messages. */
+  reminders.start(bot);
 
   /* Bot user is the beta bot. */
   if(bot.user.id === client)
@@ -47,10 +53,6 @@ bot.on('ready', async _ =>
     config.prefixes = [ ';' ];
     await musicPlayer.connect();
     startMusic(bot);
-
-    /* Start automated reminder messages. */
-    autoReminders.startUpdateReminder(bot);
-    autoReminders.startTriviaSubmissionReminder(bot);
   }
     
   context.setConfig(config);
