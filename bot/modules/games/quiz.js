@@ -1,5 +1,5 @@
 const { games_time_limit } = require('config/config');
-const { Coins } = require('api/models');
+const { giveReward } = require('./rewarder');
 const { compare } = require('utils/functions');
 
 /**
@@ -48,7 +48,7 @@ async function quiz(context, question, answer, reward, info)
     response.setFooter(info);
 
   if(isCorrect)
-    await Coins.addToUser(message.author.id, reward);
+    await giveReward(message.author.id, reward);
     
   message.reply(response);
 }

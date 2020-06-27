@@ -4,7 +4,7 @@ const { Command } = require('discord-utils');
 const { rewards, cooldowns: cooldown } = require('config/config');
 
 const members = require('data/members');
-const { Coins } = require('api/models');
+const { giveReward } = require('../rewarder');
 
 const { sleep, randomElement, onCooldown } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
@@ -49,7 +49,7 @@ async function action(context)
   const won = member.code === chosenMember.code;
   if(won)
   {
-    const rewardResult = await Coins.addToUser(user.id, rewards.wheel);
+    const rewardResult = await giveReward(user.id, rewards.wheel);
     if(rewardResult === undefined)
       return context.send("Whoops. Can't add your reward.");
   }
