@@ -82,5 +82,8 @@ start.sh
 # mp3 files
 .mp3
 
+# imgur credentials file
+imgur.json
+
 # folder for testing things
 sandbox

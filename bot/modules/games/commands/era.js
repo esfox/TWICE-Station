@@ -5,6 +5,8 @@ const { quiz } = require('../quiz');
 const imgur = require('imgur');
 
 const { cooldowns: cooldown, rewards } = require('config/config');
+const { email, password, client_id }  = require('config/imgur.json');
+
 const { onCooldown, randomElement } = require('utils/functions');
 const { Logger } = require('utils/logger');
 const eraPictures = require('data/era-pics.json');
@@ -13,7 +15,7 @@ const cooldowns = require('utils/cooldown');
 cooldowns.add(command, cooldown.era_guess);
 
 imgur.setAPIUrl('https://api.imgur.com/3/');
-imgur.setCredentials('twice.station.dev@gmail.com', 'teud00ng!e', 'fd6ffbae25e2c7e');
+imgur.setCredentials(email, password, client_id);
 
 module.exports = class extends Command
 {
