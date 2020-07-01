@@ -32,8 +32,8 @@ const jobs =
       ),
   },
   {
-    name: 'update-reminder',
-    recurrence: { minute: new schedule.Range(0, 59, 10) },
+    name: 'trivia-reminder',
+    recurrence: { minute: new schedule.Range(0, 59, 15) },
     message: makeEmbed()
       .setTitle('ℹ️  You can now submit trivias!')
       .setDescription('Command: `;t-submit`\n\n'
@@ -44,6 +44,18 @@ const jobs =
         + '`;t-submit Who is the best member? : Sana, Nayeon, Mina, Jihyo = 2`\n\n'
         + 'After submitting, your trivia will be waiting for approval.\n'
         + 'Once it has been approved (or rejected), you would be notified.'
+      ),
+  },
+  {
+    name: 'beta-era-reminder',
+    recurrence: { minute: new schedule.Range(0, 59, 10) },
+    message: makeEmbed()
+      .setTitle('ℹ️  __**Era game**__ beta testing is **here**. `we back`')
+      .setDescription('Check the list of currently available eras in the game with **`;eras`**.\n'
+        + 'Try the game with **`;era`**.\n\n'
+        + 'Since this is under beta testing, __pictures are very limited__'
+        + ' (Nayeon only as of the moment) and the reward is very little.\n\n'
+        + 'Stay tuned for more updates to this game!'
       ),
   },
 ];
