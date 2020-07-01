@@ -55,7 +55,7 @@ const jobs =
         + 'Check the list of currently available eras in the game with **`;eras`**.\n'
         + 'Try the game with **`;era`**.\n\n'
         + 'Since this is under beta testing, __pictures are very limited__'
-        + ' (Nayeon only as of the moment) and the reward is very little.\n\n'
+        + ' (not all members yet) and the reward is very little.\n\n'
         + 'Stay tuned for more updates to this game!'
       ),
   },
