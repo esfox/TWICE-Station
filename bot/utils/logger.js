@@ -23,6 +23,9 @@ class Logger
   {
     if(!fs.existsSync(logFolder))
       fs.mkdirSync(logFolder);
+
+    if(!fs.existsSync(`${logFolder}/imgur`))
+      fs.mkdirSync(`${logFolder}/imgur`);
   }
 
   info(message)
@@ -46,9 +49,21 @@ class Logger
       .replace(Tokens.MESSAGE, message)
     );
   }
+
+  imgur(message)
+  {
+    if(!message)
+      return;
+
+    log(format
+      .replace(Tokens.TYPE, '')
+      .replace(Tokens.MESSAGE, message),
+      true
+    );
+  }
 }
 
-function log(output)
+function log(output, isImgurLog)
 {
   const pad = string => string.toString().padStart(2, '0');
 
@@ -61,10 +76,11 @@ function log(output)
   const date = pad(now.getDate());
   const year = pad(now.getFullYear());
 
-  const logFile = `./${logFolder}/${month}-${date}-${year}.log`;
+  const logFile = `${!isImgurLog ? '' : 'imgur/'}${month}-${date}-${year}.log`;
+  const logPath = `${logFolder}/${logFile}`;
   const timestamp = `${hour}:${minutes}:${seconds}`;
   output = output.replace(Tokens.TIMESTAMP, timestamp);
-  fs.appendFileSync(logFile, `${output}\n`, 'utf-8');
+  fs.appendFileSync(logPath, `${output}\n`, 'utf-8');
 }
 
 exports.Logger = new Logger();

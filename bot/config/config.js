@@ -61,8 +61,9 @@ module.exports =
     lyrics_guess: 30,
     member_guess: 60,
     song_guess: 60,
+    era_guess: 60,
     trivia: 60,
-    search: 25
+    search: 25,
   },
   games_time_limit: 30,
 
@@ -72,6 +73,7 @@ module.exports =
     lyrics_guess: 300,
     member_guess: 250,
     song_guess: 200,
+    era_guess: 5,
     trivia: 300,
     candybongtop:
     [
@@ -90,6 +92,19 @@ module.exports =
 
   raffle_fee: 1000,
   raffle_prize_distribution: [ 0.60, 0.30 ],
+
+  eras:
+  [
+    'Like OOH AHH',
+    'Cheer Up',
+    'TT',
+    'Knock Knock',
+    'Likey',
+    'Signal',
+    'Heart Shaker',
+    'What Is Love',
+    'Dance The Night Away',
+  ],
 
   trash_messages:
   [

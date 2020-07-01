@@ -8,6 +8,7 @@ const
 
 const schedule = require('node-schedule');
 const cooldowns = require('utils/cooldown');
+const { Logger } = require('utils/logger');
 const { Coins, Candybongs } = require('api/models');
 
 /** @param {import('discord.js').Client} bot */
@@ -24,12 +25,13 @@ exports.automate = bot =>
   },
   async _ => this.do(bot));
 
-  console.log('CandyBong Reset Automation started.');
+  console.log('Candy Bong Reset Automation started.');
 }
 
 /** @param {import('discord.js').Client} bot */
 exports.do = async bot =>
 {
+  Logger.info('Candy Bong reset executed.');
   const devChannel = bot.channels.get(dev_channel);
     
   const candybongs = await Candybongs.top();
