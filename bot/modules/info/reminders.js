@@ -51,7 +51,8 @@ const jobs =
     recurrence: { minute: new schedule.Range(0, 59, 10) },
     message: makeEmbed()
       .setTitle('ℹ️  __**Era game**__ beta testing is **here**. `we back`')
-      .setDescription('Check the list of currently available eras in the game with **`;eras`**.\n'
+      .setDescription('**Update: Jeongyeon pics have been added.**\n\n'
+        + 'Check the list of currently available eras in the game with **`;eras`**.\n'
         + 'Try the game with **`;era`**.\n\n'
         + 'Since this is under beta testing, __pictures are very limited__'
         + ' (Nayeon only as of the moment) and the reward is very little.\n\n'
