@@ -51,7 +51,7 @@ const jobs =
     recurrence: { minute: new schedule.Range(0, 59, 10) },
     message: makeEmbed()
       .setTitle('ℹ️  __**Era game**__ beta testing is **here**. `we back`')
-      .setDescription('**Update: Jeongyeon, Momo, and Sana pics have been added.**\n\n'
+      .setDescription('**Update: Jeongyeon, Momo, Sana, Jihyo, and Tzuyu pics have been added.**\n\n'
         + 'Check the list of currently available eras in the game with **`;eras`**.\n'
         + 'Try the game with **`;era`**.\n\n'
         + 'Since this is under beta testing, __pictures are very limited__'
