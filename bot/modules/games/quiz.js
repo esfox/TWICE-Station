@@ -36,7 +36,12 @@ async function quiz(context, question, answer, reward, info)
   if(!reply)
     return;
 
-  const isCorrect = compare(answer, reply.first().content, true);
+  const userAnswer = reply
+    .first()
+    .content
+    .replace(/-/g, ' ');
+
+  const isCorrect = compare(answer, userAnswer, true);
 
   const title = isCorrect ? '✅  Correct!' : '❌  Wrong!';
   const response = context.embed(title);
