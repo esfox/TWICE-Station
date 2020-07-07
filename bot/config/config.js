@@ -73,7 +73,7 @@ module.exports =
     lyrics_guess: 300,
     member_guess: 250,
     song_guess: 200,
-    era_guess: 5,
+    era_guess: 300,
     trivia: 300,
     candybongtop:
     [

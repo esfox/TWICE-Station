@@ -47,16 +47,15 @@ const jobs =
       ),
   },
   {
-    name: 'beta-era-reminder',
+    name: 'era-reminder',
     recurrence: { minute: new schedule.Range(0, 59, 10) },
     message: makeEmbed()
-      .setTitle('ℹ️  __**Era game**__ beta testing is **here**. `we back`')
-      .setDescription('**Update: Only Mina is left to be added.**\n\n'
-        + 'Check the list of currently available eras in the game with **`;eras`**.\n'
-        + 'Try the game with **`;era`**.\n\n'
-        + 'Since this is under beta testing, __pictures are very limited__'
-        + ' (not all members yet) and the reward is very little.\n\n'
-        + 'Stay tuned for more updates to this game!'
+      .setTitle('ℹ️  __**Era game**__ is now out of beta testing')
+      .setDescription('If you face any issues with the game,'
+        + ' please let <@247955535620472844> know right away.\n\n'
+        + 'For now, the eras are only up to DTNA. More eras will be added later on.\n'
+        + 'If you would like to contribute to the collection of pictures used for the game,'
+        + ' please let <@247955535620472844> know.'
       ),
   },
 ];
