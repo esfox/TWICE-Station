@@ -73,10 +73,6 @@ async function action(context)
   /* Remove underscores in era string. */
   era = era.replace(/_/g, '');
 
-  // Temporary notice
-  context.chat('The era game is under beta testing and has limited pictures currently'
-    + ', so the reward is also very little.');
-
   /* Create the embed. */
   const question = context
     .embed(`🖼️  Guess the era!`)
