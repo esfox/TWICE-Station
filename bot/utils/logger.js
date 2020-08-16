@@ -30,13 +30,13 @@ class Logger
 
   info(message)
   {
-    if(!message)
-      return;
+    // if(!message)
+    //   return;
 
-    log(format
-      .replace(Tokens.TYPE, Types.INFO.padEnd(5, ' '))
-      .replace(Tokens.MESSAGE, message)
-    );
+    // log(format
+    //   .replace(Tokens.TYPE, Types.INFO.padEnd(5, ' '))
+    //   .replace(Tokens.MESSAGE, message)
+    // );
   }
 
   error(message)
@@ -52,14 +52,14 @@ class Logger
 
   imgur(message)
   {
-    if(!message)
-      return;
+    // if(!message)
+    //   return;
 
-    log(format
-      .replace(Tokens.TYPE, '')
-      .replace(Tokens.MESSAGE, message),
-      true
-    );
+    // log(format
+    //   .replace(Tokens.TYPE, '')
+    //   .replace(Tokens.MESSAGE, message),
+    //   true
+    // );
   }
 }
 
