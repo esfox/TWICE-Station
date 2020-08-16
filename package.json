@@ -7,7 +7,7 @@
   "main": "bot/bot.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "discord-utils": "github:esfox/discord-utils",
+    "discord-utils": "github:esfox/discord-utils#81e3257cda484e632f2f815819ed247f59132021",
     "discord.js": "^11.5.1",
     "fluent-ffmpeg": "^2.1.2",
     "get-audio-duration": "^1.0.0",

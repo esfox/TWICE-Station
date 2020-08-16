@@ -51,7 +51,7 @@ bot.on('ready', async _ =>
     Logger.info('Bot started.');
 
     config.prefixes = [ ';' ];
-    await musicPlayer.connect();
+    // await musicPlayer.connect();
     startMusic(bot);
   }
     
