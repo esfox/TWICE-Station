@@ -3,7 +3,8 @@ const { compare } = require('utils/functions');
 const itemList = require('data/items');
 const collections = require('data/collections');
 const { masterList: items, checkForCollections } = require('../item');
-const { Items, Coins } = require('api/models');
+const { Items } = require('api/models');
+const { addCoins } = require('../../coins/coins-manager');
 
 const values = itemList.map(({ value }) => value);
 
@@ -81,8 +82,8 @@ class Seller
 
   async save()
   {
-    await Items.set(this.userID, this.userItems);
-    await Coins.addToUser(this.userID, this.earn);
+		await Items.set(this.userID, this.userItems);
+		this.earn = await addCoins(this.userID, this.earn);
   }
 
   respond(response)

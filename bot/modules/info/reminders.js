@@ -18,20 +18,6 @@ function makeEmbed()
 const jobs =
 [
   {
-    name: 'update-reminder',
-    recurrence: { minute: new schedule.Range(0, 59, 30) },
-    message: makeEmbed()
-      .setTitle('ℹ️  __**Please check your coins, candybongs and items.**__')
-      .setDescription(
-        'The bot has been updated (but no new features yet).\n\n'
-        + `Please @ or DM ${developer.ping} right away if any of those`
-        + " aren't correct and also if any problem occurs with the bot.\n\n"
-        + "It would be nice if you could help on checking for breaks or bugs"
-        + " (since the update was kind of major) so if you encounter one,"
-        + " please tell him right away.\n\nThank you!\n\n`possibly new features to come`"
-      ),
-  },
-  {
     name: 'trivia-reminder',
     recurrence: { minute: new schedule.Range(0, 59, 15) },
     message: makeEmbed()
@@ -47,17 +33,36 @@ const jobs =
       ),
   },
   {
-    name: 'era-reminder',
-    recurrence: { minute: new schedule.Range(0, 59, 10) },
-    message: makeEmbed()
-      .setTitle('ℹ️  __**Era game**__ is now out of beta testing')
-      .setDescription('If you face any issues with the game,'
-        + ' please let <@247955535620472844> know right away.\n\n'
-        + 'For now, the eras are only up to DTNA. More eras will be added later on.\n'
-        + 'If you would like to contribute to the collection of pictures used for the game,'
-        + ' please let <@247955535620472844> know.'
-      ),
+    name: 'donators-reminder',
+    recurrence: { dayOfWeek: 0 },
+    message: `<@${developer.id}> Check monthly donators for reset.`,
   },
+  // {
+  //   name: 'update-reminder',
+  //   recurrence: { minute: new schedule.Range(0, 59, 30) },
+  //   message: makeEmbed()
+  //     .setTitle('ℹ️  __**Please check your coins, candybongs and items.**__')
+  //     .setDescription(
+  //       'The bot has been updated (but no new features yet).\n\n'
+  //       + `Please @ or DM ${developer.ping} right away if any of those`
+  //       + " aren't correct and also if any problem occurs with the bot.\n\n"
+  //       + "It would be nice if you could help on checking for breaks or bugs"
+  //       + " (since the update was kind of major) so if you encounter one,"
+  //       + " please tell him right away.\n\nThank you!\n\n`possibly new features to come`"
+  //     ),
+  // },
+  // {
+  //   name: 'era-reminder',
+  //   recurrence: { minute: new schedule.Range(0, 59, 10) },
+  //   message: makeEmbed()
+  //     .setTitle('ℹ️  __**Era game**__ is now out of beta testing')
+  //     .setDescription('If you face any issues with the game,'
+  //       + ' please let <@247955535620472844> know right away.\n\n'
+  //       + 'For now, the eras are only up to DTNA. More eras will be added later on.\n'
+  //       + 'If you would like to contribute to the collection of pictures used for the game,'
+  //       + ' please let <@247955535620472844> know.'
+  //     ),
+  // },
 ];
 
 /** @param {import('discord.js').Client} bot */
@@ -71,10 +76,12 @@ exports.start = bot =>
 }
 
 /** @param {import('discord.js').Client} bot */
-function sendMessage(bot, message)
+function sendMessage(bot, message, forDeveloper)
 {
-  const channel = bot.user.id === developer.client
-    ? developer.channel : bot_channel;
+	const channel = forDeveloper ?
+			devloper.channel :
+		bot.user.id === developer.client ?
+    	developer.channel : bot_channel;
 
   const botChannel = bot.channels.get(channel);
   botChannel.send(message);

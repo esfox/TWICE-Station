@@ -2,7 +2,7 @@ const command = 'daily';
 
 const { Command } = require('discord-utils');
 const config = require('config/config');
-const { Coins } = require('api/models');
+const { addCoins } = require('../coins-manager');
 
 const { getTimeLeft } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
@@ -36,9 +36,9 @@ async function action(context)
     rng <= 20? [ 401, 600 ] : [ 200, 400 ]
   );
     
-  const daily = Math.floor(Math.random() * (max - min)) + min;
-  const addResult = await Coins.addToUser(context.message.author.id, daily);
-  if(addResult === undefined)
+	let daily = Math.floor(Math.random() * (max - min)) + min;
+  daily = await addCoins(context.message.author.id, daily);
+  if(daily === undefined)
     return context.send("Whoops. Can't add your daily coins. Please try again.");
 
   context.reply(`💰  You received ${daily} TWICECOINS`);

@@ -4,7 +4,7 @@ const { Command } = require('discord-utils');
 const { rewards, cooldowns: cooldown } = require('config/config');
 
 const members = require('data/members');
-const { giveReward } = require('../rewarder');
+const { addCoins } = require('../../coins/coins-manager');
 
 const { sleep, randomElement, onCooldown } = require('utils/functions');
 const cooldowns = require('utils/cooldown');
@@ -45,19 +45,20 @@ async function action(context)
   const message = await context.chat(embed, true);
   await sleep(4);
 
-  const chosenMember = randomElement(members);
+	const chosenMember = randomElement(members);
+	let reward = rewards.wheel;
   const won = member.code === chosenMember.code;
   if(won)
   {
-    const rewardResult = await giveReward(user.id, rewards.wheel);
-    if(rewardResult === undefined)
+    reward = await addCoins(user.id, reward);
+    if(reward === undefined)
       return context.send("Whoops. Can't add your reward.");
   }
 
   const description = `${choseText}`
     + `The wheel stopped at **${chosenMember.name}**!\n\n`
     + (won? 
-      `YOU WIN __**${rewards.wheel}**__ **TWICE**COINS! 🎉` : 
+      `YOU WIN __**${reward}**__ **TWICE**COINS! 🎉` : 
       'You lose. ❌');
   embed.setDescription(description);
   await message.edit(user, embed);

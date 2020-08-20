@@ -1,5 +1,5 @@
 const { games_time_limit } = require('config/config');
-const { giveReward } = require('./rewarder');
+const { addCoins } = require('../coins/coins-manager');
 const { compare } = require('utils/functions');
 
 /**
@@ -46,14 +46,14 @@ async function quiz(context, question, answer, reward, info)
   const title = isCorrect ? '✅  Correct!' : '❌  Wrong!';
   const response = context.embed(title);
 
-  if(isCorrect)
+	if(isCorrect)
+	{
+		reward = await addCoins(message.author.id, reward);
     response.setDescription(`You win **${reward} TWICECOINS**!`);
+	}
 
-  if(info && info !== true)
-    response.setFooter(info);
-
-  if(isCorrect)
-    await giveReward(message.author.id, reward);
+	if(info && info !== true)
+		response.setFooter(info);
     
   message.reply(response);
 }

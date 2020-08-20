@@ -3,7 +3,6 @@ const members = require('data/members');
 const collections = require('data/collections');
 const { albums } = require('data/music.json');
 const { randomElement } = require('utils/functions');
-// const { User } = require('database');
 const { Coins, Collections } = require('api/models');
 
 const itemList = values.reduce((list, { items }) => list.concat(items), []);
