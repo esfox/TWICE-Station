@@ -34,8 +34,9 @@ const jobs =
   },
   {
     name: 'donators-reminder',
-    recurrence: { dayOfWeek: 0 },
-    message: `<@${developer.id}> Check monthly donators for reset.`,
+    recurrence: { dayOfWeek: 0, minute: 0, hour: 0 },
+		message: `<@${developer.id}> Check monthly donators for reset.`,
+		forDeveloper: true,
   },
   // {
   //   name: 'update-reminder',
@@ -71,8 +72,8 @@ exports.start = bot =>
   for(const job of Object.values(schedule.scheduledJobs))
     job.cancel();
 
-  for(const { name, recurrence, message } of jobs)
-    schedule.scheduleJob(name, recurrence, () => sendMessage(bot, message));
+  for(const { name, recurrence, message, forDeveloper } of jobs)
+    schedule.scheduleJob(name, recurrence, () => sendMessage(bot, message, forDeveloper));
 }
 
 /** @param {import('discord.js').Client} bot */
