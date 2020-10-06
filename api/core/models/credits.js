@@ -20,10 +20,11 @@ exports.Credits = class Credits extends Users
    * @param {string} user Discord ID of the user.
    * @param {number} amount Amount to add or subtract.
    */
-  _update(action, user, amount)
+  async _update(action, user, amount)
   {
     const newValue = db.raw(`${this.column} ${action === 'add' ? '+' : '-'} ${Math.abs(amount)}`);
-    return super._update(user, newValue);
+		const queryResult = await super._update(user, newValue);
+		return queryResult !== 0 ? queryResult : super.addUser(user, { [this.column]: amount });
   }
 
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

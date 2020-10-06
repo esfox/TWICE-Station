@@ -18,9 +18,11 @@ exports.Objects = class Objects extends Users
    * @param {string} user Discord ID of the user.
    * @param {[] | {}} value New value to set to the record.
    */
-  _update(user, value)
+  async _update(user, value)
   {
-    return super._update(user, JSON.stringify(value));
+		value = JSON.stringify(value);
+		const queryResult = await super._update(user, value);
+    return queryResult !== 0 ? queryResult : super.addUser(user, { [this.column]: value });
   }
 
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -31,9 +33,9 @@ exports.Objects = class Objects extends Users
    * @param {string} user Discord ID of the user.
    * @returns {Promise<[] | {}>}
    */
-  ofUser(user)    
+  ofUser(user)
   {
-    return super.ofUser(user).then(json => JSON.parse(json));
+		return super.ofUser(user).then(record => record !== 0 ? JSON.parse(record) : null );
   }
 
   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

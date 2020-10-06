@@ -20,7 +20,7 @@ class Items extends Objects
    */
   async addToUser(user, item)
   {
-    const items = await super.ofUser(user);
+		const items = await super.ofUser(user) || {};
 
     if(Object.keys(items).reduce((total, code) => total + items[code], 0) === 100)
       return false;
