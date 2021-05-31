@@ -18,6 +18,10 @@ module.exports =
   radio_channel: "533915891654459420",
   bot_channel: "533958900932673546",
   managers_role: "533552646347423755",
+  cbresetters:
+  [
+    "524586331989475329",
+  ],
   moderators:
   [
     "247955535620472844",
