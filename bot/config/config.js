@@ -9,7 +9,7 @@ module.exports =
     client: "564993463888642058",
     mode: false
   },
-  prefixes: [ ";" ],
+  prefixes: [ "~" ],
   embed_color: "#01E623",
   error_message: "❌  Woops! A problem occurred.",
 
