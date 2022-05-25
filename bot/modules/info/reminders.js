@@ -17,21 +17,21 @@ function makeEmbed()
 /** @type {Job[]} */
 const jobs =
 [
-  {
-    name: 'trivia-reminder',
-    recurrence: { minute: new schedule.Range(0, 59, 15) },
-    message: makeEmbed()
-      .setTitle('ℹ️  You can now submit trivias!')
-      .setDescription('Command: `;t-submit`\n\n'
-        + `Just follow the format:\n`
-        + '`;t-submit (question) : (atleast 2 choices) = (number of answer)`\n\n'
-        + '*The choices should be comma-separated.*\n\n'
-        + '**Example**\n'
-        + '`;t-submit Who is the best member? : Sana, Nayeon, Mina, Jihyo = 2`\n\n'
-        + 'After submitting, your trivia will be waiting for approval.\n'
-        + 'Once it has been approved (or rejected), you would be notified.'
-      ),
-  },
+  // {
+  //   name: 'trivia-reminder',
+  //   recurrence: { minute: new schedule.Range(0, 59, 15) },
+  //   message: makeEmbed()
+  //     .setTitle('ℹ️  You can now submit trivias!')
+  //     .setDescription('Command: `;t-submit`\n\n'
+  //       + `Just follow the format:\n`
+  //       + '`;t-submit (question) : (atleast 2 choices) = (number of answer)`\n\n'
+  //       + '*The choices should be comma-separated.*\n\n'
+  //       + '**Example**\n'
+  //       + '`;t-submit Who is the best member? : Sana, Nayeon, Mina, Jihyo = 2`\n\n'
+  //       + 'After submitting, your trivia will be waiting for approval.\n'
+  //       + 'Once it has been approved (or rejected), you would be notified.'
+  //     ),
+  // },
   {
     name: 'donators-reminder',
     recurrence: { dayOfWeek: 0, minute: 0, hour: 0 },
@@ -80,7 +80,7 @@ exports.start = bot =>
 function sendMessage(bot, message, forDeveloper)
 {
 	const channel = forDeveloper ?
-			devloper.channel :
+			developer.channel :
 		bot.user.id === developer.client ?
     	developer.channel : bot_channel;
 
