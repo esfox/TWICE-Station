@@ -19,9 +19,8 @@ const reminders = require('./modules/info/reminders');
 let { client } = config.developer;
 const { followables } = config;
 
-const [ token ] = process.argv.slice(2);
 bot
-  .login(token)
+  .login(process.env.TWICE_STATION_BOT_TOKEN || process.argv.slice(2)[0])
   .catch(console.error);
 
 bot.on('ready', async _ =>
@@ -43,10 +42,10 @@ bot.on('ready', async _ =>
   /* Bot user is the beta bot. */
   if(bot.user.id === client)
   {
-    config.prefixes = [ '`' ];
+    config.prefixes = ['`'];
     // config.embed_color = '#36393F';
   }
-  else 
+  else
   {
     Logger.info('Bot started.');
 
@@ -54,7 +53,7 @@ bot.on('ready', async _ =>
     // await musicPlayer.connect();
     startMusic(bot);
   }
-    
+
   context.setConfig(config);
   bot.user.setActivity('TWICE music videos', { type: 'WATCHING' });
 });
@@ -64,7 +63,7 @@ bot.on('message', async message =>
   if(message.author.bot)
     return;
 
-  if(message.channel.type === 'dm' && 
+  if(message.channel.type === 'dm' &&
     message.author.id !== config.developer.id)
     return;
 
@@ -96,21 +95,21 @@ async function sendToFollowers(message)
     .filter(attachment => attachment.width > 1 && attachment.height > 1)
     .map(attachment => attachment.url);
 
-  const followableMedia = [ "image", "gifv", "video" ];
+  const followableMedia = ["image", "gifv", "video"];
   const embeds = message.embeds
     .filter(embed => followableMedia.includes(embed.type) || embed.video || embed.image)
     .map(embed => embed.url);
 
-  let links = [ ...attachments, ...embeds ];
+  let links = [...attachments, ...embeds];
   if(links.length === 0)
     return;
   links = chunk(links, 5);
-  
+
   let followers = await Follows.ofChannel(message.channel.id, message.author.id);
   followers = message.guild.members.array().filter(({ id }) => followers.includes(id));
   for(const follower of followers)
   {
-    links.forEach(content => follower.send('`Message link:` ' 
+    links.forEach(content => follower.send('`Message link:` '
       + `${message.url}\n\n${content.join('\n')}`)
       .catch(console.error));
   }
